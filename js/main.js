@@ -193,22 +193,33 @@ SOLUTIONS*/
 // 0 <= score < 60	'F'
 // Tested values are all between 0 and 100. Theres is no need to check for negative values or values greater than 100.
 
-function getGrade (s1, s2, s3) {
-    let ave = (s1+s2+s3)/3
-    if(ave<60){
-        return 'F'
-    }else if(ave>=60 && ave<70){
-        return 'D'
-    }else if(ave>=70 && ave<80){
-        return 'C'
-    }else if(ave>=80 && ave<90){
-        return 'B'
-    }else {
-        return 'A'
-    } 
+// function getGrade (s1, s2, s3) {
+//     let ave = (s1+s2+s3)/3
+//     if(ave<60){
+//         return 'F'
+//     }else if(ave>=60 && ave<70){
+//         return 'D'
+//     }else if(ave>=70 && ave<80){
+//         return 'C'
+//     }else if(ave>=80 && ave<90){
+//         return 'B'
+//     }else {
+//         return 'A'
+//     } 
+//   }
+//   console.log(getGrade(100,100,100))
+//   console.log(getGrade(89,89,89))
+//   console.log(getGrade(79,79,79))
+//   console.log(getGrade(69,69,69))
+//   console.log(getGrade(59,59,59))
+
+function betterThanAverage(classPoints, yourPoints) {
+    //find average of classPoints
+    let classAverage = classPoints.reduce((sum, current) => sum + current, 0)
+    classAverage /= classPoints.length
+    
+    //if yourPoints is higher than the average of classPoints, return true
+    return yourPoints>classAverage
   }
-  console.log(getGrade(100,100,100))
-  console.log(getGrade(89,89,89))
-  console.log(getGrade(79,79,79))
-  console.log(getGrade(69,69,69))
-  console.log(getGrade(59,59,59))
+  console.log(betterThanAverage([10,20,30,40,50,60,70,80,90,100],56))
+  
