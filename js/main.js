@@ -213,13 +213,28 @@ SOLUTIONS*/
 //   console.log(getGrade(69,69,69))
 //   console.log(getGrade(59,59,59))
 
-function betterThanAverage(classPoints, yourPoints) {
-    //find average of classPoints
-    let classAverage = classPoints.reduce((sum, current) => sum + current, 0)
-    classAverage /= classPoints.length
+// function betterThanAverage(classPoints, yourPoints) {
+//     //find average of classPoints
+//     let classAverage = classPoints.reduce((sum, current) => sum + current, 0)
+//     classAverage /= classPoints.length
     
-    //if yourPoints is higher than the average of classPoints, return true
-    return yourPoints>classAverage
-  }
-  console.log(betterThanAverage([10,20,30,40,50,60,70,80,90,100],56))
-  
+//     //if yourPoints is higher than the average of classPoints, return true
+//     return yourPoints>classAverage
+//   }
+//   console.log(betterThanAverage([10,20,30,40,50,60,70,80,90,100],56))
+
+// Write a function that removes the spaces from the string, then return the resultant string.
+
+// Examples:
+
+// Input -> Output
+// "8 j 8   mBliB8g  imjB8B8  jl  B" -> "8j8mBliB8gimjB8B8jlB"
+// "8 8 Bi fk8h B 8 BB8B B B  B888 c hl8 BhB fd" -> "88Bifk8hB8BB8BBBB888chl8BhBfd"
+// "8aaaaa dddd r     " -> "8aaaaaddddr"
+
+function noSpace(x){
+   x = x.replace(/\s+/g,'')
+   return x
+}
+
+console.log(noSpace("8 j 8   mBliB8g  imjB8B8  jl  B"))
