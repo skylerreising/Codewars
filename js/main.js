@@ -243,8 +243,34 @@ SOLUTIONS*/
 
 // Return true if yes, false otherwise :)
 
-function hero(bullets, dragons){
-    return dragons<=bullets/2 ? true:false
-    }
-console.log(hero(10,5))
-console.log(hero(7,4))
+// function hero(bullets, dragons){
+//     return dragons<=bullets/2 ? true:false
+//     }
+// console.log(hero(10,5))
+// console.log(hero(7,4))
+
+// Complete the solution so that it returns true if the first argument(string) passed in ends with the 2nd argument (also a string).
+
+// Examples:
+
+// solution('abc', 'bc') // returns true
+// solution('abc', 'd') // returns false
+
+// function solution(str, ending){
+//     //count the number of characters in string ending
+//     let endingLength = Number(ending.length)
+//     //remove the number of characters in string-ending from the end of str
+//     let strToCompare = str.slice(-endingLength)
+//     //If these are the same, return true
+//     return strToCompare === ending
+//   }
+
+function solution(str, ending){
+    return str.endsWith(ending);
+  }
+
+  console.log(solution('abc', 'bc'))
+  console.log(solution('abc', 'd'))
+  console.log(solution('abcde', 'cde'))
+  console.log(solution('abcde', 'abc'))
+  console.log(solution('asdfmoimkmosky', 'sky'))
