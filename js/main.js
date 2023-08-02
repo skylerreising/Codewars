@@ -265,12 +265,42 @@ SOLUTIONS*/
 //     return strToCompare === ending
 //   }
 
-function solution(str, ending){
-    return str.endsWith(ending);
+// function solution(str, ending){
+//     return str.endsWith(ending);
+//   }
+
+//   console.log(solution('abc', 'bc'))
+//   console.log(solution('abc', 'd'))
+//   console.log(solution('abcde', 'cde'))
+//   console.log(solution('abcde', 'abc'))
+//   console.log(solution('asdfmoimkmosky', 'sky'))
+
+// Code as fast as you can! You need to double the integer and return it.
+
+// function doubleInteger(i) {
+//     return i*2;
+//   }
+
+// Welcome. In this kata, you are asked to square every digit of a number and concatenate them.
+
+// For example, if we run 9119 through the function, 811181 will come out, because 92 is 81 and 12 is 1. (81-1-1-81)
+
+// Example #2: An input of 765 will/should return 493625 because 72 is 49, 62 is 36, and 52 is 25. (49-36-25)
+
+// Note: The function accepts an integer and returns an integer.
+
+// Happy Coding!
+
+function squareDigits(num){
+    //split the number into an array of individual digits
+    let newArr = Array.from(String(num), Number)
+    // console.log(newArr)
+    //square each digit in the array
+    squareArr = []
+    squareArr = newArr.map((element) => Math.pow(element,2))
+    
+    //concatenate the digits and return the value
+    return Number(squareArr.join(''));
   }
 
-  console.log(solution('abc', 'bc'))
-  console.log(solution('abc', 'd'))
-  console.log(solution('abcde', 'cde'))
-  console.log(solution('abcde', 'abc'))
-  console.log(solution('asdfmoimkmosky', 'sky'))
+  console.log(squareDigits(3212))
