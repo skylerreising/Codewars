@@ -345,15 +345,32 @@ SOLUTIONS*/
 // There will always be at least one number in the input string.
 // Output string must be two numbers separated by a single space, and highest number is first.
 
-function highAndLow(numbers){
-    let numArr = numbers.split(' ').map(Number)
+// function highAndLow(numbers){
+//     let numArr = numbers.split(' ').map(Number)
 
-    let highNum = Math.max(...numArr)
-    let lowNum = Math.min(...numArr)
+//     let highNum = Math.max(...numArr)
+//     let lowNum = Math.min(...numArr)
 
-    return `${highNum} ${lowNum}`
-  }
+//     return `${highNum} ${lowNum}`
+//   }
 
-console.log(highAndLow("1 2 3 4 5"));  // return "5 1"
-console.log(highAndLow("1 2 -3 4 5")); // return "5 -3"
-console.log(highAndLow("1 9 3 4 -5")); // return "9 -5"
+// console.log(highAndLow("1 2 3 4 5"));  // return "5 1"
+// console.log(highAndLow("1 2 -3 4 5")); // return "5 -3"
+// console.log(highAndLow("1 9 3 4 -5")); // return "9 -5"
+
+// You get an array of numbers, return the sum of all of the positives ones.
+
+// Example [1,-4,7,12] => 1 + 7 + 12 = 20
+
+// Note: if there is nothing to sum, the sum is default to 0.
+
+function positiveSum(arr) {
+    let sum = 0
+      for(let i=0; i<=arr.length; i++){
+      if(arr[i]>0){
+        sum += arr[i]
+      }
+    }
+    return sum
+}
+    console.log(positiveSum([1,-4,7,12]))
