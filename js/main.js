@@ -364,13 +364,50 @@ SOLUTIONS*/
 
 // Note: if there is nothing to sum, the sum is default to 0.
 
-function positiveSum(arr) {
-    let sum = 0
-      for(let i=0; i<=arr.length; i++){
-      if(arr[i]>0){
-        sum += arr[i]
-      }
-    }
-    return sum
+// function positiveSum(arr) {
+//     let sum = 0
+//       for(let i=0; i<=arr.length; i++){
+//       if(arr[i]>0){
+//         sum += arr[i]
+//       }
+//     }
+//     return sum
+// }
+//     console.log(positiveSum([1,-4,7,12]))
+
+// Implement a function which convert the given boolean value into its string representation.
+
+// Note: Only valid inputs will be given.
+
+// function booleanToString(b){
+//     return stringToBooConversion = b ? "true":"false"
+//   }
+
+//   alert(booleanToString(true))
+//   alert(booleanToString(false))
+
+// Write a function to convert a name into initials. This kata strictly takes two words with one space in between them.
+
+// The output should be two capital letters with a dot separating them.
+
+// It should look like this:
+
+// Sam Harris => S.H
+
+// patrick feeney => P.F
+
+function abbrevName(name){
+    let separateName = name.split(" ")
+
+    let lastName = separateName.pop()
+
+    let firstName = separateName.shift()
+
+    let lastInitial = lastName.slice(0,1).toUpperCase()
+
+    let firstInitial = firstName.slice(0,1).toUpperCase()
+
+    return `${firstInitial}.${lastInitial}`
 }
-    console.log(positiveSum([1,-4,7,12]))
+
+console.log(abbrevName("skyler reising"))
