@@ -396,18 +396,40 @@ SOLUTIONS*/
 
 // patrick feeney => P.F
 
-function abbrevName(name){
-    let separateName = name.split(" ")
+// function abbrevName(name){
+//     let separateName = name.split(" ")
 
-    let lastName = separateName.pop()
+//     let lastName = separateName.pop()
 
-    let firstName = separateName.shift()
+//     let firstName = separateName.shift()
 
-    let lastInitial = lastName.slice(0,1).toUpperCase()
+//     let lastInitial = lastName.slice(0,1).toUpperCase()
 
-    let firstInitial = firstName.slice(0,1).toUpperCase()
+//     let firstInitial = firstName.slice(0,1).toUpperCase()
 
-    return `${firstInitial}.${lastInitial}`
+//     return `${firstInitial}.${lastInitial}`
+// }
+
+// console.log(abbrevName("skyler reising"))
+
+// Write a function which converts the input string to uppercase.
+
+// function makeUpperCase(str) {
+//     return str.toUpperCase()
+//   }
+
+//   console.log(makeUpperCase("hello"))
+
+// Given a string of digits, you should replace any digit below 5 with '0' and any digit 5 and above with '1'. Return the resulting string.
+
+// Note: input will never be an empty string
+
+function fakeBin(x){
+    let stringToNum = x.split("").map((x) => +x)
+    
+    let binString = stringToNum.map((x) => x<5 ? "0":"1").join("")
+
+    return binString
 }
 
-console.log(abbrevName("skyler reising"))
+console.log(fakeBin('45385593107843568'))
