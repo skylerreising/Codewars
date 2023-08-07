@@ -471,10 +471,38 @@ SOLUTIONS*/
 // "GCAT"  =>  "GCAU"
 // The input string can be of arbitrary length - in particular, it may be empty. All input is guaranteed to be valid, i.e. each input string will only ever consist of 'G', 'C', 'A' and/or 'T'.
 
-function DNAtoRNA(dna) {
-    let DNA = dna.replaceAll("T","U")
-    return DNA
+// function DNAtoRNA(dna) {
+//     let DNA = dna.replaceAll("T","U")
+//     return DNA
+//   }
+
+//   console.log(DNAtoRNA("GCAT"))
+//   console.log(DNAtoRNA("UTTT"))
+
+// Write a function to split a string and convert it into an array of words.
+
+// Examples (Input ==> Output):
+// "Robin Singh" ==> ["Robin", "Singh"]
+
+// "I love arrays they are my favorite" ==> ["I", "love", "arrays", "they", "are", "my", "favorite"]
+
+// function stringToArray(string){
+//     return string.split(" ")
+// }
+
+// console.log(stringToArray("I love arrays they are my favorite"))
+
+// If you can't sleep, just count sheep!!
+
+// Task:
+// Given a non-negative integer, 3 for example, return a string with a murmur: "1 sheep...2 sheep...3 sheep...". Input will always be valid, i.e. no negative integers.
+
+var countSheep = function (num){
+    let nums = ""
+    for(let i=1; i<=num; i++){
+        nums += i + " sheep..."
+    }
+    return nums
   }
 
-  console.log(DNAtoRNA("GCAT"))
-  console.log(DNAtoRNA("UTTT"))
+  console.log(countSheep(10))
