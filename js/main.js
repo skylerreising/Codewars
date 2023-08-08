@@ -497,12 +497,69 @@ SOLUTIONS*/
 // Task:
 // Given a non-negative integer, 3 for example, return a string with a murmur: "1 sheep...2 sheep...3 sheep...". Input will always be valid, i.e. no negative integers.
 
-var countSheep = function (num){
-    let nums = ""
-    for(let i=1; i<=num; i++){
-        nums += i + " sheep..."
+// var countSheep = function (num){
+//     let nums = ""
+//     for(let i=1; i<=num; i++){
+//         nums += i + " sheep..."
+//     }
+//     return nums
+//   }
+
+//   console.log(countSheep(10))
+
+// Create a function that gives a personalized greeting. This function takes two parameters: name and owner.
+
+// Use conditionals to return the proper message:
+
+// case	return
+// name equals owner	'Hello boss'
+// otherwise	'Hello guest'
+
+// function greet (name, owner) {
+//     return  name === owner ? "Hello boss":"Hello guest"
+//   }
+
+//   console.log(greet('Daniel', 'Daniel'))
+
+// Write function RemoveExclamationMarks which removes all exclamation marks from a given string.
+
+// function removeExclamationMarks(s) {
+//     return s.replaceAll("!","")
+//   }
+
+//   console.log(removeExclamationMarks("Hello World!"))
+
+// Our football team has finished the championship.
+
+// Our team's match results are recorded in a collection of strings. Each match is represented by a string in the format "x:y", where x is our team's score and y is our opponents score.
+
+// For example: ["3:1", "2:2", "0:1", ...]
+
+// Points are awarded for each match as follows:
+
+// if x > y: 3 points (win)
+// if x < y: 0 points (loss)
+// if x = y: 1 point (tie)
+// We need to write a function that takes this collection and returns the number of points our team (x) got in the championship by the rules given above.
+
+// Notes:
+
+// our team always plays 10 matches in the championship
+// 0 <= x <= 4
+// 0 <= y <= 4
+
+function points(games) {
+    let totalPoints = 0
+
+    for(let result of games){
+        let [x,y] = result.split(":").map(Number)
+        if(x>y){
+            totalPoints += 3
+        }else if(x===y){
+            totalPoints += 1
+        }
     }
-    return nums
+    return totalPoints
   }
 
-  console.log(countSheep(10))
+  console.log(points(["1:0","2:0","3:0","4:0","2:1","3:1","4:1","3:2","4:2","4:3"]))
