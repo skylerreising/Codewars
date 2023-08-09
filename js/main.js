@@ -572,10 +572,27 @@ SOLUTIONS*/
 
 // "The greatest victory is that which requires no battle" --> "battle no requires which that is victory greatest The"
 
-function reverseWords(str){
-    let reversedString = []
-    reversedString += str.split(" ").reverse().join(" ")
-    return reversedString; 
-  }
+// function reverseWords(str){
+//     let reversedString = []
+//     reversedString += str.split(" ").reverse().join(" ")
+//     return reversedString; 
+//   }
 
-  console.log(reverseWords("battle no requires which that is victory greatest The"))
+//   console.log(reverseWords("battle no requires which that is victory greatest The"))
+
+// Given an array of integers as strings and numbers, return the sum of the array values as if all were numbers.
+
+// Return your answer as a number.
+
+// function sumMix(x){
+//     let sum = 0
+//     let nums = x.map((c) => Number(c))
+//     return sum = nums.reduce((a,b) => a+b)
+// }
+
+function sumMix(x){
+    let sum = 0
+    return sum = x.map((c) => Number(c)).reduce((a,b) => a+b)
+}
+
+console.log(sumMix([9, 3, '7', '3']))
