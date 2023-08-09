@@ -548,18 +548,34 @@ SOLUTIONS*/
 // 0 <= x <= 4
 // 0 <= y <= 4
 
-function points(games) {
-    let totalPoints = 0
+// function points(games) {
+//     let totalPoints = 0
 
-    for(let result of games){
-        let [x,y] = result.split(":").map(Number)
-        if(x>y){
-            totalPoints += 3
-        }else if(x===y){
-            totalPoints += 1
-        }
-    }
-    return totalPoints
+//     for(let result of games){
+//         let [x,y] = result.split(":").map(Number)
+//         if(x>y){
+//             totalPoints += 3
+//         }else if(x===y){
+//             totalPoints += 1
+//         }
+//     }
+//     return totalPoints
+//   }
+
+//   console.log(points(["1:0","2:0","3:0","4:0","2:1","3:1","4:1","3:2","4:2","4:3"]))
+
+// Complete the solution so that it reverses all of the words within the string passed in.
+
+// Words are separated by exactly one space and there are no leading or trailing spaces.
+
+// Example(Input --> Output):
+
+// "The greatest victory is that which requires no battle" --> "battle no requires which that is victory greatest The"
+
+function reverseWords(str){
+    let reversedString = []
+    reversedString += str.split(" ").reverse().join(" ")
+    return reversedString; 
   }
 
-  console.log(points(["1:0","2:0","3:0","4:0","2:1","3:1","4:1","3:2","4:2","4:3"]))
+  console.log(reverseWords("battle no requires which that is victory greatest The"))
