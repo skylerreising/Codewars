@@ -603,9 +603,22 @@ SOLUTIONS*/
 
 // Assume that beast and dish are always lowercase strings, and that each has at least two letters. beast and dish may contain hyphens and spaces, but these will not appear at the beginning or end of the string. They will not contain numerals.
 
-function feast(beast, dish) {
-   return beast.charAt(0) == dish.charAt(0) && beast.charAt(beast.length-1) === dish.charAt(dish.length-1) ? true : false
-    }
+// function feast(beast, dish) {
+//    return beast.charAt(0) == dish.charAt(0) && beast.charAt(beast.length-1) === dish.charAt(dish.length-1) ? true : false
+//     }
 
-console.log(feast("great blue heron", "garlic naan"))
-console.log(feast("brown bear", "bear claw"))
+// console.log(feast("great blue heron", "garlic naan"))
+// console.log(feast("brown bear", "bear claw"))
+
+// Given a string, you have to return a string in which each character (case-sensitive) is repeated once.
+
+// Examples (Input -> Output):
+// * "String"      -> "SSttrriinngg"
+// * "Hello World" -> "HHeelllloo  WWoorrlldd"
+// * "1234!_ "     -> "11223344!!__  "
+
+function doubleChar(str) {
+    return str.split("").map((x)=> x+x).join("")
+  }
+
+  console.log(doubleChar("abcd"))
