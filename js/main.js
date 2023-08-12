@@ -701,8 +701,39 @@ SOLUTIONS*/
 // 35231 => [1,3,2,5,3]
 // 0 => [0]
 
-function digitize(n) {
-    return n.toString().split("").reverse().map((x)=> parseInt(x,10))
+// function digitize(n) {
+//     return n.toString().split("").reverse().map((x)=> parseInt(x,10))
+//   }
+
+//   console.log(digitize(35231))
+
+// Given an array of integers, return a new array with each value doubled.
+
+// For example:
+
+// [1, 2, 3] --> [2, 4, 6]
+
+// function maps(x){
+//     return x.map((a)=>a*2)
+// }
+
+// console.log(maps([1,2,3]))
+
+// Can you find the needle in the haystack?
+
+// Write a function findNeedle() that takes an array full of junk but containing one "needle"
+
+// After your function finds the needle it should return a message (as a string) that says:
+
+// "found the needle at position " plus the index it found the needle, so:
+
+// Example(Input --> Output)
+
+// ["hay", "junk", "hay", "hay", "moreJunk", "needle", "randomJunk"] --> "found the needle at position 5"
+
+function findNeedle(haystack) {
+    let numINeed = haystack.indexOf("needle")
+    return `found the needle at position ${numINeed}`
   }
 
-  console.log(digitize(35231))
+  console.log(findNeedle(["hay", "junk", "hay", "hay", "moreJunk", "needle", "randomJunk"]))
