@@ -659,10 +659,50 @@ SOLUTIONS*/
 //     return (count)
 //   }
 
-function strCount(str, letter){
-    return str.split(letter).length-1
-}
+// function strCount(str, letter){
+//     return str.split(letter).length-1
+// }
 
-console.log(strCount("Hello", 'o')); // returns 1
-console.log(strCount("Hello", 'l')); // returns 2
-console.log(strCount("", 'z')); // returns 0
+// console.log(strCount("Hello", 'o')); // returns 1
+// console.log(strCount("Hello", 'l')); // returns 2
+// console.log(strCount("", 'z')); // returns 0
+
+// Consider an array/list of sheep where some sheep may be missing from their place. We need a function that counts the number of sheep present in the array (true means present).
+
+// For example,
+
+// [true,  true,  true,  false,
+//   true,  true,  true,  true ,
+//   true,  false, true,  false,
+//   true,  false, false, true ,
+//   true,  true,  true,  true ,
+//   false, false, true,  true]
+// The correct answer would be 17.
+
+// Hint: Don't forget to check for bad values like null/undefined
+
+// function countSheeps(arrayOfSheep) {
+//     let count = 0
+//     arrayOfSheep.map((x)=> x ? count++:count)
+//     return count
+//   }
+
+//   console.log(countSheeps([true,  true,  true,  false,
+//       true,  true,  true,  true ,
+//       true,  false, true,  false,
+//       true,  false, false, true ,
+//       true,  true,  true,  true ,
+//       false, false, true,  true]))
+
+// Convert number to reversed array of digits
+// Given a random non-negative number, you have to return the digits of this number within an array in reverse order.
+
+// Example(Input => Output):
+// 35231 => [1,3,2,5,3]
+// 0 => [0]
+
+function digitize(n) {
+    return n.toString().split("").reverse().map((x)=> parseInt(x,10))
+  }
+
+  console.log(digitize(35231))
