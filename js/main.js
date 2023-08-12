@@ -617,8 +617,52 @@ SOLUTIONS*/
 // * "Hello World" -> "HHeelllloo  WWoorrlldd"
 // * "1234!_ "     -> "11223344!!__  "
 
-function doubleChar(str) {
-    return str.split("").map((x)=> x+x).join("")
-  }
+// function doubleChar(str) {
+//     return str.split("").map((x)=> x+x).join("")
+//   }
 
-  console.log(doubleChar("abcd"))
+//   console.log(doubleChar("abcd"))
+
+// It's bonus time in the big city! The fatcats are rubbing their paws in anticipation... but who is going to make the most money?
+
+// Build a function that takes in two arguments (salary, bonus). Salary will be an integer, and bonus a boolean.
+
+// If bonus is true, the salary should be multiplied by 10. If bonus is false, the fatcat did not make enough money and must receive only his stated salary.
+
+// Return the total figure the individual will receive as a string prefixed with "£" (= "\u00A3", JS, Go, Java, Scala, and Julia), "$" (C#, C++, Ruby, Clojure, Elixir, PHP, Python, Haskell, and Lua) or "¥" (Rust).
+
+// function bonusTime(salary, bonus) {
+//     return bonus ? `£${salary*10}`:`£${salary}`
+//     }
+
+//     console.log(bonusTime(10000, true))
+//     console.log(bonusTime(25000, true))
+//     console.log(bonusTime(10000, false))
+
+// Create a function that accepts a string and a single character, and returns an integer of the count of occurrences the 2nd argument is found in the first one.
+
+// If no occurrences can be found, a count of 0 should be returned.
+
+// ("Hello", "o")  ==>  1
+// ("Hello", "l")  ==>  2
+// ("", "z")       ==>  0
+// str_count("Hello", 'o'); // returns 1
+// str_count("Hello", 'l'); // returns 2
+// str_count("", 'z'); // returns 0
+
+// function strCount(str, letter){  
+//     let splitStr = str.split("")
+//     let count = 0
+//     for(let i=0; i<splitStr.length; i++){
+//         splitStr[i]===letter ? count++ : count
+//     }
+//     return (count)
+//   }
+
+function strCount(str, letter){
+    return str.split(letter).length-1
+}
+
+console.log(strCount("Hello", 'o')); // returns 1
+console.log(strCount("Hello", 'l')); // returns 2
+console.log(strCount("", 'z')); // returns 0
