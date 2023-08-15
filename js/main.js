@@ -776,10 +776,26 @@ SOLUTIONS*/
 // invert([]) == []
 // You can assume that all values are integers. Do not mutate the input array/list.
 
-function invert(array) {
-    return array.map((x) => x>=0 ? x-x*2:x+x*-2);
- }
+// function invert(array) {
+//     return array.map((x) => x>=0 ? x-x*2:x+x*-2);
+//  }
 
- console.log(invert([1,2,3,4,5]))
- console.log(invert([1,-2,3,-4,5]))
- console.log(invert([]))
+//  console.log(invert([1,2,3,4,5]))
+//  console.log(invert([1,-2,3,-4,5]))
+//  console.log(invert([]))
+
+// Write a function which calculates the average of the numbers in a given list.
+
+// Note: Empty arrays should return 0.
+
+function findAverage(array) {
+    // let sum = array.reduce((a,b) => a+b)
+    // let ave = sum/array.length
+    // return ave
+    return array.length === 0 ? 0 : array.reduce((a,b) => a+b, 0)/array.length
+  }
+
+  console.log(findAverage([1,1,1]))
+  console.log(findAverage([1,2,3]))
+  console.log(findAverage([1,2,3,4]))
+  console.log(findAverage([]))
