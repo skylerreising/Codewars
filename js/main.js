@@ -758,13 +758,28 @@ SOLUTIONS*/
 // We're testing basic loops and math operations. This is for beginners who are just learning loops and math operations.
 // Advanced users may find this extremely easy and can easily write this in one line.
 
-function sum (numbers) {
-    "use strict";
-    // let output = 0
-    // numbers.length === 0 ? output=numbers.length:output = numbers.reduce((a,b)=> a+b)
-    // return output
-    return numbers.reduce((a,b)=> a+b,0)
-};
+// function sum (numbers) {
+//     "use strict";
+//     // let output = 0
+//     // numbers.length === 0 ? output=numbers.length:output = numbers.reduce((a,b)=> a+b)
+//     // return output
+//     return numbers.reduce((a,b)=> a+b,0)
+// };
 
-console.log(sum([1, 5.2, 4, 0, -1]))
-console.log(sum([]))
+// console.log(sum([1, 5.2, 4, 0, -1]))
+// console.log(sum([]))
+
+// Given a set of numbers, return the additive inverse of each. Each positive becomes negatives, and the negatives become positives.
+
+// invert([1,2,3,4,5]) == [-1,-2,-3,-4,-5]
+// invert([1,-2,3,-4,5]) == [-1,2,-3,4,-5]
+// invert([]) == []
+// You can assume that all values are integers. Do not mutate the input array/list.
+
+function invert(array) {
+    return array.map((x) => x>=0 ? x-x*2:x+x*-2);
+ }
+
+ console.log(invert([1,2,3,4,5]))
+ console.log(invert([1,-2,3,-4,5]))
+ console.log(invert([]))
