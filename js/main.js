@@ -809,17 +809,27 @@ SOLUTIONS*/
 // Example
 // For input [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15], you should return [10, -65].
 
-function countPositivesSumNegatives(input) {
-    let positives = 0
-    let negatives = 0
-    let emptyArr = []
-    if(input === null || input.length === 0 ){
-        return emptyArr
-    }else {
-        input.map((x) => x>0 ? positives++ :negatives += x)
-    return [positives, negatives]
-    }
-  }
+// function countPositivesSumNegatives(input) {
+//     let positives = 0
+//     let negatives = 0
+//     let emptyArr = []
+//     if(input === null || input.length === 0 ){
+//         return emptyArr
+//     }else {
+//         input.map((x) => x>0 ? positives++ :negatives += x)
+//     return [positives, negatives]
+//     }
+//   }
 
-  console.log(countPositivesSumNegatives([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15]))
-  console.log(countPositivesSumNegatives([]))
+//   console.log(countPositivesSumNegatives([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15]))
+//   console.log(countPositivesSumNegatives([]))
+
+// Given a non-empty array of integers, return the result of multiplying the values together in order. Example:
+
+// [1, 2, 3, 4] => 1 * 2 * 3 * 4 = 24
+
+function grow(x){
+    return x.reduce((a,b) => a*b)
+}
+
+console.log(grow([1, 2, 3, 4]))
