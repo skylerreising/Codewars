@@ -844,13 +844,40 @@ SOLUTIONS*/
 // countBy(1,10) === [1,2,3,4,5,6,7,8,9,10]
 // countBy(2,5) === [2,4,6,8,10]
 
-function countBy(x, n) {
-    let z = [];
-    for(let i=1; i<=n; i++){
-        z.push(i*x)
-    }
-    return z;
+// function countBy(x, n) {
+//     let z = [];
+//     for(let i=1; i<=n; i++){
+//         z.push(i*x)
+//     }
+//     return z;
+//   }
+
+//   console.log(countBy(1,10))
+//   console.log(countBy(2,5))
+
+// It's the academic year's end, fateful moment of your school report. The averages must be calculated. All the students come to you and entreat you to calculate their average for them. Easy ! You just need to write a script.
+
+// Return the average of the given array rounded down to its nearest integer.
+
+// The array will never be empty.
+
+// function getAverage(marks){
+//     return Math.floor(marks.reduce((x,y) => x+y)/marks.length)
+//   }
+
+//   console.log(getAverage([2,2,2,2]))
+//   console.log(getAverage([1,2,3,4,5,]))
+//   console.log(getAverage([1,1,1,1,1,1,1,2]))
+
+// I'm new to coding and now I want to get the sum of two arrays... Actually the sum of all their elements. I'll appreciate for your help.
+
+// P.S. Each array includes only integer numbers. Output is a number too.
+
+function arrayPlusArray(arr1, arr2) {
+    return arr1.reduce((a,b) => a+b) + arr2.reduce((a,b) => a+b); //something went wrong
   }
 
-  console.log(countBy(1,10))
-  console.log(countBy(2,5))
+  console.log(arrayPlusArray([1, 2, 3], [4, 5, 6]))
+  console.log(arrayPlusArray([-1, -2, -3], [-4, -5, -6]))
+  console.log(arrayPlusArray([0, 0, 0], [4, 5, 6]))
+  console.log(arrayPlusArray([100, 200, 300], [400, 500, 600]))
