@@ -873,11 +873,24 @@ SOLUTIONS*/
 
 // P.S. Each array includes only integer numbers. Output is a number too.
 
-function arrayPlusArray(arr1, arr2) {
-    return arr1.reduce((a,b) => a+b) + arr2.reduce((a,b) => a+b); //something went wrong
-  }
+// function arrayPlusArray(arr1, arr2) {
+//     return arr1.reduce((a,b) => a+b) + arr2.reduce((a,b) => a+b);
+//   }
 
-  console.log(arrayPlusArray([1, 2, 3], [4, 5, 6]))
-  console.log(arrayPlusArray([-1, -2, -3], [-4, -5, -6]))
-  console.log(arrayPlusArray([0, 0, 0], [4, 5, 6]))
-  console.log(arrayPlusArray([100, 200, 300], [400, 500, 600]))
+//   console.log(arrayPlusArray([1, 2, 3], [4, 5, 6]))
+//   console.log(arrayPlusArray([-1, -2, -3], [-4, -5, -6]))
+//   console.log(arrayPlusArray([0, 0, 0], [4, 5, 6]))
+//   console.log(arrayPlusArray([100, 200, 300], [400, 500, 600]))
+
+// Take an array and remove every second element from the array. Always keep the first element and start removing with the next element.
+
+// Example:
+// ["Keep", "Remove", "Keep", "Remove", "Keep", ...] --> ["Keep", "Keep", "Keep", ...]
+
+// None of the arrays will be empty, so you don't have to worry about that!
+
+function removeEveryOther(arr){
+    return arr.filter((a,b) => b % 2 === 0)
+    }
+
+  console.log(removeEveryOther(["Keep", "Remove", "Keep", "Remove", "Keep"]))
