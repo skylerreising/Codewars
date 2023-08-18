@@ -949,15 +949,31 @@ SOLUTIONS*/
 // spinWords( "This is a test") => returns "This is a test" 
 // spinWords( "This is another test" )=> returns "This is rehtona test"
 
-function spinWords(string){
-    let stringArray = string.split(" ")
-    for(let i=0; i<stringArray.length; i++){
-      if(stringArray[i].length>=5){ 
-        stringArray[i] = stringArray[i].split("").reverse().join("")
-                               }
-    }
+// function spinWords(string){
+//     let stringArray = string.split(" ")
+//     for(let i=0; i<stringArray.length; i++){
+//       if(stringArray[i].length>=5){ 
+//         stringArray[i] = stringArray[i].split("").reverse().join("")
+//                                }
+//     }
     
-    return stringArray.join(" ")
-  }
+//     return stringArray.join(" ")
+//   }
   
-  console.log(spinWords("Hey fellow warriors"))
+//   console.log(spinWords("Hey fellow warriors"))
+
+// Create a function that returns the sum of the two lowest positive numbers given an array of minimum 4 positive integers. No floats or non-positive integers will be passed.
+
+// For example, when an array is passed like [19, 5, 42, 2, 77], the output should be 7.
+
+// [10, 343445353, 3453445, 3453545353453] should return 3453455.
+
+function sumTwoSmallestNumbers(numbers) {  
+    // let sum = 0
+    // let orderedArray = numbers.sort((a,b)=>a-b)
+    // sum = orderedArray[0] + orderedArray[1]
+    // return sum
+    return numbers.sort((a,b)=>a-b)[0] + numbers.sort((a,b)=>a-b)[1]
+  }
+
+  console.log(sumTwoSmallestNumbers([5, 8, 12, 19, 22]))
