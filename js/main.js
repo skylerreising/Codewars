@@ -889,8 +889,75 @@ SOLUTIONS*/
 
 // None of the arrays will be empty, so you don't have to worry about that!
 
-function removeEveryOther(arr){
-    return arr.filter((a,b) => b % 2 === 0)
-    }
+// function removeEveryOther(arr){
+//     return arr.filter((a,b) => b % 2 === 0)
+//     }
 
-  console.log(removeEveryOther(["Keep", "Remove", "Keep", "Remove", "Keep"]))
+//   console.log(removeEveryOther(["Keep", "Remove", "Keep", "Remove", "Keep"]))
+
+// Return the number (count) of vowels in the given string.
+
+// We will consider a, e, i, o, u as vowels for this Kata (but not y).
+
+// The input string will only consist of lower case letters and/or spaces.
+
+// function getCount(str) {
+//   //return the number of vowels in the string
+//   let count = 0
+  
+//   let strArr = str.split("")
+  
+//   for(let i=0; i<strArr.length; i++){
+//     if(strArr[i]=="a"||strArr[i]=="e"||strArr[i]=="i"||strArr[i]=="o"||strArr[i]=="u"){
+//       count++
+//     }
+//   }
+//   return count;
+// }
+
+// console.log(getCount("abracadabra"))
+// console.log(getCount("aaeeiioouu"))
+
+// If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
+
+// Finish the solution so that it returns the sum of all the multiples of 3 or 5 below the number passed in. Additionally, if the number is negative, return 0 (for languages that do have them).
+
+// Note: If the number is a multiple of both 3 and 5, only count it once.
+
+// function solution(number){
+//   let numArray = []
+//   if(number<=0){
+//     return 0
+//   }else {
+//   for(let i=0; i<number; i++){
+//     if(i % 3===0 || i % 5===0){
+//       numArray.push(i)
+//     }
+//   }
+//   }
+//   return numArray.reduce((x,y) => x+y)
+// }
+
+// console.log(solution(10))
+// console.log(solution(-10))
+
+// Write a function that takes in a string of one or more words, and returns the same string, but with all five or more letter words reversed (Just like the name of this Kata). Strings passed in will consist of only letters and spaces. Spaces will be included only when more than one word is present.
+
+// Examples:
+
+// spinWords( "Hey fellow warriors" ) => returns "Hey wollef sroirraw" 
+// spinWords( "This is a test") => returns "This is a test" 
+// spinWords( "This is another test" )=> returns "This is rehtona test"
+
+function spinWords(string){
+    let stringArray = string.split(" ")
+    for(let i=0; i<stringArray.length; i++){
+      if(stringArray[i].length>=5){ 
+        stringArray[i] = stringArray[i].split("").reverse().join("")
+                               }
+    }
+    
+    return stringArray.join(" ")
+  }
+  
+  console.log(spinWords("Hey fellow warriors"))
