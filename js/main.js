@@ -968,12 +968,68 @@ SOLUTIONS*/
 
 // [10, 343445353, 3453445, 3453545353453] should return 3453455.
 
-function sumTwoSmallestNumbers(numbers) {  
-    // let sum = 0
-    // let orderedArray = numbers.sort((a,b)=>a-b)
-    // sum = orderedArray[0] + orderedArray[1]
-    // return sum
-    return numbers.sort((a,b)=>a-b)[0] + numbers.sort((a,b)=>a-b)[1]
-  }
+// function sumTwoSmallestNumbers(numbers) {  
+//     // let sum = 0
+//     // let orderedArray = numbers.sort((a,b)=>a-b)
+//     // sum = orderedArray[0] + orderedArray[1]
+//     // return sum
+//     return numbers.sort((a,b)=>a-b)[0] + numbers.sort((a,b)=>a-b)[1]
+//   }
 
-  console.log(sumTwoSmallestNumbers([5, 8, 12, 19, 22]))
+//   console.log(sumTwoSmallestNumbers([5, 8, 12, 19, 22]))
+
+// Given the triangle of consecutive odd numbers:
+
+//              1
+//           3     5
+//        7     9    11
+//    13    15    17    19
+// 21    23    25    27    29
+// ...
+// Calculate the sum of the numbers in the nth row of this triangle (starting at index 1) e.g.: (Input --> Output)
+
+// 1 -->  1
+// 2 --> 3 + 5 = 8
+
+// function rowSumOddNumbers(n) {
+//     //create array to put numbers into
+//     let oddNumArray = []
+    
+//     //put odd numbers into the array based on n
+//         //need a number variable based on n that will stop the loop adding odd numbers to the array
+//         let numVar = 0
+//     for(let i=0; i<=n; i++){
+//         numVar += n
+//     }
+
+//     for(let i=0; i<=numVar; i++){
+//        if(i % 2 !== 0){
+//         oddNumArray.push(i)
+//        }
+//     }
+    
+//     //shift numbers out of the array based on n and oddNumArray length using a loop
+// 	let numShifter = oddNumArray.length - n
+//     for(let i=1; i<=numShifter; i++){
+//         oddNumArray.shift()
+//     }
+//     //return the sum of the array
+//     return oddNumArray.reduce((x,y)=>x+y)
+// }
+
+function rowSumOddNumbers(n) {
+    let oddNumArray = []
+    let numVarStart = n * (n-1) + 1
+    for(let i=0; i<n; i++){
+        oddNumArray.push(numVarStart + 2*i)
+    }
+    return oddNumArray.reduce((x,y)=>x+y)
+}
+
+console.log(rowSumOddNumbers(1))
+console.log(rowSumOddNumbers(2))
+console.log(rowSumOddNumbers(3))
+console.log(rowSumOddNumbers(4))
+console.log(rowSumOddNumbers(5))
+console.log(rowSumOddNumbers(42))
+console.log(rowSumOddNumbers(212))
