@@ -1090,14 +1090,41 @@ SOLUTIONS*/
 
 // The array will always have at least 2 elements1 and all elements will be numbers. The numbers will also all be unique and in ascending order. The numbers could be positive or negative and the first non-consecutive could be either too!
 
-function firstNonConsecutive(arr){
-    for(let i=1; i<arr.length; i++){
-        if(arr[i]-arr[i-1]!==1){
-            return arr[i]
-        }
-    }
-    return null
+// function firstNonConsecutive(arr){
+//     for(let i=1; i<arr.length; i++){
+//         if(arr[i]-arr[i-1]!==1){
+//             return arr[i]
+//         }
+//     }
+//     return null
+// }
+
+// console.log(firstNonConsecutive([1,2,3,4,6,7,8]))
+// console.log(firstNonConsecutive([1,2,3,4]))
+
+// Who remembers back to their time in the schoolyard, when girls would take a flower and tear its petals, saying each of the following phrases each time a petal was torn:
+
+// "I love you"
+// "a little"
+// "a lot"
+// "passionately"
+// "madly"
+// "not at all"
+// If there are more than 6 petals, you start over with "I love you" for 7 petals, "a little" for 8 petals and so on.
+
+// When the last petal was torn there were cries of excitement, dreams, surging thoughts and emotions.
+
+// Your goal in this kata is to determine which phrase the girls would say at the last petal for a flower of a given number of petals. The number of petals is always greater than 0.
+
+function howMuchILoveYou(nbPetals) {
+    let whichOne = ["I love you","a little","a lot","passionately","madly","not at all"]
+
+    let indexOfWhichOne = (nbPetals - 1)%whichOne.length
+
+    return whichOne[indexOfWhichOne]
 }
 
-console.log(firstNonConsecutive([1,2,3,4,6,7,8]))
-console.log(firstNonConsecutive([1,2,3,4]))
+console.log(howMuchILoveYou(7))
+console.log(howMuchILoveYou(3))
+console.log(howMuchILoveYou(6))
+console.log(howMuchILoveYou(1))
