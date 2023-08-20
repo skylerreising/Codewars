@@ -1116,15 +1116,40 @@ SOLUTIONS*/
 
 // Your goal in this kata is to determine which phrase the girls would say at the last petal for a flower of a given number of petals. The number of petals is always greater than 0.
 
-function howMuchILoveYou(nbPetals) {
-    let whichOne = ["I love you","a little","a lot","passionately","madly","not at all"]
+// function howMuchILoveYou(nbPetals) {
+//     let whichOne = ["I love you","a little","a lot","passionately","madly","not at all"]
 
-    let indexOfWhichOne = (nbPetals - 1)%whichOne.length
+//     let indexOfWhichOne = (nbPetals - 1)%whichOne.length
 
-    return whichOne[indexOfWhichOne]
+//     return whichOne[indexOfWhichOne]
+// }
+
+// console.log(howMuchILoveYou(7))
+// console.log(howMuchILoveYou(3))
+// console.log(howMuchILoveYou(6))
+// console.log(howMuchILoveYou(1))
+
+// You will be given a list of strings. You must sort it alphabetically (case-sensitive, and based on the ASCII values of the chars) and then return the first value.
+
+// The returned value must be a string, and have "***" between each of its letters.
+
+// You should not remove or add elements from/to the array.
+
+function twoSort(s) {
+    let squorted = s.sort()
+    let firstWord = squorted.shift()
+    let divideWord = firstWord.split('')
+    let lastChar = divideWord[divideWord.length-1]
+    let addStars = divideWord.map(x => x+"***")
+    addStars.pop()
+    addStars.push(lastChar)
+    let finalFight = addStars.join("")
+    return finalFight
 }
 
-console.log(howMuchILoveYou(7))
-console.log(howMuchILoveYou(3))
-console.log(howMuchILoveYou(6))
-console.log(howMuchILoveYou(1))
+//from codewars... yea this is better lol
+// function twoSort(s) {
+//     return s.sort()[0].split('').join('***');
+//   }
+
+console.log(twoSort(["turns", "out", "random", "test", "cases", "are", "easier", "than", "writing", "out", "basic", "ones"]))
