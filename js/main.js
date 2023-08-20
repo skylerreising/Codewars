@@ -1050,11 +1050,54 @@ SOLUTIONS*/
 // Testing: [1, 0, 1, 1] ==> 11
 // However, the arrays can have varying lengths, not just limited to 4.
 
-const binaryArrayToNumber = arr => {
-    return parseInt(arr.toString().replaceAll(",",""),2)
-  };
+// const binaryArrayToNumber = arr => {
+//     return parseInt(arr.toString().replaceAll(",",""),2)
+//   };
 
-  console.log(binaryArrayToNumber([0,0,0,1]))
-  console.log(binaryArrayToNumber([0,0,1,0]))
-  console.log(binaryArrayToNumber([1,1,1,1]))
-  console.log(binaryArrayToNumber([0,1,1,0]))
+//   console.log(binaryArrayToNumber([0,0,0,1]))
+//   console.log(binaryArrayToNumber([0,0,1,0]))
+//   console.log(binaryArrayToNumber([1,1,1,1]))
+//   console.log(binaryArrayToNumber([0,1,1,0]))
+
+// You take your son to the forest to see the monkeys. You know that there are a certain number there (n), but your son is too young to just appreciate the full number, he has to start counting them from 1.
+
+// As a good parent, you will sit and count with him. Given the number (n), populate an array with all numbers up to and including that number, but excluding zero.
+
+// For example(Input --> Output):
+
+// 10 --> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+//  1 --> [1]
+
+// function monkeyCount(n) {
+//     let monkeyArray = []
+//     for(let i=1; i<=n; i++){
+//         monkeyArray.push(i)
+//     }
+//     return monkeyArray
+//     }
+
+//     console.log(monkeyCount(5))
+//     console.log(monkeyCount(3))
+//     console.log(monkeyCount(20))
+
+// Your task is to find the first element of an array that is not consecutive.
+
+// By not consecutive we mean not exactly 1 larger than the previous element of the array.
+
+// E.g. If we have an array [1,2,3,4,6,7,8] then 1 then 2 then 3 then 4 are all consecutive but 6 is not, so that's the first non-consecutive number.
+
+// If the whole array is consecutive then return null2.
+
+// The array will always have at least 2 elements1 and all elements will be numbers. The numbers will also all be unique and in ascending order. The numbers could be positive or negative and the first non-consecutive could be either too!
+
+function firstNonConsecutive(arr){
+    for(let i=1; i<arr.length; i++){
+        if(arr[i]-arr[i-1]!==1){
+            return arr[i]
+        }
+    }
+    return null
+}
+
+console.log(firstNonConsecutive([1,2,3,4,6,7,8]))
+console.log(firstNonConsecutive([1,2,3,4]))
