@@ -1159,16 +1159,16 @@ SOLUTIONS*/
 // For example, if the parameters passed are (2, 6), the function should return [2, 4, 6] as 2, 4, and 6 are the multiples of 2 up to 6.
 
 //My answer
-function findMultiples(integer, limit) {
-    let multiArr = []
-    let staticInt = integer
-    for(let i=0; i<=limit; i++){
-       if(integer<=limit){ multiArr.push(integer)
-        integer+=staticInt
-       }
-    }
-    return multiArr
-  }
+// function findMultiples(integer, limit) {
+//     let multiArr = []
+//     let staticInt = integer
+//     for(let i=0; i<=limit; i++){
+//        if(integer<=limit){ multiArr.push(integer)
+//         integer+=staticInt
+//        }
+//     }
+//     return multiArr
+//   }
 
 //Best answer from codewars
 // function findMultiples(int,limit){
@@ -1180,6 +1180,74 @@ function findMultiples(integer, limit) {
 //     return result
 //   }
 
-  console.log(findMultiples(5, 25))
-  console.log(findMultiples(5, 10))
-  console.log(findMultiples(11, 415))
+//   console.log(findMultiples(5, 25))
+//   console.log(findMultiples(5, 10))
+//   console.log(findMultiples(11, 415))
+
+  // Complete the function which takes two arguments and returns all numbers which are divisible by the given divisor. First argument is an array of numbers and the second is the divisor.
+
+// Example(Input1, Input2 --> Output)
+// [1, 2, 3, 4, 5, 6], 2 --> [2, 4, 6]
+
+// function divisibleBy(numbers, divisor){
+//   let divisorArray = []
+//   for(let i=0; i<numbers.length; i++){
+//     if(numbers[i] % divisor === 0){
+//       divisorArray.push(numbers[i])
+//     }
+//   }
+//   return divisorArray
+// }
+
+// console.log(divisibleBy([1,2,3,4,5,6], 2))
+
+// Best solution from Codewars
+// function divisibleBy(numbers, divisor) {
+//   return numbers.filter(n => n % divisor === 0)
+// }
+
+// Write a function that takes a list of strings as an argument and returns a filtered list containing the same elements but with the 'geese' removed.
+
+// The geese are any strings in the following array, which is pre-populated in your solution:
+
+//   ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"]
+// For example, if this array were passed as an argument:
+
+//  ["Mallard", "Hook Bill", "African", "Crested", "Pilgrim", "Toulouse", "Blue Swedish"]
+// Your function would return the following array:
+
+// ["Mallard", "Hook Bill", "Crested", "Blue Swedish"]
+// The elements in the returned array should be in the same order as in the initial array passed to your function, albeit with the 'geese' removed. Note that all of the strings will be in the same case as those provided, and some elements may be repeated.
+
+// function gooseFilter (birds) {
+//     var geese = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
+    
+//     // return an array containing all of the strings in the input array except those that match strings in geese
+//   let filteredBirds = birds.filter((bird) => !geese.includes(bird))
+//     return filteredBirds
+//   };
+  
+//   console.log(gooseFilter(["Mallard", "Hook Bill", "African", "Crested", "Pilgrim", "Toulouse", "Blue Swedish"]))
+
+// You are given two sorted arrays that both only contain integers. Your task is to find a way to merge them into a single one, sorted in asc order. Complete the function mergeArrays(arr1, arr2), where arr1 and arr2 are the original sorted arrays.
+
+// You don't need to worry about validation, since arr1 and arr2 must be arrays with 0 or more Integers. If both arr1 and arr2 are empty, then just return an empty array.
+
+// Note: arr1 and arr2 may be sorted in different orders. Also arr1 and arr2 may have same integers. Remove duplicated in the returned result.
+
+// Examples (input -> output)
+// * [1, 2, 3, 4, 5], [6, 7, 8, 9, 10] -> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+// * [1, 3, 5, 7, 9], [10, 8, 6, 4, 2] -> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+// * [1, 3, 5, 7, 9, 11, 12], [1, 2, 3, 4, 5, 10, 12] -> [1, 2, 3, 4, 5, 7, 9, 10, 11, 12]
+
+function mergeArrays(arr1, arr2) {
+    let combinedArray = arr1.concat(arr2)
+    let oneAndOnly = Array.from(new Set(combinedArray))
+    oneAndOnly.sort((a,b) => a-b)
+    return oneAndOnly
+}
+
+console.log(mergeArrays([1,2,3,4], [5,6,7,8]))
+console.log(mergeArrays([1,3,5,7,9], [10,8,6,4,2]))
