@@ -1135,21 +1135,51 @@ SOLUTIONS*/
 
 // You should not remove or add elements from/to the array.
 
-function twoSort(s) {
-    let squorted = s.sort()
-    let firstWord = squorted.shift()
-    let divideWord = firstWord.split('')
-    let lastChar = divideWord[divideWord.length-1]
-    let addStars = divideWord.map(x => x+"***")
-    addStars.pop()
-    addStars.push(lastChar)
-    let finalFight = addStars.join("")
-    return finalFight
-}
+// function twoSort(s) {
+//     let squorted = s.sort()
+//     let firstWord = squorted.shift()
+//     let divideWord = firstWord.split('')
+//     let lastChar = divideWord[divideWord.length-1]
+//     let addStars = divideWord.map(x => x+"***")
+//     addStars.pop()
+//     addStars.push(lastChar)
+//     let finalFight = addStars.join("")
+//     return finalFight
+// }
 
 //from codewars... yea this is better lol
 // function twoSort(s) {
 //     return s.sort()[0].split('').join('***');
 //   }
 
-console.log(twoSort(["turns", "out", "random", "test", "cases", "are", "easier", "than", "writing", "out", "basic", "ones"]))
+// console.log(twoSort(["turns", "out", "random", "test", "cases", "are", "easier", "than", "writing", "out", "basic", "ones"]))
+
+// In this simple exercise, you will build a program that takes a value, integer , and returns a list of its multiples up to another value, limit . If limit is a multiple of integer, it should be included as well. There will only ever be positive integers passed into the function, not consisting of 0. The limit will always be higher than the base.
+
+// For example, if the parameters passed are (2, 6), the function should return [2, 4, 6] as 2, 4, and 6 are the multiples of 2 up to 6.
+
+//My answer
+function findMultiples(integer, limit) {
+    let multiArr = []
+    let staticInt = integer
+    for(let i=0; i<=limit; i++){
+       if(integer<=limit){ multiArr.push(integer)
+        integer+=staticInt
+       }
+    }
+    return multiArr
+  }
+
+//Best answer from codewars
+// function findMultiples(int,limit){
+//     let result = []
+    
+//     for (let i = int; i<=limit ; i+=int)
+//       result.push(i)
+      
+//     return result
+//   }
+
+  console.log(findMultiples(5, 25))
+  console.log(findMultiples(5, 10))
+  console.log(findMultiples(11, 415))
