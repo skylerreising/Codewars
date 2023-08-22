@@ -1242,12 +1242,44 @@ SOLUTIONS*/
 
 // * [1, 3, 5, 7, 9, 11, 12], [1, 2, 3, 4, 5, 10, 12] -> [1, 2, 3, 4, 5, 7, 9, 10, 11, 12]
 
-function mergeArrays(arr1, arr2) {
-    let combinedArray = arr1.concat(arr2)
-    let oneAndOnly = Array.from(new Set(combinedArray))
-    oneAndOnly.sort((a,b) => a-b)
-    return oneAndOnly
+// function mergeArrays(arr1, arr2) {
+//     let combinedArray = arr1.concat(arr2)
+//     let oneAndOnly = Array.from(new Set(combinedArray))
+//     oneAndOnly.sort((a,b) => a-b)
+//     return oneAndOnly
+// }
+
+// console.log(mergeArrays([1,2,3,4], [5,6,7,8]))
+// console.log(mergeArrays([1,3,5,7,9], [10,8,6,4,2]))
+
+// Wolves have been reintroduced to Great Britain. You are a sheep farmer, and are now plagued by wolves which pretend to be sheep. Fortunately, you are good at spotting them.
+
+// Warn the sheep in front of the wolf that it is about to be eaten. Remember that you are standing at the front of the queue which is at the end of the array:
+
+// [sheep, sheep, sheep, sheep, sheep, wolf, sheep, sheep]      (YOU ARE HERE AT THE FRONT OF THE QUEUE)
+//    7      6      5      4      3            2      1
+// If the wolf is the closest animal to you, return "Pls go away and stop eating my sheep". Otherwise, return "Oi! Sheep number N! You are about to be eaten by a wolf!" where N is the sheep's position in the queue.
+
+// Note: there will always be exactly one wolf in the array.
+
+// Examples
+// Input: ["sheep", "sheep", "sheep", "wolf", "sheep"]
+// Output: "Oi! Sheep number 1! You are about to be eaten by a wolf!"
+
+// Input: ["sheep", "sheep", "wolf"]
+// Output: "Pls go away and stop eating my sheep"
+
+function warnTheSheep(queue) {
+    let reversedQueue = queue.reverse()
+    for(let i=0; i<reversedQueue.length; i++){
+        if(reversedQueue[i]==="wolf" && i===0){
+            return "Pls go away and stop eating my sheep"
+        }else if(reversedQueue[i]==="wolf"){
+            return `Oi! Sheep number ${i}! You are about to be eaten by a wolf!`
+        }
+    }
 }
 
-console.log(mergeArrays([1,2,3,4], [5,6,7,8]))
-console.log(mergeArrays([1,3,5,7,9], [10,8,6,4,2]))
+console.log(warnTheSheep(["sheep", "sheep", "sheep", "sheep", "sheep", "wolf", "sheep", "sheep"]))
+console.log(warnTheSheep(["sheep", "wolf", "sheep", "sheep", "sheep", "sheep", "sheep"]))
+console.log(warnTheSheep(["wolf"]))
