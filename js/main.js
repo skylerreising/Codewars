@@ -1269,17 +1269,40 @@ SOLUTIONS*/
 // Input: ["sheep", "sheep", "wolf"]
 // Output: "Pls go away and stop eating my sheep"
 
-function warnTheSheep(queue) {
-    let reversedQueue = queue.reverse()
-    for(let i=0; i<reversedQueue.length; i++){
-        if(reversedQueue[i]==="wolf" && i===0){
-            return "Pls go away and stop eating my sheep"
-        }else if(reversedQueue[i]==="wolf"){
-            return `Oi! Sheep number ${i}! You are about to be eaten by a wolf!`
-        }
-    }
-}
+// function warnTheSheep(queue) {
+//     let reversedQueue = queue.reverse()
+//     for(let i=0; i<reversedQueue.length; i++){
+//         if(reversedQueue[i]==="wolf" && i===0){
+//             return "Pls go away and stop eating my sheep"
+//         }else if(reversedQueue[i]==="wolf"){
+//             return `Oi! Sheep number ${i}! You are about to be eaten by a wolf!`
+//         }
+//     }
+// }
 
-console.log(warnTheSheep(["sheep", "sheep", "sheep", "sheep", "sheep", "wolf", "sheep", "sheep"]))
-console.log(warnTheSheep(["sheep", "wolf", "sheep", "sheep", "sheep", "sheep", "sheep"]))
-console.log(warnTheSheep(["wolf"]))
+// console.log(warnTheSheep(["sheep", "sheep", "sheep", "sheep", "sheep", "wolf", "sheep", "sheep"]))
+// console.log(warnTheSheep(["sheep", "wolf", "sheep", "sheep", "sheep", "sheep", "sheep"]))
+// console.log(warnTheSheep(["wolf"]))
+
+// For every good kata idea there seem to be quite a few bad ones!
+
+// In this kata you need to check the provided array (x) for good ideas 'good' and bad ideas 'bad'. If there are one or two good ideas, return 'Publish!', if there are more than 2 return 'I smell a series!'. If there are no good ideas, as is often the case, return 'Fail!'.
+
+function well(x){
+    let goods = [0]
+    for(let i=0; i<x.length; i++){
+      if(x[i]==="good"){
+        goods++
+      }
+    }
+    if(1<=goods && goods<=2){
+      return "Publish!"
+    }else if(goods>2){
+      return "I smell a series!"
+    }else {
+      return "Fail!"
+    }
+  }
+  console.log(well(['bad', 'bad', 'bad']))
+  console.log(well(['good', 'bad', 'bad', 'bad', 'bad']))
+  console.log(well(['good', 'bad', 'bad', 'bad', 'bad', 'good', 'bad', 'bad', 'good']))
