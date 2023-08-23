@@ -1341,9 +1341,106 @@ SOLUTIONS*/
 
 // Note: String will have at least one element; words will always be separated by a space.
 
-function addLength(str) {
-    return str.split(" ").map((x) => x+" "+x.length)
-    }
+// function addLength(str) {
+//     return str.split(" ").map((x) => x+" "+x.length)
+//     }
 
-    console.log(addLength("apple ban"))
-    console.log(addLength("you will win"))
+//     console.log(addLength("apple ban"))
+//     console.log(addLength("you will win"))
+
+    // Return a new array consisting of elements which are multiple of their own index in input array (length > 1).
+
+// Some cases:
+// [22, -6, 32, 82, 9, 25] =>  [-6, 32, 25]
+
+// [68, -1, 1, -7, 10, 10] => [-1, 10]
+
+// [-56,-85,72,-26,-14,76,-27,72,35,-21,-67,87,0,21,59,27,-92,68] => [-85, 72, 0, 68]
+
+// function multipleOfIndex(array) {
+//   if(array[0]===0){
+//     let zeroArr = [0]
+//     let zeroThenSome = []
+//     zeroThenSome = array.filter((x,y) => x % y===0)
+//     return zeroArr.concat(zeroThenSome)
+    
+//   }
+//   return array.filter((x,y) => x % y===0)
+// }
+
+//Other codewars ways to do this
+// let multipleOfIndex = a => a.filter((n, i) => n % i === 0);
+
+// function multipleOfIndex(array) {
+//   return array.filter((x,i) => x == 0 || x % i === 0)
+// }
+
+// console.log(multipleOfIndex([22, -6, 32, 82, 9, 25]))
+// console.log(multipleOfIndex([0,2,3,6,9]))
+
+// Find Mean
+// Find the mean (average) of a list of numbers in an array.
+
+// Information
+// To find the mean (average) of a set of numbers add all of the numbers together and divide by the number of values in the list.
+
+// For an example list of 1, 3, 5, 7
+
+// 1. Add all of the numbers
+
+// 1+3+5+7 = 16
+// 2. Divide by the number of values in the list. In this example there are 4 numbers in the list.
+
+// 16/4 = 4
+// 3. The mean (or average) of this list is 4
+
+// var findAverage = function (nums) {
+//   return nums.reduce((a,b) => a+b)/nums.length
+// }
+
+// console.log(findAverage([1]))
+// console.log(findAverage([1,3,5,7]))
+
+// *** No Loops Allowed ***
+
+// You will be given an array a and a value x. All you need to do is check whether the provided array contains the value, without using a loop.
+
+// Array can contain numbers or strings. x can be either. Return true if the array contains the value, false if not. With strings you will need to account for case.
+
+// function check(a,x){
+//   return a.includes(x) ? true : false
+// };
+
+// console.log(check([80, 117, 115, 104, 45, 85, 112, 115], 45))
+// console.log(check(['what', 'a', 'great', 'kata'], 'kat'))
+
+// Your task is to sum the differences between consecutive pairs in the array in descending order.
+
+// Example
+// [2, 1, 10]  -->  9
+// In descending order: [10, 2, 1]
+
+// Sum: (10 - 2) + (2 - 1) = 8 + 1 = 9
+
+// If the array is empty or the array has only one element the result should be 0 (Nothing in Haskell, None in Rust).
+
+function sumOfDifferences(arr) {
+    let sum = 0
+    if(arr.length<=1){
+      return 0
+    }else if(arr.length===2){
+      let descendingArr = arr.sort((x,y) => x-y).reverse()
+      return (descendingArr[0]-descendingArr[1]) 
+    }else {
+      let descendingArr = arr.sort((x,y) => x-y).reverse()
+        for(let i=0; i<descendingArr.length - 1; i++){
+            sum += descendingArr[i] - descendingArr[i+1]
+        }
+        return sum
+    }
+  }
+  
+  console.log(sumOfDifferences([1, 2, 10]))
+  console.log(sumOfDifferences([-5,2,-7,-6,-3,1,-5,6,-6,-9,1,-8]))
+  console.log(sumOfDifferences([-17,17]))
+  console.log(sumOfDifferences([]))
