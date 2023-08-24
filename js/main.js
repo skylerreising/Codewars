@@ -1424,23 +1424,70 @@ SOLUTIONS*/
 
 // If the array is empty or the array has only one element the result should be 0 (Nothing in Haskell, None in Rust).
 
-function sumOfDifferences(arr) {
-    let sum = 0
-    if(arr.length<=1){
-      return 0
-    }else if(arr.length===2){
-      let descendingArr = arr.sort((x,y) => x-y).reverse()
-      return (descendingArr[0]-descendingArr[1]) 
+// function sumOfDifferences(arr) {
+//     let sum = 0
+//     if(arr.length<=1){
+//       return 0
+//     }else if(arr.length===2){
+//       let descendingArr = arr.sort((x,y) => x-y).reverse()
+//       return (descendingArr[0]-descendingArr[1]) 
+//     }else {
+//       let descendingArr = arr.sort((x,y) => x-y).reverse()
+//         for(let i=0; i<descendingArr.length - 1; i++){
+//             sum += descendingArr[i] - descendingArr[i+1]
+//         }
+//         return sum
+//     }
+//   }
+  
+//   console.log(sumOfDifferences([1, 2, 10]))
+//   console.log(sumOfDifferences([-5,2,-7,-6,-3,1,-5,6,-6,-9,1,-8]))
+//   console.log(sumOfDifferences([-17,17]))
+//   console.log(sumOfDifferences([]))
+
+// Input: Array of elements
+
+// ["h","o","l","a"]
+
+// Output: String with comma delimited elements of the array in th same order.
+
+// "h,o,l,a"
+
+// function printArray(array){
+//     return array.toString()
+//   }
+
+//   console.log(printArray([2,4,5,2]))
+
+// You are given a string containing a sequence of character sequences separated by commas.
+
+// Write a function which returns a new string containing the same character sequences except the first and the last ones but this time separated by spaces.
+
+// If the input string is empty or the removal of the first and last items would cause the resulting string to be empty, return an empty value (represented as a generic value NULL in the examples below).
+
+// Examples
+// "1,2,3"      =>  "2"
+// "1,2,3,4"    =>  "2 3"
+// "1,2,3,4,5"  =>  "2 3 4"
+
+// ""     =>  NULL
+// "1"    =>  NULL
+// "1,2"  =>  NULL
+
+function array(string) {
+    let newArr = []
+    newArr = string.split(",")
+    if(newArr.length<3){
+        return null
     }else {
-      let descendingArr = arr.sort((x,y) => x-y).reverse()
-        for(let i=0; i<descendingArr.length - 1; i++){
-            sum += descendingArr[i] - descendingArr[i+1]
-        }
-        return sum
+        newArr.pop()
+        newArr.shift()
+        return newArr.join(" ")
     }
   }
-  
-  console.log(sumOfDifferences([1, 2, 10]))
-  console.log(sumOfDifferences([-5,2,-7,-6,-3,1,-5,6,-6,-9,1,-8]))
-  console.log(sumOfDifferences([-17,17]))
-  console.log(sumOfDifferences([]))
+
+  console.log(array(''))
+  console.log(array('1'))
+  console.log(array('A1,B2'))
+  console.log(array('1,2,3'))
+  console.log(array('1,2,3,4'))
