@@ -1565,13 +1565,49 @@ SOLUTIONS*/
 //     +'30,31,32,33,34'
 // Array's length > 2.
 
-function toCsvText(array) {
-    return array.join('\n')
-}
+// function toCsvText(array) {
+//     return array.join('\n')
+// }
 
- console.log(toCsvText([
-    [ 0, 1, 2, 3, 45 ],
-    [ 10,11,12,13,14 ],
-    [ 20,21,22,23,24 ],
-    [ 30,31,32,33,34 ]
-   ]))
+//  console.log(toCsvText([
+//     [ 0, 1, 2, 3, 45 ],
+//     [ 10,11,12,13,14 ],
+//     [ 20,21,22,23,24 ],
+//     [ 30,31,32,33,34 ]
+//    ]))
+
+// Given an array of numbers, check if any of the numbers are the character codes for lower case vowels (a, e, i, o, u).
+
+// If they are, change the array value to a string of that vowel.
+
+// Return the resulting array.
+  
+// function isVow(a) {
+//     let result = [];
+//     for (let i = 0; i < a.length; i++) {
+//       if (a[i] === 97 || a[i] === 101 || a[i] === 105 || a[i] === 111 || a[i] === 117) {
+//         result.push(String.fromCharCode(a[i]));
+//       } else {
+//         result.push(a[i]);
+//       }
+//     }
+//     return result;
+//   }
+  
+//   console.log(isVow([118,117,120,121,117,98,122,97,120,106,104,116,113,114,113,120,106]))
+//   console.log(isVow([101,121,110,113,113,103,121,121,101,107,103]))
+
+//   Arrow style Functions
+// Come here to practice the Arrow style functions Not much else to say good luck!
+// Details
+// You will be given an array of numbers which can be used using the String.fromCharCode() (JS), Tools.FromCharCode() (C#) method to convert the number to a character. It is recommended to map over the array of numbers and convert each number to the corresponding ascii character.
+
+// Examples
+// These are example of how to convert a number to an ascii Character:
+// Javascript => String.fromCharCode(97) // a
+
+var ArrowFunc = function(arr) {
+    return arr.map((x) => String.fromCharCode(x)).join('')
+  }
+
+  console.log(ArrowFunc([70,85,83,32,82,79,72,32,68,65,72]))
