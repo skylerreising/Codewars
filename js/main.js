@@ -1648,16 +1648,53 @@ SOLUTIONS*/
 // I is misinterpreted as 1
 // The test cases contain numbers only by mistake.
 
-function correct(string){
-    let newStr = string.split("")
-    for(let i=0; i<newStr.length; i++){
-        newStr[i] = newStr[i].replaceAll("5","S")
-        newStr[i] = newStr[i].replaceAll("0","O")
-        newStr[i] = newStr[i].replaceAll("1","I")
+// function correct(string){
+//     let newStr = string.split("")
+//     for(let i=0; i<newStr.length; i++){
+//         newStr[i] = newStr[i].replaceAll("5","S")
+//         newStr[i] = newStr[i].replaceAll("0","O")
+//         newStr[i] = newStr[i].replaceAll("1","I")
+//     }
+//     return newStr.join("")
+// }
+
+// console.log(correct("L0ND0N"))
+// console.log(correct("DUBL1N"))
+// console.log(correct("51NGAP0RE"))
+
+// Given a string of words, you need to find the highest scoring word.
+
+// Each letter of a word scores points according to its position in the alphabet: a = 1, b = 2, c = 3 etc.
+
+// For example, the score of abad is 8 (1 + 2 + 1 + 4).
+
+// You need to return the highest scoring word as a string.
+
+// If two words score the same, return the word that appears earliest in the original string.
+
+// All letters will be lowercase and all inputs will be valid.
+
+function high(x){
+    //group words by spaces
+    let wordArray = x.split(" ")
+    let indivWords = x.split(" ")
+    //conversion for letter to number
+        //divide each word into separate number values for each letter
+    for(let i=0; i<indivWords.length; i++){
+        //Need a function that divides each word in the array by letter
+        indivWords[i] = Array.from(indivWords[i])
     }
-    return newStr.join("")
+    //assign a value to each letter, and a total of each word
+    for(let i=0; i<indivWords.length; i++){
+        for(let j=0; j<indivWords[i].length; j++){
+            indivWords[i][j] = indivWords[i][j].charCodeAt(indivWords[i][j])-96
+        }
+        indivWords[i]=indivWords[i].reduce((x,y)=> x+y)
+    }
+    //return the word that has the same index as the highest value in the indivWords array
+    let wordIndex = indivWords.indexOf(Math.max(...indivWords))
+    return wordArray[wordIndex]
 }
 
-console.log(correct("L0ND0N"))
-console.log(correct("DUBL1N"))
-console.log(correct("51NGAP0RE"))
+console.log(high('man i need a taxi up to ubud'))
+console.log(high('what time are we climbing up the volcano'))
