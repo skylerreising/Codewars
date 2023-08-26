@@ -1623,16 +1623,41 @@ SOLUTIONS*/
 // all((1, 2, 3, 4, 5), greater_than_9) -> false
 // all((1, 2, 3, 4, 5), less_than_9)    -> True
 
-function all(arr,fun){
-    // loop through the array to see if every element is true for the function
-    let arrSum = 0
-    for(let i=0; i<arr.length; i++){
-        if(fun(arr[i])){
-            arrSum++
+// function all(arr,fun){
+//     // loop through the array to see if every element is true for the function
+//     let arrSum = 0
+//     for(let i=0; i<arr.length; i++){
+//         if(fun(arr[i])){
+//             arrSum++
+//     }
+//     //if every element is true, return true, otherwise return false
+//   }
+//   return arrSum===arr.length
+// }
+//   console.log(all([1,2,3,4,5], function(v){return v<9}))
+//   console.log(all([1,2,3,4,5], function(v){return v>9}))
+
+// Character recognition software is widely used to digitise printed texts. Thus the texts can be edited, searched and stored on a computer.
+
+// When documents (especially pretty old ones written with a typewriter), are digitised character recognition softwares often make mistakes.
+
+// Your task is correct the errors in the digitised text. You only have to handle the following mistakes:
+
+// S is misinterpreted as 5
+// O is misinterpreted as 0
+// I is misinterpreted as 1
+// The test cases contain numbers only by mistake.
+
+function correct(string){
+    let newStr = string.split("")
+    for(let i=0; i<newStr.length; i++){
+        newStr[i] = newStr[i].replaceAll("5","S")
+        newStr[i] = newStr[i].replaceAll("0","O")
+        newStr[i] = newStr[i].replaceAll("1","I")
     }
-    //if every element is true, return true, otherwise return false
-  }
-  return arrSum===arr.length
+    return newStr.join("")
 }
-  console.log(all([1,2,3,4,5], function(v){return v<9}))
-  console.log(all([1,2,3,4,5], function(v){return v>9}))
+
+console.log(correct("L0ND0N"))
+console.log(correct("DUBL1N"))
+console.log(correct("51NGAP0RE"))
