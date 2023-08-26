@@ -1606,8 +1606,33 @@ SOLUTIONS*/
 // These are example of how to convert a number to an ascii Character:
 // Javascript => String.fromCharCode(97) // a
 
-var ArrowFunc = function(arr) {
-    return arr.map((x) => String.fromCharCode(x)).join('')
-  }
+// var ArrowFunc = function(arr) {
+//     return arr.map((x) => String.fromCharCode(x)).join('')
+//   }
 
-  console.log(ArrowFunc([70,85,83,32,82,79,72,32,68,65,72]))
+//   console.log(ArrowFunc([70,85,83,32,82,79,72,32,68,65,72]))
+
+// Task
+// Create a method all which takes two params:
+
+// a sequence
+// a function (function pointer in C)
+// and returns true if the function in the params returns true for every element in the sequence. Otherwise, it should return false. If the sequence is empty, it should return true, since technically nothing failed the test.
+
+// Example
+// all((1, 2, 3, 4, 5), greater_than_9) -> false
+// all((1, 2, 3, 4, 5), less_than_9)    -> True
+
+function all(arr,fun){
+    // loop through the array to see if every element is true for the function
+    let arrSum = 0
+    for(let i=0; i<arr.length; i++){
+        if(fun(arr[i])){
+            arrSum++
+    }
+    //if every element is true, return true, otherwise return false
+  }
+  return arrSum===arr.length
+}
+  console.log(all([1,2,3,4,5], function(v){return v<9}))
+  console.log(all([1,2,3,4,5], function(v){return v>9}))
