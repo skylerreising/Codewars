@@ -1674,27 +1674,52 @@ SOLUTIONS*/
 
 // All letters will be lowercase and all inputs will be valid.
 
-function high(x){
-    //group words by spaces
-    let wordArray = x.split(" ")
-    let indivWords = x.split(" ")
-    //conversion for letter to number
-        //divide each word into separate number values for each letter
-    for(let i=0; i<indivWords.length; i++){
-        //Need a function that divides each word in the array by letter
-        indivWords[i] = Array.from(indivWords[i])
-    }
-    //assign a value to each letter, and a total of each word
-    for(let i=0; i<indivWords.length; i++){
-        for(let j=0; j<indivWords[i].length; j++){
-            indivWords[i][j] = indivWords[i][j].charCodeAt(indivWords[i][j])-96
-        }
-        indivWords[i]=indivWords[i].reduce((x,y)=> x+y)
-    }
-    //return the word that has the same index as the highest value in the indivWords array
-    let wordIndex = indivWords.indexOf(Math.max(...indivWords))
-    return wordArray[wordIndex]
-}
+// function high(x){
+//     //group words by spaces
+//     let wordArray = x.split(" ")
+//     let indivWords = x.split(" ")
+//     //conversion for letter to number
+//         //divide each word into separate number values for each letter
+//     for(let i=0; i<indivWords.length; i++){
+//         //Need a function that divides each word in the array by letter
+//         indivWords[i] = Array.from(indivWords[i])
+//     }
+//     //assign a value to each letter, and a total of each word
+//     for(let i=0; i<indivWords.length; i++){
+//         for(let j=0; j<indivWords[i].length; j++){
+//             indivWords[i][j] = indivWords[i][j].charCodeAt(indivWords[i][j])-96
+//         }
+//         indivWords[i]=indivWords[i].reduce((x,y)=> x+y)
+//     }
+//     //return the word that has the same index as the highest value in the indivWords array
+//     let wordIndex = indivWords.indexOf(Math.max(...indivWords))
+//     return wordArray[wordIndex]
+// }
 
-console.log(high('man i need a taxi up to ubud'))
-console.log(high('what time are we climbing up the volcano'))
+// console.log(high('man i need a taxi up to ubud'))
+// console.log(high('what time are we climbing up the volcano'))
+
+// Introduction
+// The wave (known as the Mexican wave in the English-speaking world outside North America) is an example of metachronal rhythm achieved in a packed stadium when successive groups of spectators briefly stand, yell, and raise their arms. Immediately upon stretching to full height, the spectator returns to the usual seated position.
+
+// The result is a wave of standing spectators that travels through the crowd, even though individual spectators never move away from their seats. In many large arenas the crowd is seated in a contiguous circuit all the way around the sport field, and so the wave is able to travel continuously around the arena; in discontiguous seating arrangements, the wave can instead reflect back and forth through the crowd. When the gap in seating is narrow, the wave can sometimes pass through it. Usually only one wave crest will be present at any given time in an arena, although simultaneous, counter-rotating waves have been produced. (Source Wikipedia)
+// Task
+// In this simple Kata your task is to create a function that turns a string into a Mexican Wave. You will be passed a string and you must return that string in an array where an uppercase letter is a person standing up. 
+// Rules
+//  1.  The input string will always be lower case but maybe empty.
+
+//  2.  If the character in the string is whitespace then pass over it as if it was an empty seat
+// Example
+// wave("hello") => ["Hello", "hEllo", "heLlo", "helLo", "hellO"]
+
+function wave(str){
+    let waveArray = []
+    for(let i=0; i<str.length; i++){
+        if(str[i] !== " "){
+            waveArray.push(str.slice(0,i)+str[i].toUpperCase()+str.slice(i+1))
+        }
+    }
+    return waveArray
+  }
+
+  console.log(wave("hello"))
