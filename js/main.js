@@ -1712,14 +1712,31 @@ SOLUTIONS*/
 // Example
 // wave("hello") => ["Hello", "hEllo", "heLlo", "helLo", "hellO"]
 
-function wave(str){
-    let waveArray = []
-    for(let i=0; i<str.length; i++){
-        if(str[i] !== " "){
-            waveArray.push(str.slice(0,i)+str[i].toUpperCase()+str.slice(i+1))
+// function wave(str){
+//     let waveArray = []
+//     for(let i=0; i<str.length; i++){
+//         if(str[i] !== " "){
+//             waveArray.push(str.slice(0,i)+str[i].toUpperCase()+str.slice(i+1))
+//         }
+//     }
+//     return waveArray
+//   }
+
+//   console.log(wave("hello"))
+
+// Write a function that takes a single string (word) as argument. The function must return an ordered list containing the indexes of all capital letters in the string.
+
+// Example (Input --> Output)
+// "CodEWaRs" --> [0,3,4,6]
+
+var capitals = function (word) {
+	let capArray = []
+    for(let i=0; i<word.length; i++){
+        if(word[i]===word[i].toUpperCase()){
+            capArray.push(i)
         }
     }
-    return waveArray
-  }
+    return capArray
+};
 
-  console.log(wave("hello"))
+console.log(capitals("CodEWaRs"))
