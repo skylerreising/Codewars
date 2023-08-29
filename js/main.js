@@ -1762,19 +1762,36 @@ SOLUTIONS*/
 // The format of the strings will always be Europe and JavaScript.
 // All data will always be valid and uniform as in the example above.
 
-function countDevelopers(list) {
-    let count = 0
-    for(let i=0; i<list.length; i++){
-        if(list[i].continent==="Europe" && list[i].language==="JavaScript"){
-            count++
-        }
-    }
-    return count
-  }
+// function countDevelopers(list) {
+//     let count = 0
+//     for(let i=0; i<list.length; i++){
+//         if(list[i].continent==="Europe" && list[i].language==="JavaScript"){
+//             count++
+//         }
+//     }
+//     return count
+//   }
 
-  console.log(countDevelopers([
-      { firstName: 'Noah', lastName: 'M.', country: 'Switzerland', continent: 'Europe', age: 19, language: 'JavaScript' },
-      { firstName: 'Maia', lastName: 'S.', country: 'Tahiti', continent: 'Oceania', age: 28, language: 'JavaScript' },
-      { firstName: 'Shufen', lastName: 'L.', country: 'Taiwan', continent: 'Asia', age: 35, language: 'HTML' },
-      { firstName: 'Sumayah', lastName: 'M.', country: 'Tajikistan', continent: 'Asia', age: 30, language: 'CSS' }
-    ]))
+//   console.log(countDevelopers([
+//       { firstName: 'Noah', lastName: 'M.', country: 'Switzerland', continent: 'Europe', age: 19, language: 'JavaScript' },
+//       { firstName: 'Maia', lastName: 'S.', country: 'Tahiti', continent: 'Oceania', age: 28, language: 'JavaScript' },
+//       { firstName: 'Shufen', lastName: 'L.', country: 'Taiwan', continent: 'Asia', age: 35, language: 'HTML' },
+//       { firstName: 'Sumayah', lastName: 'M.', country: 'Tajikistan', continent: 'Asia', age: 30, language: 'CSS' }
+//     ]))
+
+// Oh no!
+// Some really funny web dev gave you a sequence of numbers from his API response as an sequence of strings!
+
+// You need to cast the whole array to the correct type.
+
+// Create the function that takes as a parameter a sequence of numbers represented as strings and outputs a sequence of numbers.
+
+// ie:["1", "2", "3"] to [1, 2, 3]
+
+// Note that you can receive floats as well.
+
+function toNumberArray(stringarray){
+    return stringarray.map((x)=>+x)
+}
+
+console.log(toNumberArray(["1.1","2.2","3.3"]))
