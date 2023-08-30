@@ -1790,8 +1790,27 @@ SOLUTIONS*/
 
 // Note that you can receive floats as well.
 
-function toNumberArray(stringarray){
-    return stringarray.map((x)=>+x)
+// function toNumberArray(stringarray){
+//     return stringarray.map((x)=>+x)
+// }
+
+// console.log(toNumberArray(["1.1","2.2","3.3"]))
+
+// Given a mixed array of number and string representations of integers, add up the non-string integers and subtract the total of the string integers.
+
+// Return as a number.
+
+function divCon(x){
+    let nonStrInt = 0
+    let strInt = 0
+    for(let i=0; i<x.length; i++){
+        if(x[i]===x[i].toString()){
+            strInt += +x[i]
+        }else {
+            nonStrInt += x[i]
+        }
+    }
+    return nonStrInt-strInt
 }
 
-console.log(toNumberArray(["1.1","2.2","3.3"]))
+console.log(divCon(['5', '0', 9, 3, 2, 1, '9', 6, 7]))
