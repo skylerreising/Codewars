@@ -1800,17 +1800,165 @@ SOLUTIONS*/
 
 // Return as a number.
 
-function divCon(x){
-    let nonStrInt = 0
-    let strInt = 0
-    for(let i=0; i<x.length; i++){
-        if(x[i]===x[i].toString()){
-            strInt += +x[i]
-        }else {
-            nonStrInt += x[i]
+// function divCon(x){
+//     let nonStrInt = 0
+//     let strInt = 0
+//     for(let i=0; i<x.length; i++){
+//         if(x[i]===x[i].toString()){
+//             strInt += +x[i]
+//         }else {
+//             nonStrInt += x[i]
+//         }
+//     }
+//     return nonStrInt-strInt
+// }
+
+// console.log(divCon(['5', '0', 9, 3, 2, 1, '9', 6, 7]))
+
+// You will be given an array of objects (associative arrays in PHP) representing data about developers who have signed up to attend the next coding meetup that you are organising.
+
+// Your task is to return:
+
+// true if at least one Ruby developer has signed up; or
+// false if there will be no Ruby developers.
+// For example, given the following input array:
+
+// var list1 = [
+//   { firstName: 'Emma', lastName: 'Z.', country: 'Netherlands', continent: 'Europe', age: 29, language: 'Ruby' },
+//   { firstName: 'Piotr', lastName: 'B.', country: 'Poland', continent: 'Europe', age: 128, language: 'Javascript' },
+//   { firstName: 'Jayden', lastName: 'P.', country: 'Jamaica', continent: 'Americas', age: 42, language: 'JavaScript' }
+// ];
+// your function should return true.
+
+// Notes:
+
+// The input array will always be valid and formatted as in the example above.
+
+// function isRubyComing(list) {
+//   return list.some(developer=>developer.language==='Ruby')
+// }
+
+// console.log(isRubyComing([
+//   { firstName: 'Sofia', lastName: 'I.', country: 'Argentina', continent: 'Americas', age: 35, language: 'Java' },
+//   { firstName: 'Lukas', lastName: 'X.', country: 'Croatia', continent: 'Europe', age: 35, language: 'Python' },
+//   { firstName: 'Madison', lastName: 'U.', country: 'United States', continent: 'Americas', age: 32, language: 'Ruby' } 
+// ]))
+
+// You will be given an array of objects (associative arrays in PHP, tables in COBOL) representing data about developers who have signed up to attend the next coding meetup that you are organising.
+
+// Your task is to return an array where each object will have a new property 'greeting' with the following string value:
+
+// Hi < firstName here >, what do you like the most about < language here >?
+
+// For example, given the following input array:
+
+// var list1 = [
+//   { firstName: 'Sofia', lastName: 'I.', country: 'Argentina', continent: 'Americas', age: 35, language: 'Java' },
+//   { firstName: 'Lukas', lastName: 'X.', country: 'Croatia', continent: 'Europe', age: 35, language: 'Python' },
+//   { firstName: 'Madison', lastName: 'U.', country: 'United States', continent: 'Americas', age: 32, language: 'Ruby' } 
+// ];
+// your function should return the following array:
+
+// [
+//   { firstName: 'Sofia', lastName: 'I.', country: 'Argentina', continent: 'Americas', age: 35, language: 'Java',
+//     greeting: 'Hi Sofia, what do you like the most about Java?'
+//   },
+//   { firstName: 'Lukas', lastName: 'X.', country: 'Croatia', continent: 'Europe', age: 35, language: 'Python',
+//     greeting: 'Hi Lukas, what do you like the most about Python?'
+//   },
+//   { firstName: 'Madison', lastName: 'U.', country: 'United States', continent: 'Americas', age: 32, language: 'Ruby',
+//     greeting: 'Hi Madison, what do you like the most about Ruby?'
+//   } 
+// ];
+// Notes:
+
+// The order of the properties in the objects does not matter (except in COBOL).
+// The input array will always be valid and formatted as in the example above.
+
+// function greetDevelopers(list) {
+//   return list.map((x)=>{
+//     return {
+//       ...x, greeting: `Hi ${x.firstName}, what do you like the most about ${x.language}?`
+//     }
+//   }
+//   )
+// }
+
+// console.log(greetDevelopers([
+//       {
+//         firstName: 'Sofia', lastName: 'I.', country: 'Argentina', continent: 'Americas', age: 35, language: 'Java',
+//       },
+//       {
+//         firstName: 'Lukas', lastName: 'X.', country: 'Croatia', continent: 'Europe', age: 35, language: 'Python',
+//       },
+//       {
+//         firstName: 'Madison', lastName: 'U.', country: 'United States', continent: 'Americas', age: 32, language: 'Ruby',
+//       },
+//     ]))
+
+// Given a string, turn each character into its ASCII character code and join them together to create a number - let's call this number total1:
+
+// 'ABC' --> 'A' = 65, 'B' = 66, 'C' = 67 --> 656667
+// Then replace any incidence of the number 7 with the number 1, and call this number 'total2':
+
+// total1 = 656667
+//               ^
+// total2 = 656661
+//               ^
+// Then return the difference between the sum of the digits in total1 and total2:
+
+//   (6 + 5 + 6 + 6 + 6 + 7)
+// - (6 + 5 + 6 + 6 + 6 + 1)
+// -------------------------
+//                        6
+
+// function calc(x){
+//   let total1 = []
+//   for(let i=0; i<x.length; i++){
+//     total1.push(x.charCodeAt(i))
+//   }
+//   total1 = total1.join("")
+//   let total2 = total1.replaceAll(7,1)
+//   total1 = total1.split("")
+//   total2 = total2.split("")
+//   let sum1 = total1.map((x)=>Number(x)).reduce((a,b)=>a+b)
+//   let sum2 = total2.map((x)=>Number(x)).reduce((a,b)=>a+b)
+//   return sum1 - sum2
+// }
+
+// console.log(calc("abcdef"))
+
+// Modify the spacify function so that it returns the given string with spaces inserted between each character.
+
+// spacify("hello world") // returns "h e l l o   w o r l d"
+
+// function spacify(str) {
+//   let strArr = str.split("")
+//   for(let i=0; i<strArr.length-1; i++){
+//     strArr[i]+=" "
+//   }
+//   return strArr.join("")
+// }
+
+// console.log(spacify('hello world'))
+
+// Definition
+// A Tidy number is a number whose digits are in non-decreasing order.
+
+// Task
+// Given a number, Find if it is Tidy or not .
+
+function tidyNumber(n){
+    let check = 0
+    let numArr = n.toString().split("").map((x)=>+x)
+    for(let i=0; i<numArr.length; i++){
+        if(numArr[i]>numArr[i+1]){
+            return false
         }
     }
-    return nonStrInt-strInt
-}
-
-console.log(divCon(['5', '0', 9, 3, 2, 1, '9', 6, 7]))
+    return true
+  }
+  
+  console.log(tidyNumber(12))
+  console.log(tidyNumber(102))
+  console.log(tidyNumber(9672))
