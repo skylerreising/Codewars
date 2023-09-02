@@ -2020,17 +2020,48 @@ SOLUTIONS*/
 //     return newArr
 //   }
 
+// function dirReduc(arr){
+//     for(let c=0; c<arr.length; c++){
+//     if(arr[c]==="NORTH" && arr[c+1]==="SOUTH" || arr[c]==="SOUTH" && arr[c+1]==="NORTH" ){
+//         delete arr[c] && arr[c+1]
+//     }
+// }
+//     return arr
+// }
+
+function dirReduc(arr){
+  const opposites = {
+    NORTH: 'SOUTH',
+    SOUTH: 'NORTH',
+    EAST: 'WEST',
+    WEST: 'EAST'
+  }
+  const finalArray = []
+  for(const direction of arr){
+    if(finalArray.length > 0 && finalArray[finalArray.length-1]===opposites[direction]){
+        finalArray.pop()
+    }else {
+        finalArray.push(direction)
+    }
+  }
+  return finalArray
+}
+
+  console.log(dirReduc(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"]))
+  console.log(dirReduc(["NORTH","WEST","SOUTH","EAST"]))
+
 // Given a string of words (x), you need to return an array of the words, sorted alphabetically by the final character in each.
 
 // If two words have the same last letter, they returned array should show them in the order they appeared in the given string.
 
 // All inputs will be valid.
 
-function last(x){
-    return x.split(" ")
-            .map((word) => ({ word, lastChar: word.slice(-1) })) // Create an array of objects with words and their last characters
-            .sort((a, b) => a.lastChar.localeCompare(b.lastChar))   // Sort by last character
-            .map(({ word }) => word);                             // Extract the sorted words
-  }
-  console.log(last('man i need a taxi up to ubud'))
-  console.log(last('what time are we climbing up the volcano'))
+// function last(x){
+//     return x.split(" ")
+//             .map((word) => ({ word, lastChar: word.slice(-1) })) // Create an array of objects with words and their last characters
+//             .sort((a, b) => a.lastChar.localeCompare(b.lastChar))   // Sort by last character
+//             .map(({ word }) => word);                             // Extract the sorted words
+//   }
+//   console.log(last('man i need a taxi up to ubud'))
+//   console.log(last('what time are we climbing up the volcano'))
+
