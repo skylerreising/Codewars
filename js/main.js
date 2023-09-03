@@ -2096,10 +2096,31 @@ SOLUTIONS*/
 
 // time = 11.8--> litres = 5
 
-function litres(time) {
-    return Math.floor(time*.5)
-  }
+// function litres(time) {
+//     return Math.floor(time*.5)
+//   }
 
-  console.log(litres(2))
-  console.log(litres(1.4))
-  console.log(litres(12.3))
+//   console.log(litres(2))
+//   console.log(litres(1.4))
+//   console.log(litres(12.3))
+
+// Your task is to create a function that does four basic mathematical operations.
+
+// The function should take three arguments - operation(string/char), value1(number), value2(number).
+// The function should return result of numbers after applying the chosen operation.
+
+// Examples(Operator, value1, value2) --> output
+// ('+', 4, 7) --> 11
+// ('-', 15, 18) --> -3
+// ('*', 5, 5) --> 25
+// ('/', 49, 7) --> 7
+
+function basicOp(operation, value1, value2){
+    return eval(value1+operation+value2)
+}
+
+
+console.log(basicOp('+', 4, 7))
+console.log(basicOp('-', 15, 18))
+console.log(basicOp('*', 5, 5))
+console.log(basicOp('/', 49, 7))
