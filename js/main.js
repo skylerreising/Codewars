@@ -2073,11 +2073,33 @@ SOLUTIONS*/
 // Given [34, -345, -1, 100] your solution will return -345
 // You can assume, for the purpose of this kata, that the supplied array will not be empty.
 
-class SmallestIntegerFinder {
-    findSmallestInt(args) {
-        return +args.sort((a,b)=>b-a).slice(-1)
-    }
+// class SmallestIntegerFinder {
+//     findSmallestInt(args) {
+//         return +args.sort((a,b)=>b-a).slice(-1)
+//     }
 
+//   }
+
+//   console.log(new SmallestIntegerFinder().findSmallestInt([78,56,232,12,8]))
+
+// Nathan loves cycling.
+
+// Because Nathan knows it is important to stay hydrated, he drinks 0.5 litres of water per hour of cycling.
+
+// You get given the time in hours and you need to return the number of litres Nathan will drink, rounded to the smallest value.
+
+// For example:
+
+// time = 3 ----> litres = 1
+
+// time = 6.7---> litres = 3
+
+// time = 11.8--> litres = 5
+
+function litres(time) {
+    return Math.floor(time*.5)
   }
 
-  console.log(new SmallestIntegerFinder().findSmallestInt([78,56,232,12,8]))
+  console.log(litres(2))
+  console.log(litres(1.4))
+  console.log(litres(12.3))
