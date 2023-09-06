@@ -2162,11 +2162,22 @@ SOLUTIONS*/
 // 0 <= m <= 59
 // 0 <= s <= 59
 
-function past(h, m, s){
-    return h*3600000+m*60000+s*1000
-  }
+// function past(h, m, s){
+//     return h*3600000+m*60000+s*1000
+//   }
 
-  console.log(past(0,1,1))
-  console.log(past(1,1,1))
-  console.log(past(0,0,0))
-  console.log(past(1,0,0))
+//   console.log(past(0,1,1))
+//   console.log(past(1,1,1))
+//   console.log(past(0,0,0))
+//   console.log(past(1,0,0))
+
+// This kata is about multiplying a given number by eight if it is an even number and by nine otherwise.
+
+function simpleMultiplication(number) {
+    return number % 2 === 0 ? number*8 : number*9
+}
+console.log(simpleMultiplication(2))
+console.log(simpleMultiplication(1))
+console.log(simpleMultiplication(8))
+console.log(simpleMultiplication(4))
+console.log(simpleMultiplication(5))
