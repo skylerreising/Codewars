@@ -2173,11 +2173,35 @@ SOLUTIONS*/
 
 // This kata is about multiplying a given number by eight if it is an even number and by nine otherwise.
 
-function simpleMultiplication(number) {
-    return number % 2 === 0 ? number*8 : number*9
-}
-console.log(simpleMultiplication(2))
-console.log(simpleMultiplication(1))
-console.log(simpleMultiplication(8))
-console.log(simpleMultiplication(4))
-console.log(simpleMultiplication(5))
+// function simpleMultiplication(number) {
+//     return number % 2 === 0 ? number*8 : number*9
+// }
+// console.log(simpleMultiplication(2))
+// console.log(simpleMultiplication(1))
+// console.log(simpleMultiplication(8))
+// console.log(simpleMultiplication(4))
+// console.log(simpleMultiplication(5))
+
+// Write function bmi that calculates body mass index (bmi = weight / height2).
+
+// if bmi <= 18.5 return "Underweight"
+
+// if bmi <= 25.0 return "Normal"
+
+// if bmi <= 30.0 return "Overweight"
+
+// if bmi > 30 return "Obese"
+
+function bmi(weight, height) {
+    if(weight/height**2<=18.5){
+        return "Underweight"
+    }else if(weight/height**2<=25.0){
+        return "Normal"
+    }else if(weight/height**2<=30.0){
+        return "Overweight"
+    }else{
+        return "Obese"
+    }
+  }
+
+  console.log(bmi(80, 1.80))
