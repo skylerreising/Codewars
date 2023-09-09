@@ -2216,15 +2216,42 @@ SOLUTIONS*/
 // Notes
 // You may consider that there will not be any empty arrays/vectors.
 
-var min = function(list){
+// var min = function(list){
     
-    return Math.min(...list);
-}
+//     return Math.min(...list);
+// }
 
-var max = function(list){
+// var max = function(list){
     
-    return Math.max(...list);
-}
+//     return Math.max(...list);
+// }
 
-console.log(min([4,6,2,1,9,63,-134,566]))
-console.log(max([4,6,2,1,9,63,-134,566]))
+// console.log(min([4,6,2,1,9,63,-134,566]))
+// console.log(max([4,6,2,1,9,63,-134,566]))
+
+// You were camping with your friends far away from home, but when it's time to go back, you realize that your fuel is running out and the nearest pump is 50 miles away! You know that on average, your car runs on about 25 miles per gallon. There are 2 gallons left.
+
+// Considering these factors, write a function that tells you if it is possible to get to the pump or not.
+
+// Function should return true if it is possible and false if not.
+
+// const zeroFuel = (distanceToPump, mpg, fuelLeft) => {
+//   return distanceToPump/fuelLeft<=mpg
+// };
+
+// console.log(zeroFuel(50,25,2))
+// console.log(zeroFuel(100,50,1))
+
+// Build a function that returns an array of integers from n to 1 where n>0.
+
+// Example : n=5 --> [5,4,3,2,1]
+
+const reverseSeq = n => {
+    let newArr = []
+    for(let i=n; i>=1; i--){
+      newArr.push(i)
+    }
+    return newArr
+  };
+  
+  console.log(reverseSeq(5))
