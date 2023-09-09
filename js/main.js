@@ -2314,21 +2314,44 @@ SOLUTIONS*/
 // [0,1,0,1,0] should return 0, because it occurs 3 times (which is odd).
 // [1,2,2,3,3,3,4,3,3,3,2,2,1] should return 4, because it appears 1 time (which is odd).
 
-function findOdd(A) {
-    let counts = {}
-    for(let num of A){
-        counts[num] = counts[num] ? counts[num] + 1 : 1
-    }
-    for(let key in counts){
-        if(counts.hasOwnProperty(key)){
-            if(counts[key]%2!==0){
-                return +key
-            }
-        }
-    }
-}
+// function findOdd(A) {
+//     let counts = {}
+//     for(let num of A){
+//         counts[num] = counts[num] ? counts[num] + 1 : 1
+//     }
+//     for(let key in counts){
+//         if(counts.hasOwnProperty(key)){
+//             if(counts[key]%2!==0){
+//                 return +key
+//             }
+//         }
+//     }
+// }
 
-  console.log(findOdd([7]))
-  console.log(findOdd([0]))
-  console.log(findOdd([1,1,2]))
-  console.log(findOdd([0,1,0,1,0]))
+//   console.log(findOdd([7]))
+//   console.log(findOdd([0]))
+//   console.log(findOdd([1,1,2]))
+//   console.log(findOdd([0,1,0,1,0]))
+
+// Let's play! You have to return which player won! In case of a draw return Draw!.
+
+// Examples(Input1, Input2 --> Output):
+
+// "scissors", "paper" --> "Player 1 won!"
+// "scissors", "rock" --> "Player 2 won!"
+// "paper", "paper" --> "Draw!"
+
+const rps = (p1, p2) => {
+    if(p1===p2){
+        return "Draw!"
+    }else if(p1==="scissors" && p2==="paper" || p1==="paper" && p2==="rock" || p1==="rock" && p2==="scissors"){
+        return "Player 1 won!"
+    }else {
+        return "Player 2 won!"
+    }
+};
+
+console.log(rps('rock', 'scissors'))
+console.log(rps('scissors', 'paper'))
+console.log(rps('scissors', 'rock'))
+console.log(rps('rock', 'rock'))
