@@ -2264,18 +2264,41 @@ SOLUTIONS*/
 
 // 1 <= month <= 12
 
-const quarterOf = (month) => {
-    if(month<=3){
-        return 1
-    }else if(month<=6){
-        return 2
-    }else if(month<=9){
-        return 3
+// const quarterOf = (month) => {
+//     if(month<=3){
+//         return 1
+//     }else if(month<=6){
+//         return 2
+//     }else if(month<=9){
+//         return 3
+//     }else {
+//         return 4
+//     }
+//   }
+
+//   console.log(quarterOf(3))
+//   console.log(quarterOf(8))
+//   console.log(quarterOf(11))
+
+// After a hard quarter in the office you decide to get some rest on a vacation. So you will book a flight for you and your girlfriend and try to leave all the mess behind you.
+
+// You will need a rental car in order for you to get around in your vacation. The manager of the car rental makes you some good offers.
+
+// Every day you rent the car costs $40. If you rent the car for 7 or more days, you get $50 off your total. Alternatively, if you rent the car for 3 or more days, you get $20 off your total.
+
+// Write a code that gives out the total amount for different days(d).
+
+function rentalCarCost(d) {
+    let total = d*40
+    if(d>=7){
+        return total-50
+    }else if(d>=3){
+        return total-20
     }else {
-        return 4
+        return total
     }
   }
 
-  console.log(quarterOf(3))
-  console.log(quarterOf(8))
-  console.log(quarterOf(11))
+  console.log(rentalCarCost(2))
+  console.log(rentalCarCost(6))
+  console.log(rentalCarCost(10))
