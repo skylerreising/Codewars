@@ -2439,25 +2439,41 @@ SOLUTIONS*/
 
 // arrayDiff([1,2,2,2,3],[2]) == [1,3]
 
-function arrayDiff(a, b) {
-  if(b.length<1){
-        return a
-      }else {
-      for(let i=0; i<b.length; i++){
-        for(let j=0; j<a.length; j++){
-            if(b[i]===a[j]){
-                a.splice(j,1)
-                j--
-            }
-        }
-      }
-      return a
-    }
-}
+// function arrayDiff(a, b) {
+//   if(b.length<1){
+//         return a
+//       }else {
+//       for(let i=0; i<b.length; i++){
+//         for(let j=0; j<a.length; j++){
+//             if(b[i]===a[j]){
+//                 a.splice(j,1)
+//                 j--
+//             }
+//         }
+//       }
+//       return a
+//     }
+// }
 
-console.log(arrayDiff([1,2], [1]))
-console.log(arrayDiff([1,2,2], [1]))
-console.log(arrayDiff([1,2,2], [2]))
-console.log(arrayDiff([1,2,2], []))
-console.log(arrayDiff([], [1,2]))
-console.log(arrayDiff([1,2,3], [1,2]))
+// console.log(arrayDiff([1,2], [1]))
+// console.log(arrayDiff([1,2,2], [1]))
+// console.log(arrayDiff([1,2,2], [2]))
+// console.log(arrayDiff([1,2,2], []))
+// console.log(arrayDiff([], [1,2]))
+// console.log(arrayDiff([1,2,3], [1,2]))
+
+// Your task is to make a function that can take any non-negative integer as an argument and return it with its digits in descending order. Essentially, rearrange the digits to create the highest possible number.
+
+// Examples:
+// Input: 42145 Output: 54421
+
+// Input: 145263 Output: 654321
+
+// Input: 123456789 Output: 987654321
+
+function descendingOrder(n){
+    return +n.toString().split("").sort().reverse().join("")
+  }
+  console.log(descendingOrder(42145))
+  console.log(descendingOrder(145263))
+  console.log(descendingOrder(123456789))
