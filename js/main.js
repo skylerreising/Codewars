@@ -2536,12 +2536,40 @@ SOLUTIONS*/
 // isIsogram "moose" = false
 // isIsogram "aba" = false
 
-function isIsogram(str){
-    const newStr = str.toLowerCase()
-    const noRepeat = Array.from(new Set (str.toLowerCase().split("")))
-    return newStr === noRepeat.join("")
-  }
+// function isIsogram(str){
+//     const newStr = str.toLowerCase()
+//     const noRepeat = Array.from(new Set (str.toLowerCase().split("")))
+//     return newStr === noRepeat.join("")
+//   }
   
-  console.log(isIsogram("Dermatoglyphics"))
-  console.log(isIsogram("moOse"))
-  console.log(isIsogram("aba"))
+//   console.log(isIsogram("Dermatoglyphics"))
+//   console.log(isIsogram("moOse"))
+//   console.log(isIsogram("aba"))
+
+// Check to see if a string has the same amount of 'x's and 'o's. The method must return a boolean and be case insensitive. The string can contain any char.
+
+// Examples input/output:
+
+// XO("ooxx") => true
+// XO("xooxx") => false
+// XO("ooxXm") => true
+// XO("zpzpzpp") => true // when no 'x' and 'o' is present should return true
+// XO("zzoo") => false
+
+function XO(str) {
+    let newStr = str.toLowerCase()
+    let xCount = 0
+    let oCount = 0
+    for(let i=0; i<newStr.length; i++){
+        if(newStr[i]==="o"){
+            oCount++
+        }else if(newStr[i]==="x"){
+            xCount++
+        }
+    }
+    return xCount === oCount
+}
+
+console.log(XO('xo'))
+console.log(XO('"xxOo"'))
+console.log(XO("xxxoo"))
