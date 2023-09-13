@@ -2556,20 +2556,48 @@ SOLUTIONS*/
 // XO("zpzpzpp") => true // when no 'x' and 'o' is present should return true
 // XO("zzoo") => false
 
-function XO(str) {
-    let newStr = str.toLowerCase()
-    let xCount = 0
-    let oCount = 0
-    for(let i=0; i<newStr.length; i++){
-        if(newStr[i]==="o"){
-            oCount++
-        }else if(newStr[i]==="x"){
-            xCount++
-        }
+// function XO(str) {
+//     let newStr = str.toLowerCase()
+//     let xCount = 0
+//     let oCount = 0
+//     for(let i=0; i<newStr.length; i++){
+//         if(newStr[i]==="o"){
+//             oCount++
+//         }else if(newStr[i]==="x"){
+//             xCount++
+//         }
+//     }
+//     return xCount === oCount
+// }
+
+// console.log(XO('xo'))
+// console.log(XO('"xxOo"'))
+// console.log(XO("xxxoo"))
+
+// Simple, given a string of words, return the length of the shortest word(s).
+
+// String will never be empty and you do not need to account for different data types.
+
+// function findShort(s){
+//   return s.split(" ").map((x) => x.length).sort((a,b) => a-b)[0]
+// }
+
+// console.log(findShort("bitcoin take over the world maybe who knows perhaps"))
+
+// This time no story, no theory. The examples below show you how to write function accum:
+
+// Examples:
+// accum("abcd") -> "A-Bb-Ccc-Dddd"
+// accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+// accum("cwAt") -> "C-Ww-Aaa-Tttt"
+// The parameter of accum is a string which includes only letters from a..z and A..Z.
+
+function accum(s) {
+    let dividedStr = s.split("").map(x => x.toUpperCase())
+    for(let i=0; i<dividedStr.length; i++){
+        dividedStr[i]+=((dividedStr[i].toLowerCase())).repeat(i)
     }
-    return xCount === oCount
+    return dividedStr.join("-")
 }
 
-console.log(XO('xo'))
-console.log(XO('"xxOo"'))
-console.log(XO("xxxoo"))
+console.log(accum("ZpglnRxqenU"))
