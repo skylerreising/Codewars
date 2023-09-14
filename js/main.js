@@ -2614,25 +2614,62 @@ SOLUTIONS*/
 // "aA11" -> 2 # 'a' and '1'
 // "ABBA" -> 2 # 'A' and 'B' each occur twice
 
-function duplicateCount(text){
-    let count = 0
-    let newArr = text.toLowerCase().split("")
-    let seen = []
-    for(let i=0; i<newArr.length; i++){
-      if(seen.includes(newArr[i])){
-        continue
-      }
-      if(newArr.includes(newArr[i],i+1)){
-        count++
-        seen.push(newArr[i])
-        }
-      }
-    return count
-    }
+// function duplicateCount(text){
+//     let count = 0
+//     let newArr = text.toLowerCase().split("")
+//     let seen = []
+//     for(let i=0; i<newArr.length; i++){
+//       if(seen.includes(newArr[i])){
+//         continue
+//       }
+//       if(newArr.includes(newArr[i],i+1)){
+//         count++
+//         seen.push(newArr[i])
+//         }
+//       }
+//     return count
+//     }
   
-  console.log(duplicateCount(""))
-  console.log(duplicateCount("abcde"))
-  console.log(duplicateCount("aabbcde"))
-  console.log(duplicateCount("aA11"))
-  console.log(duplicateCount("Indivisibilities"))
-  console.log(duplicateCount("abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz"))
+//   console.log(duplicateCount(""))
+//   console.log(duplicateCount("abcde"))
+//   console.log(duplicateCount("aabbcde"))
+//   console.log(duplicateCount("aA11"))
+//   console.log(duplicateCount("Indivisibilities"))
+//   console.log(duplicateCount("abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz"))
+
+// Jaden Smith, the son of Will Smith, is the star of films such as The Karate Kid (2010) and After Earth (2013). Jaden is also known for some of his philosophy that he delivers via Twitter. When writing on Twitter, he is known for almost always capitalizing every word. For simplicity, you'll have to capitalize each word, check out how contractions are expected to be in the example below.
+
+// Your task is to convert strings to how they would be written by Jaden Smith. The strings are actual quotes from Jaden Smith, but they are not capitalized in the same way he originally typed them.
+
+// Example:
+
+// Not Jaden-Cased: "How can mirrors be real if our eyes aren't real"
+// Jaden-Cased:     "How Can Mirrors Be Real If Our Eyes Aren't Real"
+
+// String.prototype.toJadenCase = function (sent) {
+//     for(let i=0; i<sent.length; i++){
+//         if(sent[i]===" "){
+//             sent[i+1].toUpperCase()
+//         }else {
+//             continue
+//         }
+//     }
+//     return sent
+//   };
+
+String.prototype.toJadenCase = function (sent){
+    let strArr = sent.split("")
+    let newArr = []
+    newArr.push(sent[0])
+    for(let i=1; i<sent.length; i++){
+        if(sent[i]===" "){
+            newArr.push(" " + sent[i+1].toUpperCase())
+        }else if(sent[i-1]===" "){
+            continue
+        }else {
+            newArr.push(sent[i].toLowerCase())
+        }
+    }
+    console.log(newArr.join(""))
+}
+String.prototype.toJadenCase("How can mirrors be real if our eyes aren't real")
