@@ -2714,25 +2714,44 @@ SOLUTIONS*/
 // Notes
 // Assertion messages may be unclear about what they display in some languages. If you read "...It Should encode XXX", the "XXX" is the expected result, not the input!
 
-function duplicateEncode(word){
-    let array = []
-    for(let i=0; i<word.length; i++){
-      let end = i===word.length-1 ? 0:i+1
-      if(word.includes(word[i],end)){
-        array.push(")")
-      // }else if(i===word.length-1){
-      //   if(word.includes(word[word.length-1])){
-      //     array.push(")")
-      //   }else {
-      //     array.push("(")
-        }else{
-        array.push("(")
-      }
-    }
-  return array.join("")
-}
+// function duplicateEncode(word){
+//     word = word.toLowerCase()
+//     let array = []
+//     for(let i=0; i<word.length; i++){
+//       if(word.lastIndexOf(word[i]) !== word.indexOf(word[i])){
+//         array.push(")")
+//         }else{
+//         array.push("(")
+//       }
+//     }
+//   return array.join("")
+// }
 
-console.log(duplicateEncode("din"))
-console.log(duplicateEncode("recede"))
-console.log(duplicateEncode("Success"))
-console.log(duplicateEncode("(( @"))
+// console.log(duplicateEncode("din"))
+// console.log(duplicateEncode("recede"))
+// console.log(duplicateEncode("Success"))
+// console.log(duplicateEncode("(( @"))
+
+// Welcome.
+
+// In this kata you are required to, given a string, replace every letter with its position in the alphabet.
+
+// If anything in the text isn't a letter, ignore it and don't return it.
+
+// "a" = 1, "b" = 2, etc.
+
+// Example
+// alphabetPosition("The sunset sets at twelve o' clock.")
+// Should return "20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5 15 3 12 15 3 11" ( as a string )
+
+function alphabetPosition(text) {
+    let splitStr = text.toLowerCase().split("")
+    let numArray = []
+    for(let i=0; i<splitStr.length; i++){
+      numArray.push(splitStr[i].charCodeAt()-96)
+    }
+      return numArray.filter(x => x>=1 && x<=26).join(" ")
+  }
+  
+  console.log(alphabetPosition("The sunset sets at twelve o' clock."))
+  console.log(alphabetPosition("The narwhal bacons at midnight."))
