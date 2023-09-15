@@ -2657,19 +2657,82 @@ SOLUTIONS*/
 //     return sent
 //   };
 
-String.prototype.toJadenCase = function (sent){
-    let strArr = sent.split("")
-    let newArr = []
-    newArr.push(sent[0])
-    for(let i=1; i<sent.length; i++){
-        if(sent[i]===" "){
-            newArr.push(" " + sent[i+1].toUpperCase())
-        }else if(sent[i-1]===" "){
-            continue
-        }else {
-            newArr.push(sent[i].toLowerCase())
-        }
+// String.prototype.toJadenCase = function (sent){
+//     let strArr = sent.split("")
+//     let newArr = []
+//     newArr.push(sent[0])
+//     for(let i=1; i<sent.length; i++){
+//         if(sent[i]===" "){
+//             newArr.push(" " + sent[i+1].toUpperCase())
+//         }else if(sent[i-1]===" "){
+//             continue
+//         }else {
+//             newArr.push(sent[i].toLowerCase())
+//         }
+//     }
+//     console.log(newArr.join(""))
+// }
+// String.prototype.toJadenCase("How can mirrors be real if our eyes aren't real")
+
+// Given two integers a and b, which can be positive or negative, find the sum of all the integers between and including them and return it. If the two numbers are equal return a or b.
+
+// Note: a and b are not ordered!
+
+// Examples (a, b) --> output (explanation)
+// (1, 0) --> 1 (1 + 0 = 1)
+// (1, 2) --> 3 (1 + 2 = 3)
+// (0, 1) --> 1 (0 + 1 = 1)
+// (1, 1) --> 1 (1 since both are same)
+// (-1, 0) --> -1 (-1 + 0 = -1)
+// (-1, 2) --> 2 (-1 + 0 + 1 + 2 = 2)
+// Your function should only return a number, not the explanation about how you get that number.
+
+// function getSum(a, b){
+//    let newArr = []
+//    let stop = a>=b ? a:b
+//    let start = b>a ? a:b
+//    let loopStop = stop-start
+//    for(let i=start; i<=stop; i++){
+//      newArr.push(i)
+//    }
+//   let sum = newArr.reduce((a,b) => a+b)
+//   return sum
+// }
+
+// console.log(getSum(1,0))
+// console.log(getSum(1,2))
+// console.log(getSum(1,1))
+// console.log(getSum(-1,2))
+
+// The goal of this exercise is to convert a string to a new string where each character in the new string is "(" if that character appears only once in the original string, or ")" if that character appears more than once in the original string. Ignore capitalization when determining if a character is a duplicate.
+
+// Examples
+// "din"      =>  "((("
+// "recede"   =>  "()()()"
+// "Success"  =>  ")())())"
+// "(( @"     =>  "))((" 
+// Notes
+// Assertion messages may be unclear about what they display in some languages. If you read "...It Should encode XXX", the "XXX" is the expected result, not the input!
+
+function duplicateEncode(word){
+    let array = []
+    for(let i=0; i<word.length; i++){
+      let end = i===word.length-1 ? 0:i+1
+      if(word.includes(word[i],end)){
+        array.push(")")
+      // }else if(i===word.length-1){
+      //   if(word.includes(word[word.length-1])){
+      //     array.push(")")
+      //   }else {
+      //     array.push("(")
+        }else{
+        array.push("(")
+      }
     }
-    console.log(newArr.join(""))
+  return array.join("")
 }
-String.prototype.toJadenCase("How can mirrors be real if our eyes aren't real")
+
+console.log(duplicateEncode("din"))
+console.log(duplicateEncode("recede"))
+console.log(duplicateEncode("Success"))
+console.log(duplicateEncode("(( @"))
