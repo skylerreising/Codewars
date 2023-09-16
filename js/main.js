@@ -2714,18 +2714,67 @@ SOLUTIONS*/
 // Notes
 // Assertion messages may be unclear about what they display in some languages. If you read "...It Should encode XXX", the "XXX" is the expected result, not the input!
 
+/**
+ * Time complexity O(N^2)
+ */
 // function duplicateEncode(word){
 //     word = word.toLowerCase()
 //     let array = []
+
 //     for(let i=0; i<word.length; i++){
-//       if(word.lastIndexOf(word[i]) !== word.indexOf(word[i])){
-//         array.push(")")
+//         const letter = word[i];
+
+//         if(word.lastIndexOf(letter) !== word.indexOf(letter)){
+//             array.push(")")
 //         }else{
-//         array.push("(")
-//       }
+//             array.push("(")
+//         }
 //     }
-//   return array.join("")
+
+//     return array.join("")
 // }
+
+
+/**
+ * Build a frequency table of the count of letters that appear in the string word.
+ */
+// function getLetterFrequencies(word) {
+//     let freq = {};
+//     for(let i=0; i<word.length; i++ ) {
+//         const letter = word[i];
+
+//         if ( freq[letter] ) {
+//             freq[letter]+=1;
+//         }
+//         else {
+//             freq[letter] = 1;
+//         }
+//     }
+//     return freq;
+// }
+
+/**
+ * Can we do it faster?
+ */
+// function duplicateEncode2(word) {
+//     word = word.toLowerCase();
+//     let array = [];
+
+//     //build freq table
+//     let freq = getLetterFrequencies(word);
+//     console.log("frequencies of word",word,"is",freq);
+
+//     for (let i=0; i<word.length; i++) {
+//         const letter = word[i];
+
+//         freq[letter]===1 ? array.push('(') : array.push(')');
+//     }
+
+//     return array.join("");
+// }
+// duplicateEncode2("din");
+// duplicateEncode2("recede");
+// duplicateEncode2("Success");
 
 // console.log(duplicateEncode("din"))
 // console.log(duplicateEncode("recede"))
@@ -2747,31 +2796,96 @@ SOLUTIONS*/
 // function alphabetPosition(text) {
 //     let splitStr = text.toLowerCase().split("")
 //     let numArray = []
+    
 //     for(let i=0; i<splitStr.length; i++){
-//       numArray.push(splitStr[i].charCodeAt()-96)
+        //96 is the charCode for ('a'-1)
+//         let aMinusOne = 'a'.charCodeAt()-1;
+//         numArray.push(splitStr[i].charCodeAt()-aMinusOne)
 //     }
-//       return numArray.filter(x => x>=1 && x<=26).join(" ")
+    
+//     return numArray.filter(x => x>=1 && x<=26).join(" ")
 //   }
   
 //   console.log(alphabetPosition("The sunset sets at twelve o' clock."))
 //   console.log(alphabetPosition("The narwhal bacons at midnight."))
 
-// You live in the city of Cartesia where all roads are laid out in a perfect grid. You arrived ten minutes too early to an appointment, so you decided to take the opportunity to go for a short walk. The city provides its citizens with a Walk Generating App on their phones -- everytime you press the button it sends you an array of one-letter strings representing directions to walk (eg. ['n', 's', 'w', 'e']). You always walk only a single block for each letter (direction) and you know it takes you one minute to traverse one city block, so create a function that will return true if the walk the app gives you will take you exactly ten minutes (you don't want to be early or late!) and will, of course, return you to your starting point. Return false otherwise.
+// 
 
 // Note: you will always receive a valid array containing a random assortment of direction letters ('n', 's', 'e', or 'w' only). It will never give you an empty array (that's not a walk, that's standing still!).
 
+// function shortCircuitExample_Good(a,b,c) {
+
+//     if ( typeof a !== 'string' ) {
+//         //a didnt work
+//         throw new Error("a wasn't a string")
+//     }
+
+//     if ( !b )  {
+//         //b didnt work
+//         throw new Error("B didnt work?!")
+//     }
+
+//     if ( !c ) {
+//         //c didnt work
+//         throw new Error("C didnt work!!!")
+//     }
+
+//     //ok a,b,c all good
+
+// }
+
+// function shortCircuitExample_Bad(a,b,c) {
+//     //Bad code
+//     if ( a ) {
+//         if ( b ) {
+//             if ( c ) {
+//                 //do stuff with a,b,c
+//             }
+//             else {
+//                 throw new Error("C didnt work!!!")
+//             }
+//         }
+//         else {
+//             throw new Error("B didnt work?!")
+//         }
+//     }
+//     else {
+//         throw new Error("A didnt work?!")
+//     }
+// }
+
+/**
+ * You live in the city of Cartesia where all roads are laid out in a perfect grid. 
+ * You arrived ten minutes too early to an appointment, so you decided to take the 
+ * opportunity to go for a short walk. The city provides its citizens with a Walk 
+ * Generating App on their phones -- everytime you press the button it sends you an 
+ * array of one-letter strings representing directions to walk (eg. ['n', 's', 'w', 'e']). 
+ * 
+ * You always walk only a single block for each letter (direction) and you know it takes you 
+ * one minute to traverse one city block, so create a function that will return true 
+ * if the walk the app gives you will take you exactly ten minutes (you don't want to 
+ * be early or late!) and will, of course, return you to your starting point. 
+ * Return false otherwise.
+ */
 // function isValidWalk(walk) {
 //     let backToStartNS = 0
 //     let backToStartWE = 0
+    
+//     // short circuiting. 
+//     if(walk.length!==10){
+//         return false
+//     }
+
+//     // if our northSouth position is net zero,
+//     // and our eastWest position is net zero, then we got back to where we started.
 //     for(let i=0; i<walk.length; i++){
-//         if(walk.length!==10){
-//             return false
-//         }else if(walk[i]==='n' || walk[i]==='s'){
+//         if(walk[i]==='n' || walk[i]==='s'){
 //             walk[i]==='n' ? backToStartNS++:backToStartNS--
 //         }else{
 //             walk[i]==='w' ? backToStartWE++:backToStartWE--
 //         }
 //     }
+
 //     return backToStartNS===0 && backToStartWE===0
 //   }
 
@@ -2789,36 +2903,163 @@ SOLUTIONS*/
 // 999 --> 4 (because 9*9*9 = 729, 7*2*9 = 126, 1*2*6 = 12, and finally 1*2 = 2)
 // 4 --> 0 (because 4 is already a one-digit number)
 
-function persistence(num) {
-    let arrOfNumString = num.toString().split("")
-    let count = 0
-    let multiplication = 0
-    function again(x){
-        x = x.toString().split("")
-        multiplication = x.reduce((acc,b) => acc*b)
-        count++
-        if(multiplication.toString().split("").length>1){
-            return again(multiplication)
-        }else{
-            return count
-        }
-    }
+/**
+ * Takes a number, and returns the digits as a string array
+ */
+// function numberToDigitsArray(num) {
+//     const numAsStr = num.toString();
 
-    if(arrOfNumString.length===1){
-        return 0
-    }else{
-        multiplication = arrOfNumString.reduce((acc,b) => acc*b)
-            count++
-        }
-        if(multiplication.toString().split("").length>1){
-            return again(multiplication)
-        }else{
-            return count
-        }
-    }
+//     const digitsArr = numAsStr.split("");
+
+//     return digitsArr;
+// }
+
+
+/**
+ * 0th - 0
+ * 1st - 1
+ * 
+ */
+// let fibLookup = {};
+// function fibonacciRecursive(n) {
+//     if ( fibLookup[n] ) {
+//         return fibLookup[n];
+//     }
+
+//     console.log("calling fib recursive:",n);
+    //(BASIS CASE) check for basis case to stop recursion
+    // if ( n == 0 ) {
+    //     return 0;
+    // }
+    // else if ( n == 1 ) {
+    //     return 1;
+    // }
+
+    //(RECURSIVE STEP) or we recurse
+//     let ans = fibonacciRecursive(n-1) + fibonacciRecursive(n-2);
+
+//     fibLookup[n] = ans;
+//     return ans;
+// }
+// fibonacciRecursive(10);
+
+
+
+// function fibonacciIterative(n) {
+
+//     let a=0;
+//     let b=1;
+//     let c=a+b;
+//     let step = 0;
+
+//     for ( step=0; step<n ;step++) {
+//         let a_was = a;
+//         let b_was = b;
+
+//         a=b
+//         b=c        
+//         c=a_was+b_was
+//     }
+
+//     return a;
+// }
+
+
+/**
+ * Write a function, persistence, that takes in a positive parameter num and returns its multiplicative persistence, which is the number of times you must multiply the digits in num until you reach a single digit.
+ * 
+ * - Link to where you found it
+ * - https://www.codewars.com/kata/55bf01e5a717a0d57e0000ec/solutions?filter=all&sort=best_practice&invalids=false 
+ * - Example of recursion
+ * 
+ * @param {*} num - integer number
+ * @returns number - "multiplicative persistence"
+ */
+// function persistence(num) {
+
+//     //check for negatives
+//     //check for isNaN
+//     //infinity is considered a number
     
 
- console.log(persistence(39))
- console.log(persistence(4))
- console.log(persistence(25))
- console.log(persistence(999))
+//     let arrOfNumString = numberToDigitsArray(num);
+//     let count = 0
+//     let multiplication = 0
+
+//     function again(x){
+//         x = x.toString().split("")
+//         multiplication = x.reduce((acc,b) => acc*b)
+//         count++
+//         if(multiplication.toString().split("").length>1){
+//             return again(multiplication)
+//         }else{
+//             return count
+//         }
+//     }
+
+//     if(arrOfNumString.length===1){
+//         return 0
+//     }else{
+//         multiplication = arrOfNumString.reduce((acc,b) => acc*b)
+//             count++
+//         }
+//         if(multiplication.toString().split("").length>1){
+//             return again(multiplication)
+//         }else{
+//             return count
+//         }
+//     }
+    
+    
+/**
+ * Write a function, persistence, that takes in a positive parameter num and returns its multiplicative persistence, which is the number of times you must multiply the digits in num until you reach a single digit.
+ * 
+ * - Link to where you found it
+ * - https://www.codewars.com/kata/55bf01e5a717a0d57e0000ec/solutions?filter=all&sort=best_practice&invalids=false 
+ * - Example of recursion
+ * 
+ * @param {*} num - integer number
+ * @returns number - "multiplicative persistence"
+ */
+// function persistence2(num) {
+//     let arrOfNumString = numberToDigitsArray(num);
+//     let multiplication = 0
+
+    //(BASIS CASE)
+    // if(arrOfNumString.length===1){
+    //     return 0
+    // }
+
+    //(RECURSIVE STEP)
+//     multiplication = arrOfNumString.reduce((acc,b) => acc*b)
+//     return persistence2(multiplication) + 1;
+// }
+    // function again(x){
+    //     x = x.toString().split("")
+    //     multiplication = x.reduce((acc,b) => acc*b)
+    //     count++
+    //     if(multiplication.toString().split("").length>1){
+    //         return again(multiplication)
+    //     }else{
+    //         return count
+    //     }
+    // }
+
+    // if(arrOfNumString.length===1){
+    //     return 0
+    // }else{
+    //     multiplication = arrOfNumString.reduce((acc,b) => acc*b)
+    //         count++
+    //     }
+    //     if(multiplication.toString().split("").length>1){
+    //         return again(multiplication)
+    //     }else{
+    //         return count
+    //     }
+    // }
+
+//  console.log(persistence2(39))
+//  console.log(persistence2(4))
+//  console.log(persistence2(25))
+//  console.log(persistence2(999))
+
