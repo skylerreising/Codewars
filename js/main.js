@@ -2760,23 +2760,65 @@ SOLUTIONS*/
 
 // Note: you will always receive a valid array containing a random assortment of direction letters ('n', 's', 'e', or 'w' only). It will never give you an empty array (that's not a walk, that's standing still!).
 
-function isValidWalk(walk) {
-    let backToStartNS = 0
-    let backToStartWE = 0
-    for(let i=0; i<walk.length; i++){
-        if(walk.length!==10){
-            return false
-        }else if(walk[i]==='n' || walk[i]==='s'){
-            walk[i]==='n' ? backToStartNS++:backToStartNS--
+// function isValidWalk(walk) {
+//     let backToStartNS = 0
+//     let backToStartWE = 0
+//     for(let i=0; i<walk.length; i++){
+//         if(walk.length!==10){
+//             return false
+//         }else if(walk[i]==='n' || walk[i]==='s'){
+//             walk[i]==='n' ? backToStartNS++:backToStartNS--
+//         }else{
+//             walk[i]==='w' ? backToStartWE++:backToStartWE--
+//         }
+//     }
+//     return backToStartNS===0 && backToStartWE===0
+//   }
+
+//   console.log(isValidWalk(['n','s','n','s','n','s','n','s','n','s']))
+//   console.log(isValidWalk(['w','e','w','e','w','e','w','e','w','e','w','e']))
+//   console.log(isValidWalk(['w']))
+//   console.log(isValidWalk(['n','n','n','s','n','s','n','s','n','s']))
+//   console.log(isValidWalk(['n','n','n','n','n','s','s','s','e','e']))
+
+// Write a function, persistence, that takes in a positive parameter num and returns its multiplicative persistence, which is the number of times you must multiply the digits in num until you reach a single digit.
+
+// For example (Input --> Output):
+
+// 39 --> 3 (because 3*9 = 27, 2*7 = 14, 1*4 = 4 and 4 has only one digit)
+// 999 --> 4 (because 9*9*9 = 729, 7*2*9 = 126, 1*2*6 = 12, and finally 1*2 = 2)
+// 4 --> 0 (because 4 is already a one-digit number)
+
+function persistence(num) {
+    let arrOfNumString = num.toString().split("")
+    let count = 0
+    let multiplication = 0
+    function again(x){
+        x = x.toString().split("")
+        multiplication = x.reduce((acc,b) => acc*b)
+        count++
+        if(multiplication.toString().split("").length>1){
+            return again(multiplication)
         }else{
-            walk[i]==='w' ? backToStartWE++:backToStartWE--
+            return count
         }
     }
-    return backToStartNS===0 && backToStartWE===0
-  }
 
-  console.log(isValidWalk(['n','s','n','s','n','s','n','s','n','s']))
-  console.log(isValidWalk(['w','e','w','e','w','e','w','e','w','e','w','e']))
-  console.log(isValidWalk(['w']))
-  console.log(isValidWalk(['n','n','n','s','n','s','n','s','n','s']))
-  console.log(isValidWalk(['n','n','n','n','n','s','s','s','e','e']))
+    if(arrOfNumString.length===1){
+        return 0
+    }else{
+        multiplication = arrOfNumString.reduce((acc,b) => acc*b)
+            count++
+        }
+        if(multiplication.toString().split("").length>1){
+            return again(multiplication)
+        }else{
+            return count
+        }
+    }
+    
+
+ console.log(persistence(39))
+ console.log(persistence(4))
+ console.log(persistence(25))
+ console.log(persistence(999))
