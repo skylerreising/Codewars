@@ -3091,3 +3091,30 @@ var uniqueInOrder=function(iterable){
   uniqueInOrder('AAAABBBCCDAABBB')
   uniqueInOrder('ABBCcAD')
   uniqueInOrder([1,2,2,3,3])
+
+/**
+ * Make a program that filters a list of strings and returns a list with only your friends name in it.
+
+If a name has exactly 4 letters in it, you can be sure that it has to be a friend of yours! Otherwise, you can be sure he's not...
+
+Ex: Input = ["Ryan", "Kieran", "Jason", "Yous"], Output = ["Ryan", "Yous"]
+
+i.e.
+
+friend ["Ryan", "Kieran", "Mark"] `shouldBe` ["Ryan", "Mark"]
+ */
+
+function friend(friends){
+    //account for undefined since I'm using filter
+    let newArray = friends.filter(x => x !== undefined)
+
+    //loop through the list and return the items with a length of 4
+    return newArray.filter(x => x.length===4)   
+  }
+
+  console.log(friend(["Ryan", "Kieran", "Mark"]))
+  console.log(friend(["Ryan", "Jimmy", "123", "4", "Cool Man"]))
+  console.log(friend(["Jimm", "Cari", "aret", "truehdnviegkwgvke", "sixtyiscooooool"]))
+  console.log(friend(["Love", "Your", "Face", "1"]))
+  console.log(friend(["Love", "1234"]))
+  console.log(friend(["Ryan", undefined,"Mark"]))
