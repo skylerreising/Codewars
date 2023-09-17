@@ -3073,24 +3073,24 @@ uniqueInOrder('ABBCcAD')         == ['A', 'B', 'C', 'c', 'A', 'D']
 uniqueInOrder([1,2,2,3,3])       == [1,2,3]
  */
 
-var uniqueInOrder=function(iterable){
-    //Create a new array to be returned
-    let uniqueArray = []
+// var uniqueInOrder=function(iterable){
+//     //Create a new array to be returned
+//     let uniqueArray = []
 
-    //loop to test for character following current character. If the character is the same, remove it from the return, and remove every following character from the return until finding a new character.
-    for(let i=0; i<iterable.length; i++){
-        if(iterable[i]===iterable[i+1]){
-            continue
-        }else{
-            uniqueArray.push(iterable[i])
-        }
-    }
-    return uniqueArray
-  }
+//     //loop to test for character following current character. If the character is the same, remove it from the return, and remove every following character from the return until finding a new character.
+//     for(let i=0; i<iterable.length; i++){
+//         if(iterable[i]===iterable[i+1]){
+//             continue
+//         }else{
+//             uniqueArray.push(iterable[i])
+//         }
+//     }
+//     return uniqueArray
+//   }
 
-  uniqueInOrder('AAAABBBCCDAABBB')
-  uniqueInOrder('ABBCcAD')
-  uniqueInOrder([1,2,2,3,3])
+//   uniqueInOrder('AAAABBBCCDAABBB')
+//   uniqueInOrder('ABBCcAD')
+//   uniqueInOrder([1,2,2,3,3])
 
 /**
  * Make a program that filters a list of strings and returns a list with only your friends name in it.
@@ -3104,17 +3104,48 @@ i.e.
 friend ["Ryan", "Kieran", "Mark"] `shouldBe` ["Ryan", "Mark"]
  */
 
-function friend(friends){
-    //account for undefined since I'm using filter
-    let newArray = friends.filter(x => x !== undefined)
+// function friend(friends){
+//     //account for undefined since I'm using filter
+//     let newArray = friends.filter(x => x !== undefined)
 
-    //loop through the list and return the items with a length of 4
-    return newArray.filter(x => x.length===4)   
+//     //loop through the list and return the items with a length of 4
+//     return newArray.filter(x => x.length===4)   
+//   }
+
+//   console.log(friend(["Ryan", "Kieran", "Mark"]))
+//   console.log(friend(["Ryan", "Jimmy", "123", "4", "Cool Man"]))
+//   console.log(friend(["Jimm", "Cari", "aret", "truehdnviegkwgvke", "sixtyiscooooool"]))
+//   console.log(friend(["Love", "Your", "Face", "1"]))
+//   console.log(friend(["Love", "1234"]))
+//   console.log(friend(["Ryan", undefined,"Mark"]))
+
+/**
+ * A pangram is a sentence that contains every single letter of the alphabet at least once. For example, the sentence "The quick brown fox jumps over the lazy dog" is a pangram, because it uses the letters A-Z at least once (case is irrelevant).
+
+Given a string, detect whether or not it is a pangram. Return True if it is, False if not. Ignore numbers and punctuation.
+ */
+  
+function isPangram(string){
+    //Use includes?
+    //Somehow test for every letter. Can I make a loop that tests for every letter?
+
+    //Turn string into array of lowercase letters
+    let strArray = string.toLowerCase().split("")
+    //Create a different array of all the lowercase letters using a loop and charCode
+    let allLowercaseArray = []
+    for(let i="a".charCodeAt(); i<="z".charCodeAt(); i++){
+        allLowercaseArray.push(i)
+    }
+    //Test string array against looped charCode array
+        //turn strArray into charCodes
+        for(let i=0; i<strArray.length; i++){
+            strArray[i]=strArray[i].charCodeAt()
+        }
+        //filter array to only letters
+        strArray = strArray.filter(a => a>= 97 && a<=122)
+
+    return allLowercaseArray.every(b => strArray.includes(b))
   }
 
-  console.log(friend(["Ryan", "Kieran", "Mark"]))
-  console.log(friend(["Ryan", "Jimmy", "123", "4", "Cool Man"]))
-  console.log(friend(["Jimm", "Cari", "aret", "truehdnviegkwgvke", "sixtyiscooooool"]))
-  console.log(friend(["Love", "Your", "Face", "1"]))
-  console.log(friend(["Love", "1234"]))
-  console.log(friend(["Ryan", undefined,"Mark"]))
+  console.log(isPangram("The quick brown fox jumps over the lazy dog."))
+  console.log(isPangram("This is not a pangram."))
