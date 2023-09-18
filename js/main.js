@@ -3125,27 +3125,50 @@ friend ["Ryan", "Kieran", "Mark"] `shouldBe` ["Ryan", "Mark"]
 Given a string, detect whether or not it is a pangram. Return True if it is, False if not. Ignore numbers and punctuation.
  */
   
-function isPangram(string){
-    //Use includes?
-    //Somehow test for every letter. Can I make a loop that tests for every letter?
+// function isPangram(string){
+//     //Use includes?
+//     //Somehow test for every letter. Can I make a loop that tests for every letter?
 
-    //Turn string into array of lowercase letters
-    let strArray = string.toLowerCase().split("")
-    //Create a different array of all the lowercase letters using a loop and charCode
-    let allLowercaseArray = []
-    for(let i="a".charCodeAt(); i<="z".charCodeAt(); i++){
-        allLowercaseArray.push(i)
-    }
-    //Test string array against looped charCode array
-        //turn strArray into charCodes
-        for(let i=0; i<strArray.length; i++){
-            strArray[i]=strArray[i].charCodeAt()
-        }
-        //filter array to only letters
-        strArray = strArray.filter(a => a>= 97 && a<=122)
+//     //Turn string into array of lowercase letters
+//     let strArray = string.toLowerCase().split("")
+//     //Create a different array of all the lowercase letters using a loop and charCode
+//     let allLowercaseArray = []
+//     for(let i="a".charCodeAt(); i<="z".charCodeAt(); i++){
+//         allLowercaseArray.push(i)
+//     }
+//     //Test string array against looped charCode array
+//         //turn strArray into charCodes
+//         for(let i=0; i<strArray.length; i++){
+//             strArray[i]=strArray[i].charCodeAt()
+//         }
+//         //filter array to only letters
+//         strArray = strArray.filter(a => a>= 97 && a<=122)
 
-    return allLowercaseArray.every(b => strArray.includes(b))
-  }
+//     return allLowercaseArray.every(b => strArray.includes(b))
+//   }
 
-  console.log(isPangram("The quick brown fox jumps over the lazy dog."))
-  console.log(isPangram("This is not a pangram."))
+//   console.log(isPangram("The quick brown fox jumps over the lazy dog."))
+//   console.log(isPangram("This is not a pangram."))
+
+/**
+ * Implement a function that accepts 3 integer values a, b, c. The function should return true if a triangle can be built with the sides of given length and false in any other case.
+
+(In this case, all triangles must have surface greater than 0 to be accepted).
+ */
+
+function isTriangle(a,b,c){
+   //No side can be greater than the sum of the other two sides
+   //Sort the list
+   let numArr = [a,b,c]
+   numArr = numArr.sort((a,b) => b-a)
+
+   //check if longest side is greater than sum of the other sides
+   if(numArr[0]<numArr[1]+numArr[2]){
+    return true
+   }else{
+    return false
+   }
+}
+
+console.log(isTriangle(1,2,2))
+console.log(isTriangle(7,2,2))
