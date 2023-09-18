@@ -3156,19 +3156,43 @@ Given a string, detect whether or not it is a pangram. Return True if it is, Fal
 (In this case, all triangles must have surface greater than 0 to be accepted).
  */
 
-function isTriangle(a,b,c){
-   //No side can be greater than the sum of the other two sides
-   //Sort the list
-   let numArr = [a,b,c]
-   numArr = numArr.sort((a,b) => b-a)
+// function isTriangle(a,b,c){
+//    //No side can be greater than the sum of the other two sides
+//    //Sort the list
+//    let numArr = [a,b,c]
+//    numArr = numArr.sort((a,b) => b-a)
 
-   //check if longest side is greater than sum of the other sides
-   if(numArr[0]<numArr[1]+numArr[2]){
-    return true
-   }else{
-    return false
-   }
+//    //check if longest side is greater than sum of the other sides
+//    if(numArr[0]<numArr[1]+numArr[2]){
+//     return true
+//    }else{
+//     return false
+//    }
+// }
+
+// console.log(isTriangle(1,2,2))
+// console.log(isTriangle(7,2,2))
+
+/**
+ * Implement a function that adds two numbers together and returns their sum in binary. The conversion can be done before, or after the addition.
+
+The binary number returned should be a string.
+
+Examples:(Input1, Input2 --> Output (explanation)))
+
+1, 1 --> "10" (1 + 1 = 2 in decimal or 10 in binary)
+5, 9 --> "1110" (5 + 9 = 14 in decimal or 1110 in binary)
+ */
+
+function addBinary(a,b) {
+    let sum = a+b
+    if(sum>=0){
+        return sum.toString(2)
+    }else{
+        return '-'+(-sum).toString(2)
+    }
 }
 
-console.log(isTriangle(1,2,2))
-console.log(isTriangle(7,2,2))
+console.log(addBinary(1,1))
+console.log(addBinary(5,9))
+console.log(addBinary(1,2))
