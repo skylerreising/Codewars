@@ -3184,15 +3184,61 @@ Examples:(Input1, Input2 --> Output (explanation)))
 5, 9 --> "1110" (5 + 9 = 14 in decimal or 1110 in binary)
  */
 
-function addBinary(a,b) {
-    let sum = a+b
-    if(sum>=0){
-        return sum.toString(2)
-    }else{
-        return '-'+(-sum).toString(2)
-    }
-}
+// function addBinary(a,b) {
+//     let sum = a+b
+//     if(sum>=0){
+//         return sum.toString(2)
+//     }else{
+//         return '-'+(-sum).toString(2)
+//     }
+// }
 
-console.log(addBinary(1,1))
-console.log(addBinary(5,9))
-console.log(addBinary(1,2))
+// console.log(addBinary(1,1))
+// console.log(addBinary(5,9))
+// console.log(addBinary(1,2))
+
+/**
+ * Your task is to sort a given string. Each word in the string will contain a single number. This number is the position the word should have in the result.
+
+Note: Numbers can be from 1 to 9. So 1 will be the first word (not 0).
+
+If the input string is empty, return an empty string. The words in the input String will only contain valid consecutive numbers.
+
+Examples
+"is2 Thi1s T4est 3a"  -->  "Thi1s is2 3a T4est"
+"4of Fo1r pe6ople g3ood th5e the2"  -->  "Fo1r the2 g3ood 4of th5e pe6ople"
+""  -->  ""
+ */
+
+function order(words){
+    if(words===""){
+        return words
+    }else{
+        //turn string into array of words
+        let strArr = words.split(" ")
+
+        //loop through array and sort based on numbers inside of the words
+        //Create a new array of just the numbers in the words
+        let arrayOfArrays = []
+        let numsOnly = []
+        //first each element of strArr needs its own array
+        for(let i=0; i<strArr.length; i++){
+            arrayOfArrays.push(strArr[i].split(""))
+        }
+        //Create array of just numbers
+        for(let i=0; i<arrayOfArrays.length; i++){
+            numsOnly.push(arrayOfArrays[i].filter(x => Number(x)))
+        }
+        //add numbers from numbers only array to beginning of each item in the string array, sort the array, then shift the numbers off string array and join
+        for(let i=0; i<strArr.length; i++){
+            strArr[i] = `${numsOnly[i][0]}${strArr[i]}`
+        }
+        strArr = strArr.sort()
+        strArr = strArr.map(x => x.substring(1))
+        return strArr.join(" ")
+    }
+  }
+
+  console.log(order("is2 Thi1s T4est 3a"))
+  console.log(order("4of Fo1r pe6ople g3ood th5e the2"))
+  console.log(order(""))
