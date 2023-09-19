@@ -3329,25 +3329,62 @@ Examples
 // [160, 3, 1719, 19, 11, 13, -21]
 // Should return: 160 (the only even number)
 
-function findOutlier(integers){
-    //Loop through each element and count how many are odd and how many are even and use that to return the correct number
-    let countOfOdd = 0
-    let countOfEven = 0
-    for(let i=0; i<integers.length; i++){
-        if(integers[i] % 2 === 0){
-            countOfEven++
-        }else{
-            countOfOdd++
-        }
-    }
-    if(countOfEven===1){
-        return integers.filter((x) => x%2===0)[0]
-    }else{
-        return integers.filter((x) => x%2!==0)[0]
-    }
-  }
+// function findOutlier(integers){
+//     //Loop through each element and count how many are odd and how many are even and use that to return the correct number
+//     let countOfOdd = 0
+//     let countOfEven = 0
+//     for(let i=0; i<integers.length; i++){
+//         if(integers[i] % 2 === 0){
+//             countOfEven++
+//         }else{
+//             countOfOdd++
+//         }
+//     }
+//     if(countOfEven===1){
+//         return integers.filter((x) => x%2===0)[0]
+//     }else{
+//         return integers.filter((x) => x%2!==0)[0]
+//     }
+//   }
   
-  console.log(findOutlier([2, 4, 0, 100, 4, 11, 2602, 36]))
-  console.log(findOutlier([160, 3, 1719, 19, 11, 13, -21]))
-  console.log(findOutlier([-48815729,-102346279,24603073,121407439,35141413,14735119,-81586965,193254818,-35348421,180048439,-174156735,23854037,124606765,-168424591]))
-  console.log(findOutlier([123378562,958216,-108021524,-43494136,-156224382,7925986,14522032,-61080392,-151438246,-12181366,-103700526,41244632,157948486,-188420418,-52966560,-194754727,-141691806]))
+//   console.log(findOutlier([2, 4, 0, 100, 4, 11, 2602, 36]))
+//   console.log(findOutlier([160, 3, 1719, 19, 11, 13, -21]))
+//   console.log(findOutlier([-48815729,-102346279,24603073,121407439,35141413,14735119,-81586965,193254818,-35348421,180048439,-174156735,23854037,124606765,-168424591]))
+//   console.log(findOutlier([123378562,958216,-108021524,-43494136,-156224382,7925986,14522032,-61080392,-151438246,-12181366,-103700526,41244632,157948486,-188420418,-52966560,-194754727,-141691806]))
+
+/**
+ * Usually when you buy something, you're asked whether your credit card number, phone number or answer to your most secret question is still correct. However, since someone could look over your shoulder, you don't want that shown on your screen. Instead, we mask it.
+
+Your task is to write a function maskify, which changes all but the last four characters into '#'.
+
+Examples (input --> output):
+"4556364607935616" --> "############5616"
+     "64607935616" -->      "#######5616"
+               "1" -->                "1"
+                "" -->                 ""
+
+// "What was the name of your first pet?"
+"Skippy" --> "##ippy"
+"Nananananananananananananananana Batman!" --> "####################################man!"
+ */
+
+// return masked string
+function maskify(cc) {
+    let splitStr = []
+    //for strings 4 or less
+    if(cc.length<5){
+        return cc
+    }
+    splitStr = cc.split("")
+    //Put last four digits into its own array
+    let lastFour = splitStr.splice(-4)
+
+    // loop through splitStr and change each element to #
+    splitStr = splitStr.map((x) => x="#").join("")
+
+    return splitStr + lastFour.join("")
+}
+
+console.log(maskify("4556364607935616"))
+console.log(maskify("Nananananananananananananananana Batman!"))
+console.log(maskify("11111"))
