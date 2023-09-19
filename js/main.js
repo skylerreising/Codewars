@@ -3441,18 +3441,51 @@ This may be True and False in your language, e.g. PHP.
 Error checking for text strings or other invalid inputs is not required, only valid positive non-zero integers will be passed into the function.
  */
 
-function narcissistic(value) {
-    // Code me to return true or false
-    //Split the number into individual digits
-    let splitNums = value.toString().split("")
+// function narcissistic(value) {
+//     // Code me to return true or false
+//     //Split the number into individual digits
+//     let splitNums = value.toString().split("")
 
-    //find the sum of each number to the 3rd power
-    for(let i=0; i<splitNums.length; i++){
-        splitNums[i] = Math.pow(splitNums[i],splitNums.length)
+//     //find the sum of each number to the 3rd power
+//     for(let i=0; i<splitNums.length; i++){
+//         splitNums[i] = Math.pow(splitNums[i],splitNums.length)
+//     }
+//         //if sum equals value, return true
+//     return splitNums.reduce((a,b) => a+b) === value
+//   }
+
+//   console.log(narcissistic(153))
+//   console.log(narcissistic(1652))
+
+/**
+ * The Western Suburbs Croquet Club has two categories of membership, Senior and Open. They would like your help with an application form that will tell prospective members which category they will be placed.
+
+To be a senior, a member must be at least 55 years old and have a handicap greater than 7. In this croquet club, handicaps range from -2 to +26; the better the player the lower the handicap.
+
+Input
+Input will consist of a list of pairs. Each pair contains information for a single potential member. Information consists of an integer for the person's age and an integer for the person's handicap.
+
+Output
+Output will consist of a list of string values (in Haskell and C: Open or Senior) stating whether the respective member is to be placed in the senior or open category.
+
+Example
+input =  [[18, 20], [45, 2], [61, 12], [37, 6], [21, 21], [78, 9]]
+output = ["Open", "Open", "Senior", "Open", "Open", "Senior"]
+ */
+
+function openOrSenior(data){
+    //greater than or equal to 55 years old & handicap greater than 7
+    let seniorOrOpen = []
+    let seniorAge = 55
+    let handicapLimit = 7
+    for(let i=0; i<data.length; i++){
+        if(data[i][0]>=seniorAge && data[i][1]>handicapLimit){
+            seniorOrOpen.push("Senior")
+        }else{
+            seniorOrOpen.push("Open")
+        }
     }
-        //if sum equals value, return true
-    return splitNums.reduce((a,b) => a+b) === value
+    return seniorOrOpen
   }
 
-  console.log(narcissistic(153))
-  console.log(narcissistic(1652))
+  console.log(openOrSenior([[18, 20], [45, 2], [61, 12], [37, 6], [21, 21], [78, 9]]))
