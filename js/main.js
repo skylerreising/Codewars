@@ -3369,22 +3369,56 @@ Examples (input --> output):
  */
 
 // return masked string
-function maskify(cc) {
-    let splitStr = []
-    //for strings 4 or less
-    if(cc.length<5){
-        return cc
+// function maskify(cc) {
+//     let splitStr = []
+//     //for strings 4 or less
+//     if(cc.length<5){
+//         return cc
+//     }
+//     splitStr = cc.split("")
+//     //Put last four digits into its own array
+//     let lastFour = splitStr.splice(-4)
+
+//     // loop through splitStr and change each element to #
+//     splitStr = splitStr.map((x) => x="#").join("")
+
+//     return splitStr + lastFour.join("")
+// }
+
+// console.log(maskify("4556364607935616"))
+// console.log(maskify("Nananananananananananananananana Batman!"))
+// console.log(maskify("11111"))
+
+/**
+ * Complete the method/function so that it converts dash/underscore delimited words into camel casing. The first word within the output should be capitalized only if the original word was capitalized (known as Upper Camel Case, also often referred to as Pascal case). The next words should be always capitalized.
+
+Examples
+"the-stealth-warrior" gets converted to "theStealthWarrior"
+
+"The_Stealth_Warrior" gets converted to "TheStealthWarrior"
+
+"The_Stealth-Warrior" gets converted to "TheStealthWarrior"
+ */
+
+function toCamelCase(str){
+    //If the string is empty, return it
+    if(str===""){
+        return str
     }
-    splitStr = cc.split("")
-    //Put last four digits into its own array
-    let lastFour = splitStr.splice(-4)
-
-    // loop through splitStr and change each element to #
-    splitStr = splitStr.map((x) => x="#").join("")
-
-    return splitStr + lastFour.join("")
+    //Split the string
+    let splitStr = str.split("")
+    
+    //loop through using a conditional to capitalize the next letter after underscore or dash
+    for(let i=0; i<splitStr.length; i++){
+        if(splitStr[i]==="-" || splitStr[i]==="_"){
+            splitStr[i+1] = splitStr[i+1].toUpperCase()
+            splitStr[i]=""
+        }
+    }
+    //join the string back together
+    return splitStr.join("")
 }
 
-console.log(maskify("4556364607935616"))
-console.log(maskify("Nananananananananananananananana Batman!"))
-console.log(maskify("11111"))
+console.log(toCamelCase("The_Stealth-Warrior"))
+console.log(toCamelCase("the-stealth-warrior"))
+console.log(toCamelCase(""))
