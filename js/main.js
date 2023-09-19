@@ -3400,25 +3400,59 @@ Examples
 "The_Stealth-Warrior" gets converted to "TheStealthWarrior"
  */
 
-function toCamelCase(str){
-    //If the string is empty, return it
-    if(str===""){
-        return str
-    }
-    //Split the string
-    let splitStr = str.split("")
+// function toCamelCase(str){
+//     //If the string is empty, return it
+//     if(str===""){
+//         return str
+//     }
+//     //Split the string
+//     let splitStr = str.split("")
     
-    //loop through using a conditional to capitalize the next letter after underscore or dash
-    for(let i=0; i<splitStr.length; i++){
-        if(splitStr[i]==="-" || splitStr[i]==="_"){
-            splitStr[i+1] = splitStr[i+1].toUpperCase()
-            splitStr[i]=""
-        }
-    }
-    //join the string back together
-    return splitStr.join("")
-}
+//     //loop through using a conditional to capitalize the next letter after underscore or dash
+//     for(let i=0; i<splitStr.length; i++){
+//         if(splitStr[i]==="-" || splitStr[i]==="_"){
+//             splitStr[i+1] = splitStr[i+1].toUpperCase()
+//             splitStr[i]=""
+//         }
+//     }
+//     //join the string back together
+//     return splitStr.join("")
+// }
 
-console.log(toCamelCase("The_Stealth-Warrior"))
-console.log(toCamelCase("the-stealth-warrior"))
-console.log(toCamelCase(""))
+// console.log(toCamelCase("The_Stealth-Warrior"))
+// console.log(toCamelCase("the-stealth-warrior"))
+// console.log(toCamelCase(""))
+
+/**
+ * A Narcissistic Number (or Armstrong Number) is a positive number which is the sum of its own digits, each raised to the power of the number of digits in a given base. In this Kata, we will restrict ourselves to decimal (base 10).
+
+For example, take 153 (3 digits), which is narcissistic:
+
+    1^3 + 5^3 + 3^3 = 1 + 125 + 27 = 153
+and 1652 (4 digits), which isn't:
+
+    1^4 + 6^4 + 5^4 + 2^4 = 1 + 1296 + 625 + 16 = 1938
+The Challenge:
+
+Your code must return true or false (not 'true' and 'false') depending upon whether the given number is a Narcissistic number in base 10.
+
+This may be True and False in your language, e.g. PHP.
+
+Error checking for text strings or other invalid inputs is not required, only valid positive non-zero integers will be passed into the function.
+ */
+
+function narcissistic(value) {
+    // Code me to return true or false
+    //Split the number into individual digits
+    let splitNums = value.toString().split("")
+
+    //find the sum of each number to the 3rd power
+    for(let i=0; i<splitNums.length; i++){
+        splitNums[i] = Math.pow(splitNums[i],splitNums.length)
+    }
+        //if sum equals value, return true
+    return splitNums.reduce((a,b) => a+b) === value
+  }
+
+  console.log(narcissistic(153))
+  console.log(narcissistic(1652))
