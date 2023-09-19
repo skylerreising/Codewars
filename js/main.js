@@ -3210,35 +3210,144 @@ Examples
 ""  -->  ""
  */
 
-function order(words){
-    if(words===""){
-        return words
-    }else{
-        //turn string into array of words
-        let strArr = words.split(" ")
+// function order(words){
+//     if(words===""){
+//         return words
+//     }else{
+//         //turn string into array of words
+//         let strArr = words.split(" ")
 
-        //loop through array and sort based on numbers inside of the words
-        //Create a new array of just the numbers in the words
-        let arrayOfArrays = []
-        let numsOnly = []
-        //first each element of strArr needs its own array
-        for(let i=0; i<strArr.length; i++){
-            arrayOfArrays.push(strArr[i].split(""))
+//         //loop through array and sort based on numbers inside of the words
+//         //Create a new array of just the numbers in the words
+//         let arrayOfArrays = []
+//         let numsOnly = []
+//         //first each element of strArr needs its own array
+//         for(let i=0; i<strArr.length; i++){
+//             arrayOfArrays.push(strArr[i].split(""))
+//         }
+//         //Create array of just numbers
+//         for(let i=0; i<arrayOfArrays.length; i++){
+//             numsOnly.push(arrayOfArrays[i].filter(x => Number(x)))
+//         }
+//         //add numbers from numbers only array to beginning of each item in the string array, sort the array, then shift the numbers off string array and join
+//         for(let i=0; i<strArr.length; i++){
+//             strArr[i] = `${numsOnly[i][0]}${strArr[i]}`
+//         }
+//         strArr = strArr.sort()
+//         strArr = strArr.map(x => x.substring(1))
+//         return strArr.join(" ")
+//     }
+//   }
+
+//   console.log(order("is2 Thi1s T4est 3a"))
+//   console.log(order("4of Fo1r pe6ople g3ood th5e the2"))
+//   console.log(order(""))
+
+// Take 2 strings s1 and s2 including only letters from a to z. Return a new sorted string, the longest possible, containing distinct letters - each taken only once - coming from s1 or s2.
+
+// Examples:
+// a = "xyaabbbccccdefww"
+// b = "xxxxyyyyabklmopq"
+// longest(a, b) -> "abcdefklmopqwxy"
+
+// a = "abcdefghijklmnopqrstuvwxyz"
+// longest(a, a) -> "abcdefghijklmnopqrstuvwxyz"
+
+// function longest(s1, s2) {
+//   let unique = new Set(s1+s2)
+//   let uniqueArr = []
+//   unique.forEach(x => uniqueArr.push(x))
+//   let finalStr = uniqueArr.sort().join("")
+//   return finalStr
+// }
+
+// console.log(longest("xyaabbbccccdefww","xxxxyyyyabklmopq"))
+
+// Write a function that accepts an array of 10 integers (between 0 and 9), that returns a string of those numbers in the form of a phone number.
+
+// Example
+// createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) // => returns "(123) 456-7890"
+// The returned format must be correct in order to complete this challenge.
+
+// Don't forget the space after the closing parentheses!
+
+// function createPhoneNumber(numbers){
+//   return `(${numbers[0]}${numbers[1]}${numbers[2]}) ${numbers[3]}${numbers[4]}${numbers[5]}-${numbers[6]}${numbers[7]}${numbers[8]}${numbers[9]}`
+// }
+
+// console.log(createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]))
+
+// Digital root is the recursive sum of all the digits in a number.
+
+// Given n, take the sum of the digits of n. If that value has more than one digit, continue reducing in this way until a single-digit number is produced. The input will be a non-negative integer.
+
+// Examples
+//     16  -->  1 + 6 = 7
+//    942  -->  9 + 4 + 2 = 15  -->  1 + 5 = 6
+// 132189  -->  1 + 3 + 2 + 1 + 8 + 9 = 24  -->  2 + 4 = 6
+// 493193  -->  4 + 9 + 3 + 1 + 9 + 3 = 29  -->  2 + 9 = 11  -->  1 + 1 = 2
+
+// function digitalRoot(n) {
+//   //split the number to prepare it for addition
+//   let splitNum = n.toString().split("")
+//   //loop through the number to get the sum
+//   let sum = 0
+//   sum = splitNum.reduce((a,b) => +a + +b)
+  
+//   while(sum.toString().length>1){
+//     sum = sum.toString().split("").reduce((a,b) => +a + +b)
+//   }
+//   return +sum
+// }
+
+// console.log(digitalRoot(16))
+// console.log(digitalRoot(942))
+// console.log(digitalRoot(132189))
+// console.log(digitalRoot(0))
+
+// Write a function that takes an integer as input, and returns the number of bits that are equal to one in the binary representation of that number. You can guarantee that input is non-negative.
+
+// Example: The binary representation of 1234 is 10011010010, so the function should return 5 in this case
+
+// var countBits = function(n) {
+//   //turn number into binary
+//   let bin = n.toString(2).split("")
+
+//   //count the number of ones
+  
+//   return bin.filter(x => x==="1").length
+// };
+
+// console.log(countBits(1234))
+
+// You are given an array (which will have a length of at least 3, but could be very large) containing integers. The array is either entirely comprised of odd integers or entirely comprised of even integers except for a single integer N. Write a method that takes the array as an argument and returns this "outlier" N.
+
+// Examples
+// [2, 4, 0, 100, 4, 11, 2602, 36]
+// Should return: 11 (the only odd number)
+
+// [160, 3, 1719, 19, 11, 13, -21]
+// Should return: 160 (the only even number)
+
+function findOutlier(integers){
+    //Loop through each element and count how many are odd and how many are even and use that to return the correct number
+    let countOfOdd = 0
+    let countOfEven = 0
+    for(let i=0; i<integers.length; i++){
+        if(integers[i] % 2 === 0){
+            countOfEven++
+        }else{
+            countOfOdd++
         }
-        //Create array of just numbers
-        for(let i=0; i<arrayOfArrays.length; i++){
-            numsOnly.push(arrayOfArrays[i].filter(x => Number(x)))
-        }
-        //add numbers from numbers only array to beginning of each item in the string array, sort the array, then shift the numbers off string array and join
-        for(let i=0; i<strArr.length; i++){
-            strArr[i] = `${numsOnly[i][0]}${strArr[i]}`
-        }
-        strArr = strArr.sort()
-        strArr = strArr.map(x => x.substring(1))
-        return strArr.join(" ")
+    }
+    if(countOfEven===1){
+        return integers.filter((x) => x%2===0)[0]
+    }else{
+        return integers.filter((x) => x%2!==0)[0]
     }
   }
-
-  console.log(order("is2 Thi1s T4est 3a"))
-  console.log(order("4of Fo1r pe6ople g3ood th5e the2"))
-  console.log(order(""))
+  
+  console.log(findOutlier([2, 4, 0, 100, 4, 11, 2602, 36]))
+  console.log(findOutlier([160, 3, 1719, 19, 11, 13, -21]))
+  console.log(findOutlier([-48815729,-102346279,24603073,121407439,35141413,14735119,-81586965,193254818,-35348421,180048439,-174156735,23854037,124606765,-168424591]))
+  console.log(findOutlier([123378562,958216,-108021524,-43494136,-156224382,7925986,14522032,-61080392,-151438246,-12181366,-103700526,41244632,157948486,-188420418,-52966560,-194754727,-141691806]))
