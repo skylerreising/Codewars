@@ -3621,15 +3621,33 @@ nb_year(1500000, 2.5, 10000, 2000000) -> 10
 // 625 --> 676
 // 114 --> -1 since 114 is not a perfect square
 
-function findNextSquare(sq) {
-  // Return the next square if sq is a perfect square, -1 otherwise
-  if(!Number.isInteger(Math.sqrt(sq))){
-    return -1
-  }else{
-    return (Math.sqrt(sq)+1)*(Math.sqrt(sq)+1)
-  }
+// function findNextSquare(sq) {
+//   // Return the next square if sq is a perfect square, -1 otherwise
+//   if(!Number.isInteger(Math.sqrt(sq))){
+//     return -1
+//   }else{
+//     return (Math.sqrt(sq)+1)*(Math.sqrt(sq)+1)
+//   }
+// }
+
+// console.log(findNextSquare(121))
+// console.log(findNextSquare(625))
+// console.log(findNextSquare(114))
+
+/**
+ * Create a function that checks if a number n is divisible by two numbers x AND y. All inputs are positive, non-zero numbers.
+
+Examples:
+1) n =   3, x = 1, y = 3 =>  true because   3 is divisible by 1 and 3
+2) n =  12, x = 2, y = 6 =>  true because  12 is divisible by 2 and 6
+3) n = 100, x = 5, y = 3 => false because 100 is not divisible by 3
+4) n =  12, x = 7, y = 5 => false because  12 is neither divisible by 7 nor 5
+ */
+
+function isDivisible(n, x, y) {
+    return n%x===0 && n%y===0 ? true:false
 }
 
-console.log(findNextSquare(121))
-console.log(findNextSquare(625))
-console.log(findNextSquare(114))
+console.log(isDivisible(3,3,4))//false
+console.log(isDivisible(12,3,4))//true
+console.log(isDivisible(8,3,4))//false
