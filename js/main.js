@@ -3666,18 +3666,59 @@ Please keep in mind that the test cases ensure that the number of people in the 
 The second value in the first pair in the array is 0, since the bus is empty in the first bus stop.
  */
 
-var number = function(busStops){
-    //loop through the array and change the count of how many people are on and off the bus then return the sum
-    let onBus = 0
-    let offBus = 0
-    for(let i=0; i<busStops.length; i++){
-        onBus += busStops[i][0]
-        offBus -= busStops[i][1]
-    }
-    return onBus + offBus
-  }
+// var number = function(busStops){
+//     //loop through the array and change the count of how many people are on and off the bus then return the sum
+//     let onBus = 0
+//     let offBus = 0
+//     for(let i=0; i<busStops.length; i++){
+//         onBus += busStops[i][0]
+//         offBus -= busStops[i][1]
+//     }
+//     return onBus + offBus
+//   }
 
-  console.log(number([[10,0],[3,5],[5,8]]))
-  console.log(number([[3,0],[9,1],[4,10],[12,2],[6,1],[7,10]]))
-  console.log(number([[3,0],[9,1],[4,8],[12,2],[6,1],[7,8]]))
-  console.log(number([[0,0]]))
+//   console.log(number([[10,0],[3,5],[5,8]]))
+//   console.log(number([[3,0],[9,1],[4,10],[12,2],[6,1],[7,10]]))
+//   console.log(number([[3,0],[9,1],[4,8],[12,2],[6,1],[7,8]]))
+//   console.log(number([[0,0]]))
+
+/**
+ * Complete the solution so that it splits the string into pairs of two characters. If the string contains an odd number of characters then it should replace the missing second character of the final pair with an underscore ('_').
+
+Examples:
+
+* 'abc' =>  ['ab', 'c_']
+* 'abcdef' => ['ab', 'cd', 'ef']
+ */
+
+function solution(str){
+    //if empty string, return empty string
+    if(str===""){
+        return []
+    }
+    //control for odd number length,add underscore
+    let newStr = str
+    if(str.length%2!==0){
+       newStr = `${newStr}_`
+    }
+
+   //split the string
+    let splitStr = newStr.split("")
+
+   //loop and concatenate every other letter
+   for(let i=0; i<splitStr.length; i+=2){
+    splitStr[i] = splitStr[i]+splitStr[i+1]
+   }
+   //push every even number indexed item into a new array
+   let newArr = []
+   for(let i=0; i<splitStr.length; i++){
+    if(i%2===0){
+        newArr.push(splitStr[i])
+    }
+   }
+   return newArr
+}
+
+console.log(solution("abcdef"))
+console.log(solution("abcdefg"))
+console.log(solution(""))
