@@ -3691,34 +3691,162 @@ Examples:
 * 'abcdef' => ['ab', 'cd', 'ef']
  */
 
-function solution(str){
-    //if empty string, return empty string
-    if(str===""){
-        return []
-    }
-    //control for odd number length,add underscore
-    let newStr = str
-    if(str.length%2!==0){
-       newStr = `${newStr}_`
-    }
+// function solution(str){
+//     //if empty string, return empty string
+//     if(str===""){
+//         return []
+//     }
+//     //control for odd number length,add underscore
+//     let newStr = str
+//     if(str.length%2!==0){
+//        newStr = `${newStr}_`
+//     }
 
-   //split the string
-    let splitStr = newStr.split("")
+//    //split the string
+//     let splitStr = newStr.split("")
 
-   //loop and concatenate every other letter
-   for(let i=0; i<splitStr.length; i+=2){
-    splitStr[i] = splitStr[i]+splitStr[i+1]
-   }
-   //push every even number indexed item into a new array
-   let newArr = []
-   for(let i=0; i<splitStr.length; i++){
-    if(i%2===0){
-        newArr.push(splitStr[i])
+//    //loop and concatenate every other letter
+//    for(let i=0; i<splitStr.length; i+=2){
+//     splitStr[i] = splitStr[i]+splitStr[i+1]
+//    }
+//    //push every even number indexed item into a new array
+//    let newArr = []
+//    for(let i=0; i<splitStr.length; i++){
+//     if(i%2===0){
+//         newArr.push(splitStr[i])
+//     }
+//    }
+//    return newArr
+// }
+
+// console.log(solution("abcdef"))
+// console.log(solution("abcdefg"))
+// console.log(solution(""))
+
+// In a factory a printer prints labels for boxes. For one kind of boxes the printer has to use colors which, for the sake of simplicity, are named with letters from a to m.
+
+// The colors used by the printer are recorded in a control string. For example a "good" control string would be aaabbbbhaijjjm meaning that the printer used three times color a, four times color b, one time color h then one time color a...
+
+// Sometimes there are problems: lack of colors, technical malfunction and a "bad" control string is produced e.g. aaaxbbbbyyhwawiwjjjwwm with letters not from a to m.
+
+// You have to write a function printer_error which given a string will return the error rate of the printer as a string representing a rational whose numerator is the number of errors and the denominator the length of the control string. Don't reduce this fraction to a simpler expression.
+
+// The string has a length greater or equal to one and contains only letters from ato z.
+
+// Examples:
+// s="aaabbbbhaijjjm"
+// printer_error(s) => "0/14"
+
+// s="aaaxbbbbyyhwawiwjjjwwm"
+// printer_error(s) => "8/22"
+
+// function printerError(s) {
+//     //first number is errors, 2nd number is length
+//   let countOfErrors = 0
+//   let stringLength = s.length
+//   //loop and use a conditional using charCode
+//   const mCharCode = 'm'.charCodeAt(0)
+
+//   for(let i=0; i<s.length; i++){
+//     if(s.charCodeAt(i)>mCharCode){
+//       countOfErrors++
+//     }
+//   }
+//   return `${countOfErrors}/${stringLength}`
+// }
+// console.log(printerError("aaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbmmmmmmmmmmmmmmmmmmmxyz"))
+
+// ATM machines allow 4 or 6 digit PIN codes and PIN codes cannot contain anything but exactly 4 digits or exactly 6 digits.
+
+// If the function is passed a valid PIN string, return true, else return false.
+
+// Examples (Input --> Output)
+// "1234"   -->  true
+// "12345"  -->  false
+// "a234"   -->  false
+
+// function validatePIN (pin) {
+//   // check pin for length
+//   if(pin.length === 4 || pin.length === 6){
+//     // check all characters are digits
+//     for(let i=0; i<pin.length; i++){
+//       if(pin[i].charCode<48 || pin[i].charCode>57){
+//         return false
+//       }
+//     }
+//     return true
+//   }
+//   return false
+// }
+
+// console.log(validatePIN("1234"))
+// console.log(validatePIN("12345"))
+// console.log(validatePIN("a234"))
+// console.log(validatePIN(".234"))
+// console.log(validatePIN("123 "))
+// console.log(validatePIN("098765"))
+
+// Given a list of integers, determine whether the sum of its elements is odd or even.
+
+// Give your answer as a string matching "odd" or "even".
+
+// If the input array is empty consider it as: [0] (array with a zero).
+
+// Examples:
+// Input: [0]
+// Output: "even"
+
+// Input: [0, 1, 4]
+// Output: "odd"
+
+// Input: [0, -1, -5]
+// Output: "even"
+
+// function oddOrEven(array) {
+//   if(array === [0] || array.length === 0){
+//     return "even"
+//   }
+//   let sum = array.reduce((a,b) => a+b)
+//   if(sum%2===0){
+//     return "even"
+//   }else{
+//     return "odd"
+//   }
+// }
+// console.log(oddOrEven([]))
+// console.log(oddOrEven([0]))
+// console.log(oddOrEven([0,1,5]))
+// console.log(oddOrEven([0, -1, -5]))
+// console.log(oddOrEven([0, 1, 2]))
+// console.log(oddOrEven([-1023, -1, 3]))
+
+// You will be given an array of numbers. You have to sort the odd numbers in ascending order while leaving the even numbers at their original positions.
+
+// Examples
+// [7, 1]  =>  [1, 7]
+// [5, 8, 6, 3, 4]  =>  [3, 8, 6, 5, 4]
+// [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]  =>  [1, 8, 3, 6, 5, 4, 7, 2, 9, 0]
+
+function sortArray(array) {
+  //grab odd numbers and their indices
+  let oddNums = []
+  let indices = []
+  for(let i=0; i<array.length; i++){
+    if(array[i]%2!==0){
+      oddNums.push(array[i])
+      indices.push(i)
     }
-   }
-   return newArr
+  }
+  //sort odd numbers
+  oddNums.sort((a,b) => a-b)
+  //return odd numbers to their indexes
+  let sortedArr = array
+  for(let i=0; i<indices.length; i++){
+   sortedArr.splice(indices[i],1,oddNums[i])
+  }
+  return sortedArr
 }
 
-console.log(solution("abcdef"))
-console.log(solution("abcdefg"))
-console.log(solution(""))
+// console.log(sortArray([7, 1]))
+// console.log(sortArray([5, 8, 6, 3, 4]))
+// console.log(sortArray([9, 8, 7, 6, 5, 4, 3, 2, 1, 0]))
