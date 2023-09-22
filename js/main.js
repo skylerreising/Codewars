@@ -3827,26 +3827,51 @@ Examples:
 // [5, 8, 6, 3, 4]  =>  [3, 8, 6, 5, 4]
 // [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]  =>  [1, 8, 3, 6, 5, 4, 7, 2, 9, 0]
 
-function sortArray(array) {
-  //grab odd numbers and their indices
-  let oddNums = []
-  let indices = []
-  for(let i=0; i<array.length; i++){
-    if(array[i]%2!==0){
-      oddNums.push(array[i])
-      indices.push(i)
-    }
-  }
-  //sort odd numbers
-  oddNums.sort((a,b) => a-b)
-  //return odd numbers to their indexes
-  let sortedArr = array
-  for(let i=0; i<indices.length; i++){
-   sortedArr.splice(indices[i],1,oddNums[i])
-  }
-  return sortedArr
-}
+// function sortArray(array) {
+//   //grab odd numbers and their indices
+//   let oddNums = []
+//   let indices = []
+//   for(let i=0; i<array.length; i++){
+//     if(array[i]%2!==0){
+//       oddNums.push(array[i])
+//       indices.push(i)
+//     }
+//   }
+//   //sort odd numbers
+//   oddNums.sort((a,b) => a-b)
+//   //return odd numbers to their indexes
+//   let sortedArr = array
+//   for(let i=0; i<indices.length; i++){
+//    sortedArr.splice(indices[i],1,oddNums[i])
+//   }
+//   return sortedArr
+// }
 
-// console.log(sortArray([7, 1]))
-// console.log(sortArray([5, 8, 6, 3, 4]))
-// console.log(sortArray([9, 8, 7, 6, 5, 4, 3, 2, 1, 0]))
+// // console.log(sortArray([7, 1]))
+// // console.log(sortArray([5, 8, 6, 3, 4]))
+// // console.log(sortArray([9, 8, 7, 6, 5, 4, 3, 2, 1, 0]))
+
+// Find the missing letter
+// Write a method that takes an array of consecutive (increasing) letters as input and that returns the missing letter in the array.
+
+// You will always get an valid array. And it will be always exactly one letter be missing. The length of the array will always be at least 2.
+// The array will always contain letters in only one case.
+
+// Example:
+
+// ['a','b','c','d','f'] -> 'e'
+// ['O','Q','R','S'] -> 'P'
+// (Use the English alphabet with 26 letters!)
+
+function findMissingLetter(array){
+    let missingLetter
+    for(let i=0; i<array.length-1; i++){
+      if(array[i].charCodeAt(0) !== array[i+1].charCodeAt(0)-1){
+        missingLetter = array[i].charCodeAt()
+      }
+    }
+    return String.fromCharCode(missingLetter+1)
+  }
+  
+  console.log(findMissingLetter(['a','b','c','d','f'])) //a is 91
+  console.log(findMissingLetter(['O','Q','R','S'])) //O is 79
