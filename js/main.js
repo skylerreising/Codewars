@@ -3884,11 +3884,51 @@ Examples
 "double  spaces"      ==> "elbuod  secaps"
  */
 
-function reverseWords(str) {
-    let strArr = str.split("").reverse().join("")
-    let revWords = strArr.split(" ").reverse().join(" ")
-    return revWords
+// function reverseWords(str) {
+//     let strArr = str.split("").reverse().join("")
+//     let revWords = strArr.split(" ").reverse().join(" ")
+//     return revWords
+//   }
+
+//   console.log(reverseWords('The quick brown fox jumps over the lazy dog.'))
+//   console.log(reverseWords("double  spaces"))
+
+/**
+ * Move the first letter of each word to the end of it, then add "ay" to the end of the word. Leave punctuation marks untouched.
+
+Examples
+pigIt('Pig latin is cool'); // igPay atinlay siay oolcay
+pigIt('Hello world !');     // elloHay orldway !
+ */
+
+function pigIt(str){
+    //split the string
+    let splitStr = str.split(" ")
+    
+    //move the first letter of each word to the end of each word
+    //array of first letters
+    let moveLetter = []
+    for(let i=0; i<splitStr.length; i++){
+        moveLetter.push(splitStr[i].split("").shift())
+    }
+
+    //array of words without the first letter
+    let smallWords = []
+
+    smallWords = splitStr.map(x => x.slice(1))
+
+    //add "ay" to the end of each moveLetter
+    //need a conditional that checks if the moveLetter is a letter or punctuation
+    let ays = []
+    ays  = moveLetter.map(x => x.toLowerCase() !== x.toUpperCase() ? x+'ay':x)
+
+    //join smallWords with the ays
+    let pigLatin = []
+    for(let i=0; i<smallWords.length; i++){
+        pigLatin.push(smallWords[i]+ays[i])
+    }
+    return pigLatin.join(" ")
   }
 
-  console.log(reverseWords('The quick brown fox jumps over the lazy dog.'))
-  console.log(reverseWords("double  spaces"))
+  console.log(pigIt('Pig latin is cool'))
+  console.log(pigIt('Hello world !'))
