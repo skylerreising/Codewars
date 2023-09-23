@@ -3863,15 +3863,32 @@ Examples:
 // ['O','Q','R','S'] -> 'P'
 // (Use the English alphabet with 26 letters!)
 
-function findMissingLetter(array){
-    let missingLetter
-    for(let i=0; i<array.length-1; i++){
-      if(array[i].charCodeAt(0) !== array[i+1].charCodeAt(0)-1){
-        missingLetter = array[i].charCodeAt()
-      }
-    }
-    return String.fromCharCode(missingLetter+1)
-  }
+// function findMissingLetter(array){
+//     let missingLetter
+//     for(let i=0; i<array.length-1; i++){
+//       if(array[i].charCodeAt(0) !== array[i+1].charCodeAt(0)-1){
+//         missingLetter = array[i].charCodeAt()
+//       }
+//     }
+//     return String.fromCharCode(missingLetter+1)
+//   }
   
-  console.log(findMissingLetter(['a','b','c','d','f'])) //a is 91
-  console.log(findMissingLetter(['O','Q','R','S'])) //O is 79
+//   console.log(findMissingLetter(['a','b','c','d','f'])) //a is 91
+//   console.log(findMissingLetter(['O','Q','R','S'])) //O is 79
+
+/**
+ * Complete the function that accepts a string parameter, and reverses each word in the string. All spaces in the string should be retained.
+
+Examples
+"This is an example!" ==> "sihT si na !elpmaxe"
+"double  spaces"      ==> "elbuod  secaps"
+ */
+
+function reverseWords(str) {
+    let strArr = str.split("").reverse().join("")
+    let revWords = strArr.split(" ").reverse().join(" ")
+    return revWords
+  }
+
+  console.log(reverseWords('The quick brown fox jumps over the lazy dog.'))
+  console.log(reverseWords("double  spaces"))
