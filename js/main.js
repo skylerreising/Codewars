@@ -3901,34 +3901,94 @@ pigIt('Pig latin is cool'); // igPay atinlay siay oolcay
 pigIt('Hello world !');     // elloHay orldway !
  */
 
-function pigIt(str){
-    //split the string
-    let splitStr = str.split(" ")
-    
-    //move the first letter of each word to the end of each word
-    //array of first letters
-    let moveLetter = []
-    for(let i=0; i<splitStr.length; i++){
-        moveLetter.push(splitStr[i].split("").shift())
+// function pigIt(str){
+//     //split the string
+//     let splitStr = str.split(" ")
+
+//     //move the first letter of each word to the end of each word
+//     //array of first letters
+//     let moveLetter = []
+//     for(let i=0; i<splitStr.length; i++){
+//         moveLetter.push(splitStr[i].split("").shift())
+//     }
+
+//     //array of words without the first letter
+//     let smallWords = []
+
+//     smallWords = splitStr.map(x => x.slice(1))
+
+//     //add "ay" to the end of each moveLetter
+//     //need a conditional that checks if the moveLetter is a letter or punctuation
+//     let ays = []
+//     ays  = moveLetter.map(x => x.toLowerCase() !== x.toUpperCase() ? x+'ay':x)
+
+//     //join smallWords with the ays
+//     let pigLatin = []
+//     for(let i=0; i<smallWords.length; i++){
+//         pigLatin.push(smallWords[i]+ays[i])
+//     }
+//     return pigLatin.join(" ")
+//   }
+
+//   console.log(pigIt('Pig latin is cool'))
+//   console.log(pigIt('Hello world !'))
+
+/**
+ * Snail Sort
+Given an n x n array, return the array elements arranged from outermost elements to the middle element, traveling clockwise.
+
+array = [[1,2,3],
+         [4,5,6],
+         [7,8,9]]
+snail(array) #=> [1,2,3,6,9,8,7,4,5]
+For better understanding, please follow the numbers of the next array consecutively:
+
+array = [[1,2,3],
+         [8,9,4],
+         [7,6,5]]
+snail(array) #=> [1,2,3,4,5,6,7,8,9]
+This image will illustrate things more clearly:
+
+
+NOTE: The idea is not sort the elements from the lowest value to the highest; the idea is to traverse the 2-d array in a clockwise snailshell pattern.
+
+NOTE 2: The 0x0 (empty matrix) is represented as en empty array inside an array [[]].
+ */
+
+snail = function(array) {
+    //number of array length
+    const arLength = array.length
+    //Create array that will be returned at the end & put the first array into snailArray
+    let snailArray = array[0]
+
+    //put the end of every array after the first into snailArray
+    for(let i=1; i<arLength; i++){
+        snailArray.push(array[i][array[i].length-1])
     }
+    //put the last array into snailArray in reverse order and skip the last number in that array because it was already put into the array
+    let reversedLast = []
+    reversedLast.push(array[arLength-1])
+    reversedLast = reversedLast.toString().split(",").reverse()
+    reversedLast = reversedLast.map(x => Number(x))
 
-    //array of words without the first letter
-    let smallWords = []
-
-    smallWords = splitStr.map(x => x.slice(1))
-
-    //add "ay" to the end of each moveLetter
-    //need a conditional that checks if the moveLetter is a letter or punctuation
-    let ays = []
-    ays  = moveLetter.map(x => x.toLowerCase() !== x.toUpperCase() ? x+'ay':x)
-
-    //join smallWords with the ays
-    let pigLatin = []
-    for(let i=0; i<smallWords.length; i++){
-        pigLatin.push(smallWords[i]+ays[i])
+    for(let i=1; i<reversedLast.length; i++){
+        snailArray.push(reversedLast[i])
     }
-    return pigLatin.join(" ")
+    //put the first number of each array into snailArray starting at 2nd to last array and moving to the first, but stop before the first array
+    for(let i=arLength-2; i>=1; i--){
+        snailArray.push(array[i][0])
+    }
+    //put the numbers of the 2nd array between the first and last number into snail array
+    for(let i=1; i<array[1].length-1; i++){
+        snailArray.push(array[1][i])
+    }
+    //conditional that checks if function is complete.
+    //check if lengths are the same?
+    return array
+    // return snailArray
   }
-
-  console.log(pigIt('Pig latin is cool'))
-  console.log(pigIt('Hello world !'))
+// console.log(snail([[]]))
+// console.log(snail([[1]]))
+// console.log(snail([[1,2][3,4]]))
+console.log(snail([[1,2,3],[8,9,4],[7,6,5]]))
+console.log(snail([[1, 2, 3, 4, 5, 6], [20, 21, 22, 23, 24, 7], [19, 32, 33, 34, 25, 8], [18, 31, 36, 35, 26, 9], [17, 30, 29, 28, 27, 10], [16, 15, 14, 13, 12, 11]]))
