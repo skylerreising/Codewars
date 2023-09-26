@@ -3984,8 +3984,8 @@ snail = function(array) {
     }
     //conditional that checks if function is complete.
     //check if lengths are the same?
-    return array
-    // return snailArray
+    // return array
+    return snailArray
   }
 // console.log(snail([[]]))
 // console.log(snail([[1]]))
