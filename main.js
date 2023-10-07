@@ -3959,7 +3959,7 @@ snail = function(array) {
     //number of array length
     const arLength = array.length
     //Create array that will be returned at the end & put the first array into snailArray
-    let snailArray = array[0]
+    let snailArray = [...array[0]]
 
     //put the end of every array after the first into snailArray
     for(let i=1; i<arLength; i++){
@@ -3984,11 +3984,34 @@ snail = function(array) {
     }
     //conditional that checks if function is complete.
     //check if lengths are the same?
+
     // return array
     return snailArray
   }
+
+// snail = function(array){
+//     //if the array of arrays is empty or only holds one value, return array
+//     if(array[0].length===0){
+//         return array
+//     }
+//     if(array[0].length===1){
+//         return array
+//     }
+//     //if the length is 2
+//     if(array.length===2){
+//         let twoArr = []
+//         twoArr.push(array[0])
+//         twoArr.push(array[1].toString().split(",").reverse().map(x => Number(x)))
+//         return twoArr
+//     }
+//     //if the length is greater than 2
+//     if(array.length>2){
+
+//     }
+// }
 // console.log(snail([[]]))
 // console.log(snail([[1]]))
-// console.log(snail([[1,2][3,4]]))
+// console.log(snail([[1,2],[3,4]]))
 console.log(snail([[1,2,3],[8,9,4],[7,6,5]]))
-console.log(snail([[1, 2, 3, 4, 5, 6], [20, 21, 22, 23, 24, 7], [19, 32, 33, 34, 25, 8], [18, 31, 36, 35, 26, 9], [17, 30, 29, 28, 27, 10], [16, 15, 14, 13, 12, 11]]))
+// console.log(snail([[1, 2, 3, 4, 5, 6], [20, 21, 22, 23, 24, 7], [19, 32, 33, 34, 25, 8], [18, 31, 36, 35, 26, 9], [17, 30, 29, 28, 27, 10], [16, 15, 14, 13, 12, 11]]))
+// console.log(snail([[1,2,3],[8,9,4]]))
