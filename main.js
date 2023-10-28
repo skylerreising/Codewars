@@ -3954,64 +3954,64 @@ NOTE: The idea is not sort the elements from the lowest value to the highest; th
 
 NOTE 2: The 0x0 (empty matrix) is represented as en empty array inside an array [[]].
  */
-
 snail = function(array) {
-    //number of array length
-    const arLength = array.length
-    //Create array that will be returned at the end & put the first array into snailArray
-    let snailArray = [...array[0]]
-
-    //put the end of every array after the first into snailArray
-    for(let i=1; i<arLength; i++){
-        snailArray.push(array[i][array[i].length-1])
+    //control for empty array and 1x1 array
+    let n = array.length
+    
+    if(n===1){
+        if(array[0].length===0){
+            return []
+        }else{
+            return array[0]
+        }
     }
-    //put the last array into snailArray in reverse order and skip the last number in that array because it was already put into the array
-    let reversedLast = []
-    reversedLast.push(array[arLength-1])
-    reversedLast = reversedLast.toString().split(",").reverse()
-    reversedLast = reversedLast.map(x => Number(x))
+    let newArr = []
 
-    for(let i=1; i<reversedLast.length; i++){
-        snailArray.push(reversedLast[i])
+    //loop to run this code while n >=2
+    while(n>=2){
+        for(let i=0; i<n; i++){
+            newArr.push(array[0][i])
+        }
+        // Put the end of every array after the first into snailArray
+        for(let i=1; i<n; i++){
+            newArr.push(array[i][array[i].length-1])
+        }
+        let reversedLast = []
+        reversedLast.push(array[n-1])
+        reversedLast = reversedLast.toString().split(",").reverse()
+        reversedLast = reversedLast.map(x => Number(x))
+
+        for(let i=1; i<reversedLast.length; i++){
+            newArr.push(reversedLast[i])
+        }
+        //put the first number of each array into snailArray starting at 2nd to last array and moving to the first, but stop before the first array if n>2
+        if(n>2){
+            for(let i=n-2; i>=1; i--){
+            newArr.push(array[i][0])
+            }
+            //delete perimeter from array and repeat process and decrement n until n<=2
+            array.shift()
+            for(let i=0; i<n-1; i++){
+                array[i].pop()
+            }
+            array.pop()
+            //shift first element of each array
+            for(let i=0; i<n-2; i++){
+                array[i].shift()
+            }
+        }
+        n-=2
+        //push last digit into newArr if n is 1
+        if(n===1){
+            newArr.push(array[0][0])
+        }
     }
-    //put the first number of each array into snailArray starting at 2nd to last array and moving to the first, but stop before the first array
-    for(let i=arLength-2; i>=1; i--){
-        snailArray.push(array[i][0])
-    }
-    //put the numbers of the 2nd array between the first and last number into snail array
-    for(let i=1; i<array[1].length-1; i++){
-        snailArray.push(array[1][i])
-    }
-    //conditional that checks if function is complete.
-    //check if lengths are the same?
+    return newArr
+}
 
-    // return array
-    return snailArray
-  }
-
-// snail = function(array){
-//     //if the array of arrays is empty or only holds one value, return array
-//     if(array[0].length===0){
-//         return array
-//     }
-//     if(array[0].length===1){
-//         return array
-//     }
-//     //if the length is 2
-//     if(array.length===2){
-//         let twoArr = []
-//         twoArr.push(array[0])
-//         twoArr.push(array[1].toString().split(",").reverse().map(x => Number(x)))
-//         return twoArr
-//     }
-//     //if the length is greater than 2
-//     if(array.length>2){
-
-//     }
-// }
-// console.log(snail([[]]))
-// console.log(snail([[1]]))
-// console.log(snail([[1,2],[3,4]]))
+console.log(snail([[]]))
+console.log(snail([[1]]))
+console.log(snail([[1,2],[3,4]]))
+console.log(snail([[1,2,3,4],[12,13,14,5],[11,16,15,6],[10,9,8,7]]))
 console.log(snail([[1,2,3],[8,9,4],[7,6,5]]))
-// console.log(snail([[1, 2, 3, 4, 5, 6], [20, 21, 22, 23, 24, 7], [19, 32, 33, 34, 25, 8], [18, 31, 36, 35, 26, 9], [17, 30, 29, 28, 27, 10], [16, 15, 14, 13, 12, 11]]))
-// console.log(snail([[1,2,3],[8,9,4]]))
+console.log(snail([[1, 2, 3, 4, 5, 6], [20, 21, 22, 23, 24, 7], [19, 32, 33, 34, 25, 8], [18, 31, 36, 35, 26, 9], [17, 30, 29, 28, 27, 10], [16, 15, 14, 13, 12, 11]]))
