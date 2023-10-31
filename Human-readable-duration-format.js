@@ -29,6 +29,9 @@ A unit of time must be used "as much as possible". It means that the function sh
 */
 
 function formatDuration (seconds) {
+    //Use mod === 1 for singular, otherwise plural
+    //use mod === 0 to determine if a component will appear or not
+    //will need to put " and " in front of the last unit, instead of ", "
     //Control for 0
     if(seconds===0){
         return 'now'
@@ -44,9 +47,9 @@ function formatDuration (seconds) {
 
     //Day(s) to be pushed
     if(days>1){
-        timeLeft.push(`${days} days `)
+        timeLeft.push(`${days} days`)
     }else if(days===1){
-        timeLeft.push(`${days} day `)
+        timeLeft.push(`1 day`)
     }
 
     //Hour(s) to be pushed
@@ -54,21 +57,37 @@ function formatDuration (seconds) {
         hours = Math.floor((seconds % 3600)/60)
     }
     if(hours>1){
-        timeLeft.push(`${hours} hours `)
+        timeLeft.push(`${hours} hours`)
     }else if(hours===1){
-        timeLeft.push(`${hours} hour `)
+        timeLeft.push(`1 hour`)
     }
-    return timeLeft
+
     //Min(s) to be pushed
+    //TODO fix formatDuration(3600)
+    // if(mins>59){
+    //     mins = Math.floor((seconds % 60)/60)
+    // }
+    if(mins>1){
+        timeLeft.push(`${mins} minutes`)
+    }else if(mins===1){
+        timeLeft.push(`1 minute`)
+    }
     //Sec(s) to be pushed
+    if(secs>1){
+        timeLeft.push(`${secs} seconds`)
+    }else if(secs===1){
+        timeLeft.push(`1 second`)
+    }
+
+    return timeLeft
   }
-  console.log(formatDuration(0))
-  console.log(formatDuration(1))
-  console.log(formatDuration(62))
-//   console.log(formatDuration(120))
-//   console.log(formatDuration(3600))
-  console.log(formatDuration(3662))
-  console.log(formatDuration(8000))
-  console.log(formatDuration(86400))
-  console.log(formatDuration(86520))
-  console.log(formatDuration(10000000))
+  console.log(formatDuration(0))//now
+  console.log(formatDuration(1))//1 second
+  console.log(formatDuration(62))// 1 minute and 2 seconds
+  console.log(formatDuration(120))//2 minutes
+  console.log(formatDuration(3600))//
+//   console.log(formatDuration(3662))
+//   console.log(formatDuration(8000))
+//   console.log(formatDuration(86400))
+//   console.log(formatDuration(86520))
+//   console.log(formatDuration(10000000))
