@@ -14,53 +14,45 @@ Examples
 "    Hello     World   "                  =>  "#HelloWorld"
 ""                                        =>  false
 */
-function generateHashtag (str) {
-    if(!str ||str.trim()===""){
-      return false;
-    }
-    let newArr = ["#"];
-    
-    //Capitalize the first letter of every word
-    let wordArr = str.trim().split(" ");
-    //if there is only one word, return with hashtag
-    if(wordArr.length===1){
-        str = str.split("")
-        str[0] = str[0].toUpperCase()
-        str = str.join("")
-        let hashStr = "#"+str
-      if(hashStr.length<=140){
-        return hashStr
-      }else{
-        return false
-      }
-    }
-    //if there are multiple spaces between words, reduce them to only 1 space between words
-    if(wordArr.includes("")){
-        let numOfEmptys = 0
-        let firstEmpty = wordArr.indexOf("")
-        for(let i=0; i<wordArr.length; i++){
-            if(wordArr[i]===""){
-                numOfEmptys++
-            }
-        }
-        wordArr.splice(firstEmpty,numOfEmptys)
-    }
-    
-    for(let i=0; i<wordArr.length; i++){
-      let splitStr = wordArr[i].split("");
-      splitStr[0] = splitStr[0].toUpperCase();
-      wordArr[i] = splitStr.join("");
-    }
-    wordArr = wordArr.join("");
-    newArr.push(wordArr);
-    let final = newArr.join("").trim();
-    if(final.length<=140){
-      return final.trim();
-    }else{
-      return false;
+function generateHashtag(str){
+  //if str is "" return false
+  if(str===""){
+    return false;
+  }
+  //split the string so first letters can be capitalized and spaces can be removed
+  let splitStr = str.split("");
+
+  if (splitStr[0]!== " " && splitStr[0].toUpperCase===splitStr[0].toUpperCase) {
+    splitStr[0] = splitStr[0].toUpperCase();
+  }
+
+  for(let i=1; i<splitStr.length; i++){
+    if(splitStr[i-1]===" " && splitStr[i].toUpperCase===splitStr[i].toUpperCase){
+      splitStr[i] = splitStr[i].toUpperCase();
     }
   }
-  console.log(generateHashtag("Do We have A Hashtag"))
+  
+  //loop through splitStr array and push element to noSpace array if the character is not a space then join
+  let noSpace = [];
+  for(let i=0; i<splitStr.length; i++){
+    if(splitStr[i]!==" "){
+      noSpace.push(splitStr[i]);
+    }
+  }
+  noSpace = noSpace.join("");
+
+  //if the string isn't empty, add a hashtag an if the string is <=140 characters, return the string
+  if(noSpace.length===0){
+    return false
+  }else if(noSpace.length <=139){
+    return "#"+noSpace
+  }else{
+    return false
+  }
+}
+  console.log(generateHashtag("do we have a hashtag"))
   console.log(generateHashtag(" ".repeat(200)))
-  console.log(generateHashtag("Codewars"))
-  console.log(generateHashtag("    Hello     World   "))
+  console.log(generateHashtag("codewars"))
+  console.log(generateHashtag("    hello     world   "))
+  console.log(generateHashtag(""))
+  console.log(generateHashtag("wqm jpz w"))
