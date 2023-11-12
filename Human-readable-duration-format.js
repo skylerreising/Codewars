@@ -36,16 +36,27 @@ function formatDuration (seconds) {
     if(seconds===0){
         return 'now'
     }
-    //variables to hold days, hours, minutes, and seconds
-    const secs = seconds % 60
-    const mins = Math.floor(seconds/60)
+    //variables to hold years, days, hours, minutes, and seconds
+    let secs = seconds % 60
+    let mins = Math.floor(seconds/60)
     let hours = Math.floor(seconds/3600)
-    const days = Math.floor(seconds/86400)
+    let days = Math.floor(seconds/86400)
+    let years = Math.floor(seconds/31536000)
 
     //create an array of strings that will be joined and returned
     let timeLeft = []
 
+    //Years to be pushed
+    if(years>1){
+        timeLeft.push(`${years} years`)
+    }else if(years===1){
+        timeLeft.push(`1 year`)
+    }
+
     //Day(s) to be pushed
+    if(days>364){
+        days = Math.floor((seconds / 86400) % 365)
+    }
     if(days>1){
         timeLeft.push(`${days} days`)
     }else if(days===1){
@@ -54,7 +65,7 @@ function formatDuration (seconds) {
 
     //Hour(s) to be pushed
     if(hours>23){
-        hours = Math.floor((seconds % 3600)/60)
+        hours = Math.floor((seconds / 3600) % 24)
     }
     if(hours>1){
         timeLeft.push(`${hours} hours`)
@@ -63,10 +74,9 @@ function formatDuration (seconds) {
     }
 
     //Min(s) to be pushed
-    //TODO fix formatDuration(3600)
-    // if(mins>59){
-    //     mins = Math.floor((seconds % 60)/60)
-    // }
+    if(mins>59){
+        mins = Math.floor((seconds / 60) % 60)
+    }
     if(mins>1){
         timeLeft.push(`${mins} minutes`)
     }else if(mins===1){
@@ -78,16 +88,29 @@ function formatDuration (seconds) {
     }else if(secs===1){
         timeLeft.push(`1 second`)
     }
-
-    return timeLeft
+    if(timeLeft.length===1){
+        return timeLeft[0];
+    }else if(timeLeft.length===2){
+        timeLeft[timeLeft.length-1] = "and "+timeLeft[timeLeft.length-1]
+        return timeLeft.join(" ")
+    }else{
+        timeLeft[timeLeft.length-1] = "and "+timeLeft[timeLeft.length-1]
+        //combine the last element and the 2nd to last element
+        timeLeft[timeLeft.length-2] = timeLeft[timeLeft.length-2] +" "+ timeLeft[timeLeft.length-1]
+        timeLeft.pop();
+        timeLeft = timeLeft.join(", ")
+        return timeLeft
+    }
   }
-  console.log(formatDuration(0))//now
-  console.log(formatDuration(1))//1 second
-  console.log(formatDuration(62))// 1 minute and 2 seconds
-  console.log(formatDuration(120))//2 minutes
-  console.log(formatDuration(3600))//
-//   console.log(formatDuration(3662))
-//   console.log(formatDuration(8000))
-//   console.log(formatDuration(86400))
-//   console.log(formatDuration(86520))
-//   console.log(formatDuration(10000000))
+//   console.log(formatDuration(0))//now
+//   console.log(formatDuration(1))//1 second
+//   console.log(formatDuration(62))// 1 minute and 2 seconds
+//   console.log(formatDuration(120))//2 minutes
+//   console.log(formatDuration(3600))// 1hour
+//   console.log(formatDuration(3662))// 1hour, 1 minute and 2 seconds
+  console.log(formatDuration(8000))// 2 hours, 13 minutes and 20 seconds
+  console.log(formatDuration(86400))// 1 day
+  console.log(formatDuration(86520))// 1 day and 2 minutes
+  console.log(formatDuration(10000000))// 115 days, 17 hours, 46 minutes and 40 seconds
+  console.log(formatDuration(31536000))//1 year
+  console.log(formatDuration(73072000))//2 years, 115 days, 17 hours, 46 minutes and 40 seconds
