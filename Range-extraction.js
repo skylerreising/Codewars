@@ -16,7 +16,7 @@ function solution(list){
      let count = 1;
      let end = 0;
      let newArr = [];
-     for(let i=1; i<list.length; i++){
+     for(let i=0; i<list.length; i++){
        //loop to see if element is one more than last element and if it is, count goes up by 1
        if(list[i]-1===list[i-1]){
          count++;
@@ -41,7 +41,6 @@ function solution(list){
            newArr.push(list[i])
          }
          //if the next number is one more than element but the number after that isn't 2 more than the element
-           //TODO not working
            if(list[i+1]===list[i]+1 && list[i+2]!==list[i]+2 && list[i-1]!==list[i]-1){
             newArr.push(list[i])
           }
@@ -50,3 +49,4 @@ function solution(list){
      return newArr.join(",");
    }
    console.log(solution([-10, -9, -8, -6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20]));
+   console.log(solution([-6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20]));//TODO make sure -6 is at the beginning
