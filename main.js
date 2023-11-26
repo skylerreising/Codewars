@@ -2657,22 +2657,25 @@ SOLUTIONS*/
 //     return sent
 //   };
 
-// String.prototype.toJadenCase = function (sent){
-//     let strArr = sent.split("")
-//     let newArr = []
-//     newArr.push(sent[0])
-//     for(let i=1; i<sent.length; i++){
-//         if(sent[i]===" "){
-//             newArr.push(" " + sent[i+1].toUpperCase())
-//         }else if(sent[i-1]===" "){
-//             continue
-//         }else {
-//             newArr.push(sent[i].toLowerCase())
-//         }
-//     }
-//     console.log(newArr.join(""))
-// }
-// String.prototype.toJadenCase("How can mirrors be real if our eyes aren't real")
+String.prototype.toJadenCase = function (){
+    // let strArr = this.split("")
+    let newArr = []
+    //if this[0] is a letter, capitolize it
+    if(this[0].toUpperCase()===this[0].toUpperCase()){
+        newArr.push(this[0].toUpperCase())
+    }
+    for(let i=1; i<this.length; i++){
+        if(this[i]===" "){
+            newArr.push(" " + this[i+1].toUpperCase())
+        }else if(this[i-1]===" "){
+            continue
+        }else {
+            newArr.push(this[i].toLowerCase())
+        }
+    }
+    return newArr.join("")
+}
+console.log("How can mirrors be real if our eyes aren't real".toJadenCase());
 
 // Given two integers a and b, which can be positive or negative, find the sum of all the integers between and including them and return it. If the two numbers are equal return a or b.
 
@@ -3954,64 +3957,64 @@ NOTE: The idea is not sort the elements from the lowest value to the highest; th
 
 NOTE 2: The 0x0 (empty matrix) is represented as en empty array inside an array [[]].
  */
-snail = function(array) {
-    //control for empty array and 1x1 array
-    let n = array.length
+// snail = function(array) {
+//     //control for empty array and 1x1 array
+//     let n = array.length
     
-    if(n===1){
-        if(array[0].length===0){
-            return []
-        }else{
-            return array[0]
-        }
-    }
-    let newArr = []
+//     if(n===1){
+//         if(array[0].length===0){
+//             return []
+//         }else{
+//             return array[0]
+//         }
+//     }
+//     let newArr = []
 
-    //loop to run this code while n >=2
-    while(n>=2){
-        for(let i=0; i<n; i++){
-            newArr.push(array[0][i])
-        }
-        // Put the end of every array after the first into snailArray
-        for(let i=1; i<n; i++){
-            newArr.push(array[i][array[i].length-1])
-        }
-        let reversedLast = []
-        reversedLast.push(array[n-1])
-        reversedLast = reversedLast.toString().split(",").reverse()
-        reversedLast = reversedLast.map(x => Number(x))
+//     //loop to run this code while n >=2
+//     while(n>=2){
+//         for(let i=0; i<n; i++){
+//             newArr.push(array[0][i])
+//         }
+//         // Put the end of every array after the first into snailArray
+//         for(let i=1; i<n; i++){
+//             newArr.push(array[i][array[i].length-1])
+//         }
+//         let reversedLast = []
+//         reversedLast.push(array[n-1])
+//         reversedLast = reversedLast.toString().split(",").reverse()
+//         reversedLast = reversedLast.map(x => Number(x))
 
-        for(let i=1; i<reversedLast.length; i++){
-            newArr.push(reversedLast[i])
-        }
-        //put the first number of each array into snailArray starting at 2nd to last array and moving to the first, but stop before the first array if n>2
-        if(n>2){
-            for(let i=n-2; i>=1; i--){
-            newArr.push(array[i][0])
-            }
-            //delete perimeter from array and repeat process and decrement n until n<=2
-            array.shift()
-            for(let i=0; i<n-1; i++){
-                array[i].pop()
-            }
-            array.pop()
-            //shift first element of each array
-            for(let i=0; i<n-2; i++){
-                array[i].shift()
-            }
-        }
-        n-=2
-        //push last digit into newArr if n is 1
-        if(n===1){
-            newArr.push(array[0][0])
-        }
-    }
-    return newArr
-}
+//         for(let i=1; i<reversedLast.length; i++){
+//             newArr.push(reversedLast[i])
+//         }
+//         //put the first number of each array into snailArray starting at 2nd to last array and moving to the first, but stop before the first array if n>2
+//         if(n>2){
+//             for(let i=n-2; i>=1; i--){
+//             newArr.push(array[i][0])
+//             }
+//             //delete perimeter from array and repeat process and decrement n until n<=2
+//             array.shift()
+//             for(let i=0; i<n-1; i++){
+//                 array[i].pop()
+//             }
+//             array.pop()
+//             //shift first element of each array
+//             for(let i=0; i<n-2; i++){
+//                 array[i].shift()
+//             }
+//         }
+//         n-=2
+//         //push last digit into newArr if n is 1
+//         if(n===1){
+//             newArr.push(array[0][0])
+//         }
+//     }
+//     return newArr
+// }
 
-console.log(snail([[]]))
-console.log(snail([[1]]))
-console.log(snail([[1,2],[3,4]]))
-console.log(snail([[1,2,3,4],[12,13,14,5],[11,16,15,6],[10,9,8,7]]))
-console.log(snail([[1,2,3],[8,9,4],[7,6,5]]))
-console.log(snail([[1, 2, 3, 4, 5, 6], [20, 21, 22, 23, 24, 7], [19, 32, 33, 34, 25, 8], [18, 31, 36, 35, 26, 9], [17, 30, 29, 28, 27, 10], [16, 15, 14, 13, 12, 11]]))
+// console.log(snail([[]]))
+// console.log(snail([[1]]))
+// console.log(snail([[1,2],[3,4]]))
+// console.log(snail([[1,2,3,4],[12,13,14,5],[11,16,15,6],[10,9,8,7]]))
+// console.log(snail([[1,2,3],[8,9,4],[7,6,5]]))
+// console.log(snail([[1, 2, 3, 4, 5, 6], [20, 21, 22, 23, 24, 7], [19, 32, 33, 34, 25, 8], [18, 31, 36, 35, 26, 9], [17, 30, 29, 28, 27, 10], [16, 15, 14, 13, 12, 11]]))
