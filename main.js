@@ -1565,16 +1565,16 @@ SOLUTIONS*/
 //     +'30,31,32,33,34'
 // Array's length > 2.
 
-// function toCsvText(array) {
-//     return array.join('\n')
-// }
+function toCsvText(array) {
+    return array.join('\n')
+}
 
-//  console.log(toCsvText([
-//     [ 0, 1, 2, 3, 45 ],
-//     [ 10,11,12,13,14 ],
-//     [ 20,21,22,23,24 ],
-//     [ 30,31,32,33,34 ]
-//    ]))
+ console.log(toCsvText([
+    [ 0, 1, 2, 3, 45 ],
+    [ 10,11,12,13,14 ],
+    [ 20,21,22,23,24 ],
+    [ 30,31,32,33,34 ]
+   ]))
 
 // Given an array of numbers, check if any of the numbers are the character codes for lower case vowels (a, e, i, o, u).
 
@@ -2657,25 +2657,25 @@ SOLUTIONS*/
 //     return sent
 //   };
 
-String.prototype.toJadenCase = function (){
-    // let strArr = this.split("")
-    let newArr = []
-    //if this[0] is a letter, capitolize it
-    if(this[0].toUpperCase()===this[0].toUpperCase()){
-        newArr.push(this[0].toUpperCase())
-    }
-    for(let i=1; i<this.length; i++){
-        if(this[i]===" "){
-            newArr.push(" " + this[i+1].toUpperCase())
-        }else if(this[i-1]===" "){
-            continue
-        }else {
-            newArr.push(this[i].toLowerCase())
-        }
-    }
-    return newArr.join("")
-}
-console.log("How can mirrors be real if our eyes aren't real".toJadenCase());
+// String.prototype.toJadenCase = function (){
+//     // let strArr = this.split("")
+//     let newArr = []
+//     //if this[0] is a letter, capitolize it
+//     if(this[0].toUpperCase()===this[0].toUpperCase()){
+//         newArr.push(this[0].toUpperCase())
+//     }
+//     for(let i=1; i<this.length; i++){
+//         if(this[i]===" "){
+//             newArr.push(" " + this[i+1].toUpperCase())
+//         }else if(this[i-1]===" "){
+//             continue
+//         }else {
+//             newArr.push(this[i].toLowerCase())
+//         }
+//     }
+//     return newArr.join("")
+// }
+// console.log("How can mirrors be real if our eyes aren't real".toJadenCase());
 
 // Given two integers a and b, which can be positive or negative, find the sum of all the integers between and including them and return it. If the two numbers are equal return a or b.
 
