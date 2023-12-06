@@ -15,14 +15,9 @@ gimme([5, 10, 14]) => 1
 10 is the number that fits between 5 and 14 and the index of 10 in the input array is 1.
  */
 function gimme (triplet) {
-    //loop through and return the number that isn't equal to Math.min or Math.max
-    let low = Math.min.apply(null, triplet);
-    let high = Math.max.apply(null, triplet);
-    for(let i=0; i<triplet.length; i++){
-      if(triplet[i]!==low && triplet[i]!==high){
-        return i
-      }
-    }
-  }
-  console.log(gimme([2, 3, 1]))
-  console.log(gimme([5, 10, 14]))
+  let sortedTriple = triplet.slice(0).sort((a,b) => a-b);
+  let middle = sortedTriple[1];
+  return triplet.indexOf(middle);
+}
+console.log(gimme([2, 3, 1]))
+console.log(gimme([5, 10, 14]))
