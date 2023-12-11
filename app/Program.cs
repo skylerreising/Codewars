@@ -69,23 +69,69 @@ Input -> Output
 "8 8 Bi fk8h B 8 BB8B B B  B888 c hl8 BhB fd" -> "88Bifk8hB8BB8BBBB888chl8BhBfd"
 "8aaaaa dddd r     " -> "8aaaaaddddr"
 */
-using System;
-using System.Linq;
+// using System;
+// using System.Linq;
 
-namespace Solution 
-{
-  public static class SpacesRemover
+// namespace Solution 
+// {
+//   public static class SpacesRemover
+//   {
+//     public static string NoSpace(string input)
+//     {
+//         return new string(input.Where(c => !char.IsWhiteSpace(c)).ToArray());
+//     }  
+//      public static void Main(string[] args)
+//     {
+//         string input = "8 j 8   mBliB8g  imjB8B8  jl  B";
+//         string newString = NoSpace(input);
+//         Console.WriteLine(newString);
+//     }
+//   }
+// }
+
+// namespace Solution 
+// {
+//   public static class SpacesRemover
+//   {
+//     public static string NoSpace(string input)
+//     {
+//       return input.Replace(" ", "");
+//     }  
+
+//     public static void Main(string[] args)
+//     {
+//       string input = "8 8 Bi fk8h B 8 BB8B B B  B888 c hl8 BhB fd";
+//       string newString = NoSpace(input);
+//       Console.WriteLine(newString);
+//     }
+//   }
+// }
+
+/*
+Convert a String to a Number!
+Description
+We need a function that can transform a string into a number. What ways of achieving this do you know?
+
+Note: Don't worry, all inputs will be strings, and every string is a perfectly valid representation of an integral number.
+
+Examples
+"1234" --> 1234
+"605"  --> 605
+"1405" --> 1405
+"-7" --> -7
+*/
+using System;
+  public class Kata
   {
-    public static string NoSpace(string input)
+    public static int StringToNumber(String str) 
     {
-        return new string(input.Where(c => !char.IsWhiteSpace(c)).ToArray());
-    }  
-     public static void Main(string[] args)
+        int num = Convert.ToInt32(str);
+        return num;
+    }
+    public static void Main(string[] args)
     {
-        string input = "8 j 8   mBliB8g  imjB8B8  jl  B";
-        string newString = NoSpace(input);
-        Console.WriteLine(newString);
+      string input = "1234";
+      int newString = StringToNumber(input);
+      Console.WriteLine(newString);
     }
   }
-}
-
