@@ -120,18 +120,57 @@ Examples
 "1405" --> 1405
 "-7" --> -7
 */
+// using System;
+//   public class Kata
+//   {
+//     public static int StringToNumber(String str) 
+//     {
+//         int num = Convert.ToInt32(str);
+//         return num;
+//     }
+//     public static void Main(string[] args)
+//     {
+//       string input = "1234";
+//       int newString = StringToNumber(input);
+//       Console.WriteLine(newString);
+//     }
+//   }
+
+/*
+Abbreviate a Two Word Name
+Write a function to convert a name into initials. This kata strictly takes two words with one space in between them.
+
+The output should be two capital letters with a dot separating them.
+
+It should look like this:
+
+Sam Harris => S.H
+
+patrick feeney => P.F
+*/
 using System;
-  public class Kata
+public class Kata
+{
+  public static string AbbrevName(string name)
   {
-    public static int StringToNumber(String str) 
+    //variable to hold new string
+    string initials = name.Substring(0,1).ToUpper();
+    initials += ".";
+
+    //find the letter after the space
+    for(int i=0; i<name.Length; i++)
     {
-        int num = Convert.ToInt32(str);
-        return num;
+      if(name[i] == ' ')
+      {
+        string nextLetter = name.Substring(i+1,1);
+        initials += nextLetter.ToUpper();
+      }
     }
-    public static void Main(string[] args)
-    {
-      string input = "1234";
-      int newString = StringToNumber(input);
-      Console.WriteLine(newString);
-    }
+    return initials;
   }
+
+  public static void Main(string[] args)
+  {
+    Console.WriteLine(AbbrevName("sam harris"));
+  }
+}
