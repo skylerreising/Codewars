@@ -148,29 +148,63 @@ Sam Harris => S.H
 
 patrick feeney => P.F
 */
+// using System;
+// public class Kata
+// {
+//   public static string AbbrevName(string name)
+//   {
+//     //variable to hold new string
+//     string initials = name.Substring(0,1).ToUpper();
+//     initials += ".";
+
+//     //find the letter after the space
+//     for(int i=0; i<name.Length; i++)
+//     {
+//       if(name[i] == ' ')
+//       {
+//         string nextLetter = name.Substring(i+1,1);
+//         initials += nextLetter.ToUpper();
+//       }
+//     }
+//     return initials;
+//   }
+
+//   public static void Main(string[] args)
+//   {
+//     Console.WriteLine(AbbrevName("sam harris"));
+//   }
+// }
+
+/*
+Are You Playing Banjo?
+Create a function which answers the question "Are you playing banjo?".
+If your name starts with the letter "R" or lower case "r", you are playing banjo!
+
+The function takes a name as its only argument, and returns one of the following strings:
+
+name + " plays banjo" 
+name + " does not play banjo"
+Names given are always valid strings.
+*/
+
 using System;
+
 public class Kata
 {
-  public static string AbbrevName(string name)
+  public static string AreYouPlayingBanjo(string name)
   {
-    //variable to hold new string
-    string initials = name.Substring(0,1).ToUpper();
-    initials += ".";
-
-    //find the letter after the space
-    for(int i=0; i<name.Length; i++)
+    if(name.Substring(0,1).ToUpper() == "R")
     {
-      if(name[i] == ' ')
-      {
-        string nextLetter = name.Substring(i+1,1);
-        initials += nextLetter.ToUpper();
-      }
+      return $"{name} plays banjo";
+    }else
+    {
+      return $"{name} does not play banjo";
     }
-    return initials;
   }
 
   public static void Main(string[] args)
   {
-    Console.WriteLine(AbbrevName("sam harris"));
-  }
+    Console.WriteLine(AreYouPlayingBanjo("Martin"));
+    Console.WriteLine(AreYouPlayingBanjo("Rikke"));
+  } 
 }
