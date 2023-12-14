@@ -187,24 +187,61 @@ name + " does not play banjo"
 Names given are always valid strings.
 */
 
+// using System;
+
+// public class Kata
+// {
+//   public static string AreYouPlayingBanjo(string name)
+//   {
+//     if(name.Substring(0,1).ToUpper() == "R")
+//     {
+//       return $"{name} plays banjo";
+//     }else
+//     {
+//       return $"{name} does not play banjo";
+//     }
+//   }
+
+//   public static void Main(string[] args)
+//   {
+//     Console.WriteLine(AreYouPlayingBanjo("Martin"));
+//     Console.WriteLine(AreYouPlayingBanjo("Rikke"));
+//   } 
+// }
+
+/*
+Highest and Lowest
+In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number.
+
+Examples
+Kata.HighAndLow("1 2 3 4 5");  // return "5 1"
+Kata.HighAndLow("1 2 -3 4 5"); // return "5 -3"
+Kata.HighAndLow("1 9 3 4 -5"); // return "9 -5"
+Notes
+All numbers are valid Int32, no need to validate them.
+There will always be at least one number in the input string.
+Output string must be two numbers separated by a single space, and highest number is first.
+*/
 using System;
+using System.Linq;
 
-public class Kata
+public static class Kata
 {
-  public static string AreYouPlayingBanjo(string name)
+  public static string HighAndLow(string numbers)
   {
-    if(name.Substring(0,1).ToUpper() == "R")
-    {
-      return $"{name} plays banjo";
-    }else
-    {
-      return $"{name} does not play banjo";
-    }
-  }
+    //split the string into numbers
+    string[] nums = numbers.Split(" ");
 
+    //Convert string numbers to numbers
+    int[] numberNumbers = Array.ConvertAll(nums, int.Parse);
+
+    int high = numberNumbers.Max();
+    int low = numberNumbers.Min();
+
+    return $"{high} {low}";
+  }
   public static void Main(string[] args)
   {
-    Console.WriteLine(AreYouPlayingBanjo("Martin"));
-    Console.WriteLine(AreYouPlayingBanjo("Rikke"));
-  } 
+    Console.WriteLine(HighAndLow("8 3 -5 42 -1 0 0 -9 4 7 4 -4"));
+  }
 }
