@@ -43,6 +43,65 @@ sumIntervals( [
 Tests with large intervals
 Your algorithm should be able to handle large intervals. All tested intervals are subsets of the range [-1000000000, 1000000000].
  */
+function sumIntervals(intervals){
+   //sort intervals by start points
+   intervals.sort((a,b) => a[0]-b[0]);
+   console.log(intervals)
+   //merge overlapping intervals
+   //loop through the array of arrays. If the first number in the array falls between the two numbers in the array in front of it, combine both arrays with the first number from the first array and the larger second number from both arrays being the new array
+   //declare answer array with first array inside
+   let answerArr = [[intervals[0][0], intervals[0][1]>intervals[1][1] ? intervals[0][1]:intervals[1][1]]];
+
+   for(let i=1; i<intervals.length; i++){
+      if(intervals[i][0]>=intervals[i-1][0] && intervals[i][0]<=intervals[i-1][1]){
+         //add logic to see if intervals[i] is contained in the previous array and if so, skip it
+
+         let higherHigh = intervals[i][1] >= intervals[i-1][1] ? intervals[i][1] : intervals[i-1][1];
+         let newArr = [intervals[i-1][0],higherHigh];
+         if(newArr[0] !== intervals[i-1][0] && newArr[1] !== intervals[i-1][1]){
+            answerArr.push(newArr);
+         }
+         
+      }else{
+         answerArr.push(intervals[i]);
+      }
+   }
+   // for(let i=1; i<intervals.length; i++){
+   //    if(intervals[i][0]>=intervals[i-1][0] && intervals[i][0]<=intervals[i-1][1]){
+   //       let higherHigh = intervals[i][1] >= intervals[i-1][1] ? intervals[i][1] : intervals[i-1][1];
+   //       intervals[i-1] = [intervals[i-1][0],higherHigh]
+
+   //       //remove the array at i and decrement i
+   //       intervals.splice(i,1);
+   //       i--
+   //    }
+   // }
+
+   //find the sum of the intervals
+   console.log(answerArr)
+   let sum = 0;
+
+   for(let i=0; i<answerArr.length; i++){
+      sum += answerArr[i][1]-answerArr[i][0];
+   }
+
+   return sum;
+}
+
+// console.log(sumIntervals([[1,5],[7,10],[3,5],[6,11]]))//9
+// console.log(sumIntervals([[1,4],[7, 10],[3, 5]]))//7
+console.log(sumIntervals([
+   [1, 5],
+   [10, 20],
+   [1, 6],
+   [16, 19],
+   [5, 11]
+]))//19
+console.log(sumIntervals([[1,5],[1,5]]))//4 
+console.log(sumIntervals([[1,5]]))//4
+console.log(sumIntervals([[1,5],[6,10]]))//8
+
+
 //   function sumIntervals(intervals) {
 //     //First overlapping intervals should be identified
 //     //need to loop through each subarray and...
@@ -73,7 +132,3 @@ Your algorithm should be able to handle large intervals. All tested intervals ar
 //     return intervalSum;
 //   }
 
-//TODO This whole function needs to be revised to handle all overlapping intervals by sorting intervals by their start points and merging the overlapping intervals
-  console.log(sumIntervals([[1,5]]))//4
-  console.log(sumIntervals([[1,5],[6,10]]))//8
-  console.log(sumIntervals([[1,5],[7,10],[3,6]]))//8
