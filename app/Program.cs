@@ -222,26 +222,55 @@ All numbers are valid Int32, no need to validate them.
 There will always be at least one number in the input string.
 Output string must be two numbers separated by a single space, and highest number is first.
 */
+// using System;
+// using System.Linq;
+
+// public static class Kata
+// {
+//   public static string HighAndLow(string numbers)
+//   {
+//     //split the string into numbers
+//     string[] nums = numbers.Split(" ");
+
+//     //Convert string numbers to numbers
+//     int[] numberNumbers = Array.ConvertAll(nums, int.Parse);
+
+//     int high = numberNumbers.Max();
+//     int low = numberNumbers.Min();
+
+//     return $"{high} {low}";
+//   }
+//   public static void Main(string[] args)
+//   {
+//     Console.WriteLine(HighAndLow("8 3 -5 42 -1 0 0 -9 4 7 4 -4"));
+//   }
+// }
+
+/*
+Get Nth Even Number
+
+Return the Nth Even Number
+
+Example(Input --> Output)
+
+1 --> 0 (the first even number is 0)
+3 --> 4 (the 3rd even number is 4 (0, 2, 4))
+100 --> 198
+1298734 --> 2597466
+The input will not be 0.
+*/
 using System;
-using System.Linq;
-
-public static class Kata
+public class Kata
 {
-  public static string HighAndLow(string numbers)
+  public static int NthEven(int n)
   {
-    //split the string into numbers
-    string[] nums = numbers.Split(" ");
-
-    //Convert string numbers to numbers
-    int[] numberNumbers = Array.ConvertAll(nums, int.Parse);
-
-    int high = numberNumbers.Max();
-    int low = numberNumbers.Min();
-
-    return $"{high} {low}";
+    return n*2 - 2;
   }
   public static void Main(string[] args)
   {
-    Console.WriteLine(HighAndLow("8 3 -5 42 -1 0 0 -9 4 7 4 -4"));
+    Console.WriteLine(NthEven(0));
+    Console.WriteLine(NthEven(3));
+    Console.WriteLine(NthEven(100));
+    Console.WriteLine(NthEven(1298734));
   }
 }
