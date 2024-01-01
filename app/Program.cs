@@ -291,25 +291,65 @@ The correct answer would be 17.
 
 Hint: Don't forget to check for bad values like null/undefined
 */
-using System;
+// using System;
 
-public static class Kata
+// public static class Kata
+// {
+//   public static int CountSheeps(bool[] sheeps)
+//   {
+//     int count = 0;
+//     for(int i=0; i<sheeps.Length; i++)
+//     {
+//       if(sheeps[i] == true)
+//       {
+//         count++;
+//       }
+//     }
+//     return count;
+//   }
+
+//   public static void Main(string[] args)
+//   {
+//     Console.WriteLine(CountSheeps(new bool[] { true, false, true} ));
+//   }
+// }
+
+/*
+Basic Mathematical Operations
+Your task is to create a function that does four basic mathematical operations.
+
+The function should take three arguments - operation(string/char), value1(number), value2(number).
+The function should return result of numbers after applying the chosen operation.
+
+Examples(Operator, value1, value2) --> output
+('+', 4, 7) --> 11
+('-', 15, 18) --> -3
+('*', 5, 5) --> 25
+('/', 49, 7) --> 7
+*/
+
+namespace Solution
 {
-  public static int CountSheeps(bool[] sheeps)
+  public static class Program
   {
-    int count = 0;
-    for(int i=0; i<sheeps.Length; i++)
+    public static double BasicOp(char operation, double value1, double value2)
     {
-      if(sheeps[i] == true)
+      switch (operation)
       {
-        count++;
+        case '+' : return value1 + value2;
+        case '-' : return value1 - value2;
+        case '*' : return value1 * value2;
+        case '/' : return value1 / value2;
+        default: throw new ArgumentException("Invalid operation");
       }
     }
-    return count;
-  }
 
-  public static void Main(string[] args)
-  {
-    Console.WriteLine(CountSheeps(new bool[] { true, false, true} ));
+    public static void Main(string[] args)
+    {
+      Console.WriteLine(BasicOp('+', 4, 7));
+      Console.WriteLine(BasicOp('-', 15, 18));
+      Console.WriteLine(BasicOp('*', 5, 5));
+      Console.WriteLine(BasicOp('/', 49, 7));
+    }
   }
 }
