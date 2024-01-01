@@ -259,18 +259,57 @@ Example(Input --> Output)
 1298734 --> 2597466
 The input will not be 0.
 */
+// using System;
+// public class Kata
+// {
+//   public static int NthEven(int n)
+//   {
+//     return n*2 - 2;
+//   }
+//   public static void Main(string[] args)
+//   {
+//     Console.WriteLine(NthEven(0));
+//     Console.WriteLine(NthEven(3));
+//     Console.WriteLine(NthEven(100));
+//     Console.WriteLine(NthEven(1298734));
+//   }
+// }
+
+/*
+Counting Sheep...
+Consider an array/list of sheep where some sheep may be missing from their place. We need a function that counts the number of sheep present in the array (true means present).
+
+For example,
+
+[true,  true,  true,  false,
+  true,  true,  true,  true ,
+  true,  false, true,  false,
+  true,  false, false, true ,
+  true,  true,  true,  true ,
+  false, false, true,  true]
+The correct answer would be 17.
+
+Hint: Don't forget to check for bad values like null/undefined
+*/
 using System;
-public class Kata
+
+public static class Kata
 {
-  public static int NthEven(int n)
+  public static int CountSheeps(bool[] sheeps)
   {
-    return n*2 - 2;
+    int count = 0;
+    for(int i=0; i<sheeps.Length; i++)
+    {
+      if(sheeps[i] == true)
+      {
+        count++;
+      }
+    }
+    return count;
   }
+
   public static void Main(string[] args)
   {
-    Console.WriteLine(NthEven(0));
-    Console.WriteLine(NthEven(3));
-    Console.WriteLine(NthEven(100));
-    Console.WriteLine(NthEven(1298734));
+    Console.WriteLine(CountSheeps(new bool[] { true, false, true} ));
   }
 }
