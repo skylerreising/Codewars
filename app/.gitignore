@@ -5,7 +5,11 @@
 *.dll
 
 # Ignore other file types as needed
+bin/
+obj/
 .pdb
 .cache
 .txt
 .editorconfig
+[Aa]pp.[Aa]ssembly[Ii]nfo.cs
+app.sourcelink.json
