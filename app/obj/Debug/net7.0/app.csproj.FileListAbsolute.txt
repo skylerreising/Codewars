@@ -12,3 +12,4 @@ C:\Users\skyle\Documents\Coding\100devs\Codewars\app\obj\Debug\net7.0\refint\app
 C:\Users\skyle\Documents\Coding\100devs\Codewars\app\obj\Debug\net7.0\app.pdb
 C:\Users\skyle\Documents\Coding\100devs\Codewars\app\obj\Debug\net7.0\app.genruntimeconfig.cache
 C:\Users\skyle\Documents\Coding\100devs\Codewars\app\obj\Debug\net7.0\ref\app.dll
+C:\Users\skyle\Documents\Coding\100devs\Codewars\app\obj\Debug\net7.0\app.sourcelink.json
