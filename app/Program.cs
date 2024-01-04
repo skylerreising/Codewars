@@ -461,25 +461,54 @@ Algorithm:
 
 */
 
-public class DivisibleNb 
+// public class DivisibleNb 
+// {
+// 	public static bool IsDivisible(int n, int x, int y) 
+//   {
+// 		// (1) store n % x in variable 1.
+//     int var1 = n % x;
+
+//     // (2) store n % y in variable 2.
+//     int var2 = n % y;
+
+//     // (3) If variable 1 && variable 2 == 0, return true.
+//     // (3a) Else return false.
+//     return (var1 == 0 && var2 == 0);
+// 	}
+
+//   public static void Main(string[] args)
+//   {
+//     Console.WriteLine(IsDivisible(12,4,3));//true
+//     Console.WriteLine(IsDivisible(3,3,4));//false
+//     Console.WriteLine(IsDivisible(8,3,4));//false
+//   }
+// }
+
+/*
+Returning Strings
+
+Make a function that will return a greeting statement that uses an input; your program should return, "Hello, <name> how are you doing today?".
+
+[Make sure you type the exact thing I wrote or the program may not execute properly]
+
+Software Engineer: Skyler Reising
+
+Requirements
+(1) Return a greeting that includes a name passed as an argument to the Method.
+(2) The greeting has to be exactly what is given in the problem
+
+*/
+using System;
+
+public static class Kata
 {
-	public static bool IsDivisible(int n, int x, int y) 
+  public static string Greet(string name)
   {
-		// (1) store n % x in variable 1.
-    int var1 = n % x;
-
-    // (2) store n % y in variable 2.
-    int var2 = n % y;
-
-    // (3) If variable 1 && variable 2 == 0, return true.
-    // (3a) Else return false.
-    return (var1 == 0 && var2 == 0);
-	}
+    return "Hello, " + name + " how are you doing today?";
+  }
 
   public static void Main(string[] args)
   {
-    Console.WriteLine(IsDivisible(12,4,3));//true
-    Console.WriteLine(IsDivisible(3,3,4));//false
-    Console.WriteLine(IsDivisible(8,3,4));//false
+    Console.WriteLine(Greet("Skyler"));
   }
 }
