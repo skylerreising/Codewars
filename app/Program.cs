@@ -370,17 +370,67 @@ time = 6.7---> litres = 3
 
 time = 11.8--> litres = 5
 */
+// using System;
+
+// public class Kata
+// {
+//   public static int Litres(double time)
+//   {
+//     return (int)Math.Floor(time * .5);
+//   }
+//   public static void Main(string[] args)
+//   {
+//     Console.WriteLine(Litres(1.4));
+//     Console.WriteLine(Litres(12.3));
+//   }
+// }
+
+/*
+Century From Year
+
+The first century spans from the year 1 up to and including the year 100, the second century - from the year 101 up to and including the year 200, etc.
+
+Task
+Given a year, return the century it is in.
+
+Examples
+1705 --> 18
+1900 --> 19
+1601 --> 17
+2000 --> 20
+
+Programmer: Skyler Reising
+Date: 1/3/24
+
+Requirements
+(1) Return the century in integer format from the given year
+
+Algorithm:
+** If year >= 1 and <= 100, than century is 1. If year >= 101 and <=200, than century is 2. etc
+(1) Declare a double to hold the century number rounded up to the next int
+(2) Convert the double to an int and return
+*/
+
 using System;
 
-public class Kata
+public static class Kata
 {
-  public static int Litres(double time)
+  public static int CenturyFromYear(int year)
   {
-    return (int)Math.Floor(time * .5);
+    //(1) Declare a double to hold the century number rounded up to the next int
+    double century = Math.Ceiling((double) year/100);
+
+    //(2) Convert the double to an int and return
+    int answer = Convert.ToInt32(century);
+    
+    return answer;
   }
+
   public static void Main(string[] args)
   {
-    Console.WriteLine(Litres(1.4));
-    Console.WriteLine(Litres(12.3));
+    Console.WriteLine(CenturyFromYear(1705));//18
+    Console.WriteLine(CenturyFromYear(1900));//19
+    Console.WriteLine(CenturyFromYear(1601));//17
+    Console.WriteLine(CenturyFromYear(2000));//20
   }
 }
