@@ -411,26 +411,75 @@ Algorithm:
 (2) Convert the double to an int and return
 */
 
-using System;
+// using System;
 
-public static class Kata
-{
-  public static int CenturyFromYear(int year)
-  {
-    //(1) Declare a double to hold the century number rounded up to the next int
-    double century = Math.Ceiling((double) year/100);
+// public static class Kata
+// {
+//   public static int CenturyFromYear(int year)
+//   {
+//     //(1) Declare a double to hold the century number rounded up to the next int
+//     double century = Math.Ceiling((double) year/100);
 
-    //(2) Convert the double to an int and return
-    int answer = Convert.ToInt32(century);
+//     //(2) Convert the double to an int and return
+//     int answer = Convert.ToInt32(century);
     
-    return answer;
-  }
+//     return answer;
+//   }
+
+//   public static void Main(string[] args)
+//   {
+//     Console.WriteLine(CenturyFromYear(1705));//18
+//     Console.WriteLine(CenturyFromYear(1900));//19
+//     Console.WriteLine(CenturyFromYear(1601));//17
+//     Console.WriteLine(CenturyFromYear(2000));//20
+//   }
+// }
+
+/*
+Is n divisible by x and y?
+
+Create a function that checks if a number n is divisible by two numbers x AND y. All inputs are positive, non-zero numbers.
+
+Examples:
+1) n =   3, x = 1, y = 3 =>  true because   3 is divisible by 1 and 3
+2) n =  12, x = 2, y = 6 =>  true because  12 is divisible by 2 and 6
+3) n = 100, x = 5, y = 3 => false because 100 is not divisible by 3
+4) n =  12, x = 7, y = 5 => false because  12 is neither divisible by 7 nor 5
+
+Software Engineer: Skyler Reising
+Date: 1/4/24
+
+Requirements
+(1) Three integer numbers, n, x, and y are passed in.
+(2) Method must return a boolean.
+
+Algorithm:
+(1) store n % x in variable 1.
+(2) store n % y in variable 2.
+(3) If variable 1 && variable 2 == 0, return true.
+  (3a) Else return false.
+
+*/
+
+public class DivisibleNb 
+{
+	public static bool IsDivisible(int n, int x, int y) 
+  {
+		// (1) store n % x in variable 1.
+    int var1 = n % x;
+
+    // (2) store n % y in variable 2.
+    int var2 = n % y;
+
+    // (3) If variable 1 && variable 2 == 0, return true.
+    // (3a) Else return false.
+    return (var1 == 0 && var2 == 0);
+	}
 
   public static void Main(string[] args)
   {
-    Console.WriteLine(CenturyFromYear(1705));//18
-    Console.WriteLine(CenturyFromYear(1900));//19
-    Console.WriteLine(CenturyFromYear(1601));//17
-    Console.WriteLine(CenturyFromYear(2000));//20
+    Console.WriteLine(IsDivisible(12,4,3));//true
+    Console.WriteLine(IsDivisible(3,3,4));//false
+    Console.WriteLine(IsDivisible(8,3,4));//false
   }
 }
