@@ -1565,16 +1565,16 @@ SOLUTIONS*/
 //     +'30,31,32,33,34'
 // Array's length > 2.
 
-function toCsvText(array) {
-    return array.join('\n')
-}
+// function toCsvText(array) {
+//     return array.join('\n')
+// }
 
- console.log(toCsvText([
-    [ 0, 1, 2, 3, 45 ],
-    [ 10,11,12,13,14 ],
-    [ 20,21,22,23,24 ],
-    [ 30,31,32,33,34 ]
-   ]))
+//  console.log(toCsvText([
+//     [ 0, 1, 2, 3, 45 ],
+//     [ 10,11,12,13,14 ],
+//     [ 20,21,22,23,24 ],
+//     [ 30,31,32,33,34 ]
+//    ]))
 
 // Given an array of numbers, check if any of the numbers are the character codes for lower case vowels (a, e, i, o, u).
 
