@@ -525,35 +525,72 @@ Additionally, if the number is negative, return 0.
 Note: If the number is a multiple of both 3 and 5, only count it once.
 
 */
+// using System;
+// public static class Kata
+// {
+//   public static int Solution(int value)
+//   {
+//     //control for value < 0
+//     if(value < 0)
+//     {
+//       return 0;
+//     }
+//     //Declare a sum variable
+//     int sum = 0;
+
+//     //loop from 0 to value and add those values that meet the criteria to sum
+//     for(int i=0; i<value; i++)
+//     {
+//       if(i % 3 == 0 || i % 5 == 0)
+//       {
+//         sum += i;
+//       }
+//     }
+    
+//     //return the sum
+//     return sum;
+//   }
+
+//   public static void Main(string[] args)
+//   {
+//     Console.WriteLine(Solution(10));//23
+//     Console.WriteLine(Solution(20));//78
+//   }
+// }
+
+/*
+Vowel Count
+
+Return the number (count) of vowels in the given string.
+
+We will consider a, e, i, o, u as vowels for this Kata (but not y).
+
+The input string will only consist of lower case letters and/or spaces.
+
+*/
+
 using System;
+
 public static class Kata
 {
-  public static int Solution(int value)
-  {
-    //control for value < 0
-    if(value < 0)
+    public static int GetVowelCount(string str)
     {
-      return 0;
-    }
-    //Declare a sum variable
-    int sum = 0;
+        int vowelCount = 0;
 
-    //loop from 0 to value and add those values that meet the criteria to sum
-    for(int i=0; i<value; i++)
+        //loop through the string and if a character is a vowel increment vowelCount
+        for(int i=0; i<str.Length; i++)
+        {
+          if(str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u')
+          {
+            vowelCount++;
+          }
+        }
+
+        return vowelCount;
+    }
+
+    public static void Main(string[] args)
     {
-      if(i % 3 == 0 || i % 5 == 0)
-      {
-        sum += i;
-      }
+      Console.WriteLine(GetVowelCount("abracadabra"));//5
     }
-    
-    //return the sum
-    return sum;
-  }
-
-  public static void Main(string[] args)
-  {
-    Console.WriteLine(Solution(10));//23
-    Console.WriteLine(Solution(20));//78
-  }
 }
