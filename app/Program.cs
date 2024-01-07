@@ -498,17 +498,62 @@ Requirements
 (2) The greeting has to be exactly what is given in the problem
 
 */
-using System;
+// using System;
 
+// public static class Kata
+// {
+//   public static string Greet(string name)
+//   {
+//     return "Hello, " + name + " how are you doing today?";
+//   }
+
+//   public static void Main(string[] args)
+//   {
+//     Console.WriteLine(Greet("Skyler"));
+//   }
+// }
+
+/*
+Multiples of 3 or 5
+
+If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
+
+Finish the solution so that it returns the sum of all the multiples of 3 or 5 below the number passed in.
+
+Additionally, if the number is negative, return 0.
+
+Note: If the number is a multiple of both 3 and 5, only count it once.
+
+*/
+using System;
 public static class Kata
 {
-  public static string Greet(string name)
+  public static int Solution(int value)
   {
-    return "Hello, " + name + " how are you doing today?";
+    //control for value < 0
+    if(value < 0)
+    {
+      return 0;
+    }
+    //Declare a sum variable
+    int sum = 0;
+
+    //loop from 0 to value and add those values that meet the criteria to sum
+    for(int i=0; i<value; i++)
+    {
+      if(i % 3 == 0 || i % 5 == 0)
+      {
+        sum += i;
+      }
+    }
+    
+    //return the sum
+    return sum;
   }
 
   public static void Main(string[] args)
   {
-    Console.WriteLine(Greet("Skyler"));
+    Console.WriteLine(Solution(10));//23
+    Console.WriteLine(Solution(20));//78
   }
 }
