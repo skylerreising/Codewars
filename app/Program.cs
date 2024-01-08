@@ -569,28 +569,73 @@ The input string will only consist of lower case letters and/or spaces.
 
 */
 
+// using System;
+
+// public static class Kata
+// {
+//     public static int GetVowelCount(string str)
+//     {
+//         int vowelCount = 0;
+
+//         //loop through the string and if a character is a vowel increment vowelCount
+//         for(int i=0; i<str.Length; i++)
+//         {
+//           if(str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u')
+//           {
+//             vowelCount++;
+//           }
+//         }
+
+//         return vowelCount;
+//     }
+
+//     public static void Main(string[] args)
+//     {
+//       Console.WriteLine(GetVowelCount("abracadabra"));//5
+//     }
+// }
+
+/*
+
+Convert number to reversed array of digits
+
+Given a random non-negative number, you have to return the digits of this number within an array in reverse order.
+
+Example(Input => Output):
+35231 => [1,3,2,5,3]
+0 => [0]
+
+*/
 using System;
+using System.Collections.Generic;
 
-public static class Kata
+namespace Solution
 {
-    public static int GetVowelCount(string str)
+  class Digitizer
+  {
+    public static long[] Digitize(long n)
     {
-        int vowelCount = 0;
+      //Convert number to an array of characters
+      char[] numArray = n.ToString().ToCharArray();
 
-        //loop through the string and if a character is a vowel increment vowelCount
-        for(int i=0; i<str.Length; i++)
-        {
-          if(str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u')
-          {
-            vowelCount++;
-          }
-        }
+      //Reverse the array
+      Array.Reverse(numArray);
 
-        return vowelCount;
+      //Convert each character back to long and return
+      long[] reversedArray = new long[numArray.Length];
+      for(int i=0; i<numArray.Length; i++)
+      {
+        reversedArray[i] = long.Parse(numArray[i].ToString());
+      }
+
+      return reversedArray;
+
     }
 
     public static void Main(string[] args)
     {
-      Console.WriteLine(GetVowelCount("abracadabra"));//5
+      long[] digits = Digitize(35231);
+      Console.WriteLine(string.Join(", ", digits));
     }
+  }
 }
