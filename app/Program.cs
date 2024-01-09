@@ -650,17 +650,77 @@ Style Points
 Sure, this is about as easy as it gets. But how clever can you be to create the most creative "hello world" you can think of? What is a "hello world" solution you would want to show your friends?
 
 */
+// using System;
+
+// public static class Kata
+// {
+//   public static void Main(string[] args)
+//   {
+//     Console.WriteLine(Greet());
+//   }
+
+//     public static string Greet()
+//   {
+//     return "hello world!";
+//   }
+// }
+
+/*
+
+Find the odd int
+
+Given an array of integers, find the one that appears an odd number of times.
+
+There will always be only one integer that appears an odd number of times.
+
+Examples
+[7] should return 7, because it occurs 1 time (which is odd).
+[0] should return 0, because it occurs 1 time (which is odd).
+[1,1,2] should return 2, because it occurs 1 time (which is odd).
+[0,1,0,1,0] should return 0, because it occurs 3 times (which is odd).
+[1,2,2,3,3,3,4,3,3,3,2,2,1] should return 4, because it appears 1 time (which is odd).
+
+*/
+
 using System;
+using System.Linq;
 
 public static class Kata
 {
   public static void Main(string[] args)
   {
-    Console.WriteLine(Greet());
+    int [] nums = {1,2,2,3,3,3,4,3,3,3,2,2,1};
+    Console.WriteLine(find_it(nums));
   }
 
-    public static string Greet()
+  public static int find_it(int[] seq) 
   {
-    return "hello world!";
+    //counter for each integer
+    int count = 0;
+
+    //find the highest value in the array
+    int max = seq.Max();
+
+    for(int i=0; i<=max; i++)
+    {
+      //nested loop to count is even, count each num. If count is odd, return number.
+      for(int j=0; j<seq.Length; j++)
+      {
+        if(i == seq[j])
+        {
+          count++;
+        }
+      }
+
+      //If count is odd, return number.
+      if(count % 2 == 1)
+      {
+        return i;
+      }
+
+      //reset count
+      count = 0;
+    }
+    return -1;
   }
 }
