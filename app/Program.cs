@@ -606,36 +606,61 @@ Example(Input => Output):
 0 => [0]
 
 */
+// using System;
+// using System.Collections.Generic;
+
+// namespace Solution
+// {
+//   class Digitizer
+//   {
+//     public static long[] Digitize(long n)
+//     {
+//       //Convert number to an array of characters
+//       char[] numArray = n.ToString().ToCharArray();
+
+//       //Reverse the array
+//       Array.Reverse(numArray);
+
+//       //Convert each character back to long and return
+//       long[] reversedArray = new long[numArray.Length];
+//       for(int i=0; i<numArray.Length; i++)
+//       {
+//         reversedArray[i] = long.Parse(numArray[i].ToString());
+//       }
+
+//       return reversedArray;
+
+//     }
+
+//     public static void Main(string[] args)
+//     {
+//       long[] digits = Digitize(35231);
+//       Console.WriteLine(string.Join(", ", digits));
+//     }
+//   }
+// }
+
+/*
+
+Function 1 - hello world
+
+Make a simple function called greet that returns the most-famous "hello world!".
+
+Style Points
+Sure, this is about as easy as it gets. But how clever can you be to create the most creative "hello world" you can think of? What is a "hello world" solution you would want to show your friends?
+
+*/
 using System;
-using System.Collections.Generic;
 
-namespace Solution
+public static class Kata
 {
-  class Digitizer
+  public static void Main(string[] args)
   {
-    public static long[] Digitize(long n)
-    {
-      //Convert number to an array of characters
-      char[] numArray = n.ToString().ToCharArray();
+    Console.WriteLine(Greet());
+  }
 
-      //Reverse the array
-      Array.Reverse(numArray);
-
-      //Convert each character back to long and return
-      long[] reversedArray = new long[numArray.Length];
-      for(int i=0; i<numArray.Length; i++)
-      {
-        reversedArray[i] = long.Parse(numArray[i].ToString());
-      }
-
-      return reversedArray;
-
-    }
-
-    public static void Main(string[] args)
-    {
-      long[] digits = Digitize(35231);
-      Console.WriteLine(string.Join(", ", digits));
-    }
+    public static string Greet()
+  {
+    return "hello world!";
   }
 }
