@@ -682,45 +682,71 @@ Examples
 
 */
 
+// using System;
+// using System.Linq;
+
+// public static class Kata
+// {
+//   public static void Main(string[] args)
+//   {
+//     int [] nums = {1,2,2,3,3,3,4,3,3,3,2,2,1};
+//     Console.WriteLine(find_it(nums));
+//   }
+
+//   public static int find_it(int[] seq) 
+//   {
+//     //counter for each integer
+//     int count = 0;
+
+//     //find the highest value in the array
+//     int max = seq.Max();
+
+//     for(int i=0; i<=max; i++)
+//     {
+//       //nested loop to count is even, count each num. If count is odd, return number.
+//       for(int j=0; j<seq.Length; j++)
+//       {
+//         if(i == seq[j])
+//         {
+//           count++;
+//         }
+//       }
+
+//       //If count is odd, return number.
+//       if(count % 2 == 1)
+//       {
+//         return i;
+//       }
+
+//       //reset count
+//       count = 0;
+//     }
+//     return -1;
+//   }
+// }
+
+/*
+
+Opposites Attract
+
+Timmy & Sarah think they are in love, but around where they live, they will only know once they pick a flower each. If one of the flowers has an even number of petals and the other has an odd number of petals it means they are in love.
+
+Write a function that will take the number of petals of each flower and return true if they are in love and false if they aren't.
+
+*/
 using System;
-using System.Linq;
 
-public static class Kata
+public class LoveDetector
 {
-  public static void Main(string[] args)
-  {
-    int [] nums = {1,2,2,3,3,3,4,3,3,3,2,2,1};
-    Console.WriteLine(find_it(nums));
-  }
-
-  public static int find_it(int[] seq) 
-  {
-    //counter for each integer
-    int count = 0;
-
-    //find the highest value in the array
-    int max = seq.Max();
-
-    for(int i=0; i<=max; i++)
+    public static void Main()
     {
-      //nested loop to count is even, count each num. If count is odd, return number.
-      for(int j=0; j<seq.Length; j++)
-      {
-        if(i == seq[j])
-        {
-          count++;
-        }
-      }
-
-      //If count is odd, return number.
-      if(count % 2 == 1)
-      {
-        return i;
-      }
-
-      //reset count
-      count = 0;
+      Console.WriteLine(lovefunc(1,4));//true
+      Console.WriteLine(lovefunc(2,4));//false
     }
-    return -1;
-  }
+    public static bool lovefunc(int flower1, int flower2)
+    { 
+        int inLoveNum = flower1+flower2;
+
+        return inLoveNum % 2 == 1;
+    }
 }
