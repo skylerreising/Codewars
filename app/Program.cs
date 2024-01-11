@@ -734,19 +734,65 @@ Timmy & Sarah think they are in love, but around where they live, they will only
 Write a function that will take the number of petals of each flower and return true if they are in love and false if they aren't.
 
 */
+// using System;
+
+// public class LoveDetector
+// {
+//     public static void Main()
+//     {
+//       Console.WriteLine(lovefunc(1,4));//true
+//       Console.WriteLine(lovefunc(2,4));//false
+//     }
+//     public static bool lovefunc(int flower1, int flower2)
+//     { 
+//         int inLoveNum = flower1+flower2;
+
+//         return inLoveNum % 2 == 1;
+//     }
+// }
+
+/*
+
+Square Every Digit
+
+Welcome. In this kata, you are asked to square every digit of a number and concatenate them.
+
+For example, if we run 9119 through the function, 811181 will come out, because 92 is 81 and 12 is 1. (81-1-1-81)
+
+Example #2: An input of 765 will/should return 493625 because 72 is 49, 62 is 36, and 52 is 25. (49-36-25)
+
+Note: The function accepts an integer and returns an integer.
+
+Happy Coding!
+
+*/
 using System;
 
-public class LoveDetector
+public class Kata
 {
-    public static void Main()
-    {
-      Console.WriteLine(lovefunc(1,4));//true
-      Console.WriteLine(lovefunc(2,4));//false
-    }
-    public static bool lovefunc(int flower1, int flower2)
-    { 
-        int inLoveNum = flower1+flower2;
+  public static int SquareDigits(int n)
+  {
+    //Turn the int into a string
+    string numString = n.ToString();
 
-        return inLoveNum % 2 == 1;
+    //Declare an empty result string
+    string resultString = "";
+
+    //loop through each char in the string, convert to an int, square it, convert back to string, and concatenate to resultString
+    foreach (char num in numString)
+    {
+      int digit = Convert.ToInt32(num.ToString());
+
+      digit *= digit;
+
+      resultString += digit.ToString();
     }
+    return Convert.ToInt32(resultString);
+  }
+
+  public static void Main(string[] args)
+  {
+    Console.WriteLine(SquareDigits(9119));//811181
+    Console.WriteLine(SquareDigits(765));//493625
+  }
 }
