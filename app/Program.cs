@@ -884,39 +884,100 @@ Examples:
 "This is another test" --> "This is rehtona test"
 */
 
-using System.Collections.Generic;
-using System.Linq;
+// using System.Collections.Generic;
+// using System.Linq;
+// using System;
+
+// public class Kata
+// {
+//   public static string SpinWords(string sentence)
+//   {
+//     // Make the sentence into a word array
+//     string[] words = sentence.Split(" ");
+//     List<string> newWords = new List<string>();
+
+//     // Loop through the word array and reverse the word if the length of the word is >= 5
+//     foreach (string word in words)
+//     {
+//       if(word.Length >= 5)
+//       {
+//         char[] spltWord = word.ToCharArray();
+//         Array.Reverse(spltWord);
+//         newWords.Add(new string(spltWord));
+//       }
+//       else
+//       {
+//         newWords.Add(word);
+//       }
+//     }
+
+//     // Join the word list and return the sentence
+//     return String.Join(" ", newWords);
+//   }
+
+//   public static void Main(string[] args)
+//   {
+//     Console.WriteLine(SpinWords("Hey fellow warriors"));
+//   }
+// }
+
+/*
+Who likes it?
+
+You probably know the "like" system from Facebook and other pages. People can "like" blog posts, pictures or other items. We want to create the text that should be displayed next to such an item.
+
+Implement the function which takes an array containing the names of people that like an item. It must return the display text as shown in the examples:
+
+[]                                -->  "no one likes this"
+["Peter"]                         -->  "Peter likes this"
+["Jacob", "Alex"]                 -->  "Jacob and Alex like this"
+["Max", "John", "Mark"]           -->  "Max, John and Mark like this"
+["Alex", "Jacob", "Mark", "Max"]  -->  "Alex, Jacob and 2 others like this"
+Note: For 4 or more names, the number in "and 2 others" simply increases.
+*/
+
 using System;
-
-public class Kata
+using System.Linq;
+using System.Collections.Generic;
+public static class Kata
 {
-  public static string SpinWords(string sentence)
+  public static string Likes(string[] name)
   {
-    // Make the sentence into a word array
-    string[] words = sentence.Split(" ");
-    List<string> newWords = new List<string>();
-
-    // Loop through the word array and reverse the word if the length of the word is >= 5
-    foreach (string word in words)
+    if (name.Length == 0)
     {
-      if(word.Length >= 5)
-      {
-        char[] spltWord = word.ToCharArray();
-        Array.Reverse(spltWord);
-        newWords.Add(new string(spltWord));
-      }
-      else
-      {
-        newWords.Add(word);
-      }
+      return "no one likes this";
     }
-
-    // Join the word list and return the sentence
-    return String.Join(" ", newWords);
+    else if (name.Length == 1)
+    {
+      return $"{name[0]} likes this";
+    }
+    else if (name.Length == 2)
+    {
+      return $"{name[0]} and {name[1]} like this";
+    }
+    else if (name.Length == 3)
+    {
+      return $"{name[0]}, {name[1]} and {name[2]} like this";
+    }
+    else
+    {
+      return $"{name[0]}, {name[1]} and {name.Length - 2} others like this";
+    }
+    return "not yet";
   }
 
   public static void Main(string[] args)
   {
-    Console.WriteLine(SpinWords("Hey fellow warriors"));
+    string[] empty = Array.Empty<string>();
+    string[] one = {"Peter"};
+    string[] two = {"Jacob", "Alex"};
+    string[] three = {"Max", "John", "Mark"};
+    string[] four = {"Alex", "Jacob", "Mark", "Max"};
+
+    Console.WriteLine(Likes(empty));
+    Console.WriteLine(Likes(one));
+    Console.WriteLine(Likes(two));
+    Console.WriteLine(Likes(three));
+    Console.WriteLine(Likes(four));
   }
 }
