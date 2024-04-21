@@ -766,33 +766,108 @@ Note: The function accepts an integer and returns an integer.
 Happy Coding!
 
 */
+// using System;
+
+// public class Kata
+// {
+//   public static int SquareDigits(int n)
+//   {
+//     //Turn the int into a string
+//     string numString = n.ToString();
+
+//     //Declare an empty result string
+//     string resultString = "";
+
+//     //loop through each char in the string, convert to an int, square it, convert back to string, and concatenate to resultString
+//     foreach (char num in numString)
+//     {
+//       int digit = Convert.ToInt32(num.ToString());
+
+//       digit *= digit;
+
+//       resultString += digit.ToString();
+//     }
+//     return Convert.ToInt32(resultString);
+//   }
+
+//   public static void Main(string[] args)
+//   {
+//     Console.WriteLine(SquareDigits(9119));//811181
+//     Console.WriteLine(SquareDigits(765));//493625
+//   }
+// }
+
+/*
+Stop gninnipS My sdroW!
+Write a function that takes in a string of one or more words, and returns the same string, but with all words that have five or more letters reversed (Just like the name of this Kata). Strings passed in will consist of only letters and spaces. Spaces will be included only when more than one word is present.
+
+Examples:
+
+"Hey fellow warriors"  --> "Hey wollef sroirraw" 
+"This is a test        --> "This is a test" 
+"This is another test" --> "This is rehtona test"
+*/
+
+// using System;
+// using System.Linq;
+
+// public class Kata
+// {
+//   public static string SpinWords(string sentence)
+//   {
+//     //Split the string into an array of words
+
+//     //Loop over the words, and if a word has 5 or more letters, reverse that word.
+//   }
+//   public static void Main(string[] args)
+//   {
+//     Console.WriteLine(SpinWords("Welcome"));
+//     Console.WriteLine(SpinWords("Hey fellow warriors"));
+//   }
+// }
+
+/*
+Disemvowel Trolls
+
+Trolls are attacking your comment section!
+
+A common way to deal with this situation is to remove all of the vowels from the trolls' comments, neutralizing the threat.
+
+Your task is to write a function that takes a string and return a new string with all vowels removed.
+
+For example, the string "This website is for losers LOL!" would become "Ths wbst s fr lsrs LL!".
+
+Note: for this kata y isn't considered a vowel.
+*/
+
 using System;
-
-public class Kata
+using System.Linq;
+public static class Kata
 {
-  public static int SquareDigits(int n)
-  {
-    //Turn the int into a string
-    string numString = n.ToString();
-
-    //Declare an empty result string
-    string resultString = "";
-
-    //loop through each char in the string, convert to an int, square it, convert back to string, and concatenate to resultString
-    foreach (char num in numString)
+    public static string Disemvowel(string str)
     {
-      int digit = Convert.ToInt32(num.ToString());
+        // Split the string into an array
+        char[] strArray = str.ToCharArray();
 
-      digit *= digit;
+        char[] vowelArray = { 'a', 'e', 'i', 'o', 'u' };
 
-      resultString += digit.ToString();
+        List<char> strList = new List<char>();
+
+        // Remove each vowel
+        for(int i = 0; i<strArray.Length; i++)
+        {
+          if(!vowelArray.Contains(Char.ToLower(strArray[i])))
+          {
+            strList.Add(strArray[i]);
+          }
+        }
+
+        // Join and return the array
+        return new string(strList.ToArray());
     }
-    return Convert.ToInt32(resultString);
-  }
 
-  public static void Main(string[] args)
-  {
-    Console.WriteLine(SquareDigits(9119));//811181
-    Console.WriteLine(SquareDigits(765));//493625
-  }
+    public static void Main(string[] args)
+    {
+      Console.WriteLine(Disemvowel("This website is for losers LOL!"));
+    }
 }
