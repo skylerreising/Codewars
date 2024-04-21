@@ -840,34 +840,83 @@ For example, the string "This website is for losers LOL!" would become "Ths wbst
 Note: for this kata y isn't considered a vowel.
 */
 
-using System;
+// using System;
+// using System.Linq;
+// public static class Kata
+// {
+//     public static string Disemvowel(string str)
+//     {
+//         // Split the string into an array
+//         char[] strArray = str.ToCharArray();
+
+//         char[] vowelArray = { 'a', 'e', 'i', 'o', 'u' };
+
+//         List<char> strList = new List<char>();
+
+//         // Remove each vowel
+//         for(int i = 0; i<strArray.Length; i++)
+//         {
+//           if(!vowelArray.Contains(Char.ToLower(strArray[i])))
+//           {
+//             strList.Add(strArray[i]);
+//           }
+//         }
+
+//         // Join and return the array
+//         return new string(strList.ToArray());
+//     }
+
+//     public static void Main(string[] args)
+//     {
+//       Console.WriteLine(Disemvowel("This website is for losers LOL!"));
+//     }
+// }
+
+/*
+Stop gninnipS My sdroW!
+
+Write a function that takes in a string of one or more words, and returns the same string, but with all words that have five or more letters reversed (Just like the name of this Kata). Strings passed in will consist of only letters and spaces. Spaces will be included only when more than one word is present.
+
+Examples:
+
+"Hey fellow warriors"  --> "Hey wollef sroirraw" 
+"This is a test        --> "This is a test" 
+"This is another test" --> "This is rehtona test"
+*/
+
+using System.Collections.Generic;
 using System.Linq;
-public static class Kata
+using System;
+
+public class Kata
 {
-    public static string Disemvowel(string str)
+  public static string SpinWords(string sentence)
+  {
+    // Make the sentence into a word array
+    string[] words = sentence.Split(" ");
+    List<string> newWords = new List<string>();
+
+    // Loop through the word array and reverse the word if the length of the word is >= 5
+    foreach (string word in words)
     {
-        // Split the string into an array
-        char[] strArray = str.ToCharArray();
-
-        char[] vowelArray = { 'a', 'e', 'i', 'o', 'u' };
-
-        List<char> strList = new List<char>();
-
-        // Remove each vowel
-        for(int i = 0; i<strArray.Length; i++)
-        {
-          if(!vowelArray.Contains(Char.ToLower(strArray[i])))
-          {
-            strList.Add(strArray[i]);
-          }
-        }
-
-        // Join and return the array
-        return new string(strList.ToArray());
+      if(word.Length >= 5)
+      {
+        char[] spltWord = word.ToCharArray();
+        Array.Reverse(spltWord);
+        newWords.Add(new string(spltWord));
+      }
+      else
+      {
+        newWords.Add(word);
+      }
     }
 
-    public static void Main(string[] args)
-    {
-      Console.WriteLine(Disemvowel("This website is for losers LOL!"));
-    }
+    // Join the word list and return the sentence
+    return String.Join(" ", newWords);
+  }
+
+  public static void Main(string[] args)
+  {
+    Console.WriteLine(SpinWords("Hey fellow warriors"));
+  }
 }
