@@ -936,48 +936,96 @@ Implement the function which takes an array containing the names of people that 
 Note: For 4 or more names, the number in "and 2 others" simply increases.
 */
 
-using System;
-using System.Linq;
+// using System;
+// using System.Linq;
+// using System.Collections.Generic;
+// public static class Kata
+// {
+//   public static string Likes(string[] name)
+//   {
+//     if (name.Length == 0)
+//     {
+//       return "no one likes this";
+//     }
+//     else if (name.Length == 1)
+//     {
+//       return $"{name[0]} likes this";
+//     }
+//     else if (name.Length == 2)
+//     {
+//       return $"{name[0]} and {name[1]} like this";
+//     }
+//     else if (name.Length == 3)
+//     {
+//       return $"{name[0]}, {name[1]} and {name[2]} like this";
+//     }
+//     else
+//     {
+//       return $"{name[0]}, {name[1]} and {name.Length - 2} others like this";
+//     }
+//     return "not yet";
+//   }
+
+//   public static void Main(string[] args)
+//   {
+//     string[] empty = Array.Empty<string>();
+//     string[] one = {"Peter"};
+//     string[] two = {"Jacob", "Alex"};
+//     string[] three = {"Max", "John", "Mark"};
+//     string[] four = {"Alex", "Jacob", "Mark", "Max"};
+
+//     Console.WriteLine(Likes(empty));
+//     Console.WriteLine(Likes(one));
+//     Console.WriteLine(Likes(two));
+//     Console.WriteLine(Likes(three));
+//     Console.WriteLine(Likes(four));
+//   }
+// }
+
+/*
+Sum of Digits / Digital Root
+
+Digital root is the recursive sum of all the digits in a number.
+
+Given n, take the sum of the digits of n. If that value has more than one digit, continue reducing in this way until a single-digit number is produced. The input will be a non-negative integer.
+
+Examples
+    16  -->  1 + 6 = 7
+   942  -->  9 + 4 + 2 = 15  -->  1 + 5 = 6
+132189  -->  1 + 3 + 2 + 1 + 8 + 9 = 24  -->  2 + 4 = 6
+493193  -->  4 + 9 + 3 + 1 + 9 + 3 = 29  -->  2 + 9 = 11  -->  1 + 1 = 2
+*/
+
 using System.Collections.Generic;
-public static class Kata
+using System.Linq;
+using System;
+using System.Reflection.Metadata.Ecma335;
+
+public class Number
 {
-  public static string Likes(string[] name)
+  public static int DigitalRoot(long n)
   {
-    if (name.Length == 0)
+    if( n < 10 )
     {
-      return "no one likes this";
+      return (int)n;
     }
-    else if (name.Length == 1)
+
+    int sum = 0;
+    string nString = n.ToString();
+
+    foreach(var num in nString)
     {
-      return $"{name[0]} likes this";
+      sum += int.Parse(num.ToString());
     }
-    else if (name.Length == 2)
-    {
-      return $"{name[0]} and {name[1]} like this";
-    }
-    else if (name.Length == 3)
-    {
-      return $"{name[0]}, {name[1]} and {name[2]} like this";
-    }
-    else
-    {
-      return $"{name[0]}, {name[1]} and {name.Length - 2} others like this";
-    }
-    return "not yet";
+
+    return DigitalRoot(Convert.ToInt64(sum));
   }
 
   public static void Main(string[] args)
   {
-    string[] empty = Array.Empty<string>();
-    string[] one = {"Peter"};
-    string[] two = {"Jacob", "Alex"};
-    string[] three = {"Max", "John", "Mark"};
-    string[] four = {"Alex", "Jacob", "Mark", "Max"};
-
-    Console.WriteLine(Likes(empty));
-    Console.WriteLine(Likes(one));
-    Console.WriteLine(Likes(two));
-    Console.WriteLine(Likes(three));
-    Console.WriteLine(Likes(four));
+    Console.WriteLine(DigitalRoot(16));
+    Console.WriteLine(DigitalRoot(942));
+    Console.WriteLine(DigitalRoot(132189));
+    Console.WriteLine(DigitalRoot(493193));
   }
 }
