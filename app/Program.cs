@@ -996,36 +996,77 @@ Examples
 493193  -->  4 + 9 + 3 + 1 + 9 + 3 = 29  -->  2 + 9 = 11  -->  1 + 1 = 2
 */
 
-using System.Collections.Generic;
-using System.Linq;
+// using System.Collections.Generic;
+// using System.Linq;
+// using System;
+// using System.Reflection.Metadata.Ecma335;
+
+// public class Number
+// {
+//   public static int DigitalRoot(long n)
+//   {
+//     if( n < 10 )
+//     {
+//       return (int)n;
+//     }
+
+//     int sum = 0;
+//     string nString = n.ToString();
+
+//     foreach(var num in nString)
+//     {
+//       sum += int.Parse(num.ToString());
+//     }
+
+//     return DigitalRoot(Convert.ToInt64(sum));
+//   }
+
+//   public static void Main(string[] args)
+//   {
+//     Console.WriteLine(DigitalRoot(16));
+//     Console.WriteLine(DigitalRoot(942));
+//     Console.WriteLine(DigitalRoot(132189));
+//     Console.WriteLine(DigitalRoot(493193));
+//   }
+// }
+
+/*
+Array.diff
+
+Your goal in this kata is to implement a difference function, which subtracts one list from another and returns the result.
+
+It should remove all values from list a, which are present in list b keeping their order.
+
+Kata.ArrayDiff(new int[] {1, 2}, new int[] {1}) => new int[] {2}
+If a value is present in b, all of its occurrences must be removed from the other:
+
+Kata.ArrayDiff(new int[] {1, 2, 2, 2, 3}, new int[] {2}) => new int[] {1, 3}
+*/
+
 using System;
-using System.Reflection.Metadata.Ecma335;
+using System.Linq;
 
-public class Number
+public class Kata
 {
-  public static int DigitalRoot(long n)
+  public static int[] ArrayDiff(int[] a, int[] b)
   {
-    if( n < 10 )
+    // for ever value in b, remove it from a
+    List<int> newArr = a.ToList();
+
+    foreach(var num in b)
     {
-      return (int)n;
+      newArr.RemoveAll(x => x == num);
     }
 
-    int sum = 0;
-    string nString = n.ToString();
-
-    foreach(var num in nString)
-    {
-      sum += int.Parse(num.ToString());
-    }
-
-    return DigitalRoot(Convert.ToInt64(sum));
+    return newArr.ToArray();
   }
 
   public static void Main(string[] args)
   {
-    Console.WriteLine(DigitalRoot(16));
-    Console.WriteLine(DigitalRoot(942));
-    Console.WriteLine(DigitalRoot(132189));
-    Console.WriteLine(DigitalRoot(493193));
+    var nums = ArrayDiff(new int[] {1, 2, 2, 2, 3}, new int[] {2});
+    foreach(var num in nums)
+    {
+      Console.WriteLine(num);
+    }
   }
 }
