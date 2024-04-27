@@ -1043,30 +1043,65 @@ If a value is present in b, all of its occurrences must be removed from the othe
 Kata.ArrayDiff(new int[] {1, 2, 2, 2, 3}, new int[] {2}) => new int[] {1, 3}
 */
 
+// using System;
+// using System.Linq;
+
+// public class Kata
+// {
+//   public static int[] ArrayDiff(int[] a, int[] b)
+//   {
+//     // for ever value in b, remove it from a
+//     List<int> newArr = a.ToList();
+
+//     foreach(var num in b)
+//     {
+//       newArr.RemoveAll(x => x == num);
+//     }
+
+//     return newArr.ToArray();
+//   }
+
+//   public static void Main(string[] args)
+//   {
+//     var nums = ArrayDiff(new int[] {1, 2, 2, 2, 3}, new int[] {2});
+//     foreach(var num in nums)
+//     {
+//       Console.WriteLine(num);
+//     }
+//   }
+// }
+
+/*
+Create Phone Number
+
+Write a function that accepts an array of 10 integers (between 0 and 9), that returns a string of those numbers in the form of a phone number.
+
+Example
+Kata.CreatePhoneNumber(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 0}) // => returns "(123) 456-7890"
+The returned format must be correct in order to complete this challenge.
+
+Don't forget the space after the closing parentheses!
+*/
+
 using System;
 using System.Linq;
 
 public class Kata
 {
-  public static int[] ArrayDiff(int[] a, int[] b)
+  public static string CreatePhoneNumber(int[] numbers)
   {
-    // for ever value in b, remove it from a
-    List<int> newArr = a.ToList();
+    string phoneNumber = "";
 
-    foreach(var num in b)
-    {
-      newArr.RemoveAll(x => x == num);
-    }
+    phoneNumber += "(" + $"{numbers[0]}{numbers[1]}{numbers[2]}" + ")" + " ";
 
-    return newArr.ToArray();
+    phoneNumber += $"{numbers[3]}{numbers[4]}{numbers[5]}" + "-";
+
+    phoneNumber += $"{numbers[6]}{numbers[7]}{numbers[8]}{numbers[9]}";
+
+    return phoneNumber;
   }
-
   public static void Main(string[] args)
   {
-    var nums = ArrayDiff(new int[] {1, 2, 2, 2, 3}, new int[] {2});
-    foreach(var num in nums)
-    {
-      Console.WriteLine(num);
-    }
+    Console.WriteLine(CreatePhoneNumber(new int[]{1,2,3,4,5,6,7,8,9,0}));
   }
 }
