@@ -1083,25 +1083,66 @@ The returned format must be correct in order to complete this challenge.
 Don't forget the space after the closing parentheses!
 */
 
+// using System;
+// using System.Linq;
+
+// public class Kata
+// {
+//   public static string CreatePhoneNumber(int[] numbers)
+//   {
+//     string phoneNumber = "";
+
+//     phoneNumber += "(" + $"{numbers[0]}{numbers[1]}{numbers[2]}" + ")" + " ";
+
+//     phoneNumber += $"{numbers[3]}{numbers[4]}{numbers[5]}" + "-";
+
+//     phoneNumber += $"{numbers[6]}{numbers[7]}{numbers[8]}{numbers[9]}";
+
+//     return phoneNumber;
+//   }
+//   public static void Main(string[] args)
+//   {
+//     Console.WriteLine(CreatePhoneNumber(new int[]{1,2,3,4,5,6,7,8,9,0}));
+//   }
+// }
+
+/*
+Descending Order
+
+Your task is to make a function that can take any non-negative integer as an argument and return it with its digits in descending order. Essentially, rearrange the digits to create the highest possible number.
+
+Examples:
+Input: 42145 Output: 54421
+
+Input: 145263 Output: 654321
+
+Input: 123456789 Output: 987654321
+*/
+
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
-public class Kata
+public static class Kata
 {
-  public static string CreatePhoneNumber(int[] numbers)
+  public static int DescendingOrder(int num)
   {
-    string phoneNumber = "";
+    // Split into numbers
+    char[] newCharArray = num.ToString().ToCharArray();
+    int[] intArray = newCharArray.Select(x => x - '0').ToArray();
 
-    phoneNumber += "(" + $"{numbers[0]}{numbers[1]}{numbers[2]}" + ")" + " ";
+    // Sort numbers;
+    Array.Sort(intArray);
+    Array.Reverse(intArray);
 
-    phoneNumber += $"{numbers[3]}{numbers[4]}{numbers[5]}" + "-";
-
-    phoneNumber += $"{numbers[6]}{numbers[7]}{numbers[8]}{numbers[9]}";
-
-    return phoneNumber;
+    // Join numbers and return
+    string newNum = string.Join("", intArray);
+    int readyToReturn = Convert.ToInt32(newNum);
+    return readyToReturn;
   }
+
   public static void Main(string[] args)
   {
-    Console.WriteLine(CreatePhoneNumber(new int[]{1,2,3,4,5,6,7,8,9,0}));
+    Console.WriteLine(DescendingOrder(42145));
   }
 }
