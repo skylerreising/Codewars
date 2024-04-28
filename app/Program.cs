@@ -1155,28 +1155,79 @@ Write a function that takes an integer as input, and returns the number of bits 
 Example: The binary representation of 1234 is 10011010010, so the function should return 5 in this case
 */
 
+// using System;
+// using System.Collections.Generic;
+// using System.Linq;
+
+// public class Kata
+// {
+//   public static int CountBits(int n)
+//   {
+//     string binNum = Convert.ToString( n, 2);
+//     int count = 0;
+//     for (int i = 0; i<binNum.Length; i++)
+//     {
+//       if(binNum[i] == '1')
+//       {
+//         count++;
+//       }
+//     }
+//     return count;
+//   }
+
+//   public static void Main(string[] args)
+//   {
+//     Console.WriteLine(CountBits(1234));
+//   }
+// }
+
+/*
+Replace vowels to exclamation marks
+
+Replace all vowel to exclamation mark in the sentence. aeiouAEIOU is vowel.
+
+Examples
+replace("Hi!") === "H!!"
+replace("!Hi! Hi!") === "!H!! H!!"
+replace("aeiou") === "!!!!!"
+replace("ABCDE") === "!BCD!"
+*/
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
-public class Kata
+using System.Text;
+public static class Kata
 {
-  public static int CountBits(int n)
+  public static string Replace(string s)
   {
-    string binNum = Convert.ToString( n, 2);
-    int count = 0;
-    for (int i = 0; i<binNum.Length; i++)
+    // make s lowercase
+    string lowString = s.ToLower();
+
+    // make vowel string
+    char[] vowels = {'a', 'e', 'i', 'o', 'u'};
+
+    // make new string to be returned after the loop
+    StringBuilder newString = new StringBuilder();
+
+    // loop through s and if s char is in vowel string, add ! to the string, otherwise add the char to the string
+    for(int i = 0; i < s.Length; i++)
     {
-      if(binNum[i] == '1')
+      if(vowels.Contains(lowString[i]))
       {
-        count++;
+        newString.Append('!');
+      }
+      else
+      {
+        newString.Append(s[i]);
       }
     }
-    return count;
+
+    return newString.ToString();
   }
 
   public static void Main(string[] args)
   {
-    Console.WriteLine(CountBits(1234));
+    Console.WriteLine(Replace("ABCDE"));
   }
 }
