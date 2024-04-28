@@ -1119,30 +1119,64 @@ Input: 145263 Output: 654321
 Input: 123456789 Output: 987654321
 */
 
+// using System;
+// using System.Collections.Generic;
+// using System.Linq;
+
+// public static class Kata
+// {
+//   public static int DescendingOrder(int num)
+//   {
+//     // Split into numbers
+//     char[] newCharArray = num.ToString().ToCharArray();
+//     int[] intArray = newCharArray.Select(x => x - '0').ToArray();
+
+//     // Sort numbers;
+//     Array.Sort(intArray);
+//     Array.Reverse(intArray);
+
+//     // Join numbers and return
+//     string newNum = string.Join("", intArray);
+//     int readyToReturn = Convert.ToInt32(newNum);
+//     return readyToReturn;
+//   }
+
+//   public static void Main(string[] args)
+//   {
+//     Console.WriteLine(DescendingOrder(42145));
+//   }
+// }
+
+/*
+Bit Counting
+
+Write a function that takes an integer as input, and returns the number of bits that are equal to one in the binary representation of that number. You can guarantee that input is non-negative.
+
+Example: The binary representation of 1234 is 10011010010, so the function should return 5 in this case
+*/
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public static class Kata
+public class Kata
 {
-  public static int DescendingOrder(int num)
+  public static int CountBits(int n)
   {
-    // Split into numbers
-    char[] newCharArray = num.ToString().ToCharArray();
-    int[] intArray = newCharArray.Select(x => x - '0').ToArray();
-
-    // Sort numbers;
-    Array.Sort(intArray);
-    Array.Reverse(intArray);
-
-    // Join numbers and return
-    string newNum = string.Join("", intArray);
-    int readyToReturn = Convert.ToInt32(newNum);
-    return readyToReturn;
+    string binNum = Convert.ToString( n, 2);
+    int count = 0;
+    for (int i = 0; i<binNum.Length; i++)
+    {
+      if(binNum[i] == '1')
+      {
+        count++;
+      }
+    }
+    return count;
   }
 
   public static void Main(string[] args)
   {
-    Console.WriteLine(DescendingOrder(42145));
+    Console.WriteLine(CountBits(1234));
   }
 }
