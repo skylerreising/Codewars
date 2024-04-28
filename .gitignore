@@ -1,3 +1,6 @@
 .vscode
 app\bin
 app\obj
+node_modules
+.json
+.eslintrc.js
