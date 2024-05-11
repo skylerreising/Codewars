@@ -1244,46 +1244,93 @@ accum("cwAt") -> "C-Ww-Aaa-Tttt"
 The parameter of accum is a string which includes only letters from a..z and A..Z.
 */
 
+// using System;
+// using System.Collections.Generic;
+// using System.Linq;
+// using System.Text;
+
+// public class Accumul 
+// {
+// 	public static String Accum(string s) 
+//   {
+//     // loop to add to a new string. Each letter is repeated as many times as its index. First letter is always capitol
+//     string newString = "";
+//     for(int i = 0; i < s.Length; i++)
+//     {
+//       for(int j = 0; j <= i; j++)
+//       {
+//         if(j == 0)
+//         {
+//           newString += s[i].ToString().ToUpper();
+//           if(j == i)
+//           {
+//             newString += "-";
+//           }
+//         }
+//         else
+//         {
+//           newString += s[i].ToString().ToLower();
+//           if(j == i)
+//           {
+//             newString += "-";
+//           }
+//         }
+//       }
+//     }
+
+//     newString = newString.Remove(newString.Count() - 1, 1);
+//     return newString;
+//   }
+
+//     public static void Main(string[] args)
+//   {
+//     Console.WriteLine(Accum("RqaEzty"));
+//   }
+// }
+
+/*
+You're a Square!
+
+A square of squares
+You like building blocks. You especially like building blocks that are squares. And what you even like more, is to arrange them into a square of square building blocks!
+
+However, sometimes, you can't arrange them into a square. Instead, you end up with an ordinary rectangle! Those blasted things! If you just had a way to know, whether you're currently working in vain… Wait! That's it! You just have to check if your number of building blocks is a perfect square.
+
+Task
+Given an integral number, determine if it's a square number:
+
+In mathematics, a square number or perfect square is an integer that is the square of an integer; in other words, it is the product of some integer with itself.
+
+The tests will always use some integral number, so don't worry about that in dynamic typed languages.
+
+Examples
+-1  =>  false
+ 0  =>  true
+ 3  =>  false
+ 4  =>  true
+25  =>  true
+26  =>  false
+*/
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-public class Accumul 
+public class Kata
 {
-	public static String Accum(string s) 
+  public static bool IsSquare(int n)
   {
-    // loop to add to a new string. Each letter is repeated as many times as its index. First letter is always capitol
-    string newString = "";
-    for(int i = 0; i < s.Length; i++)
-    {
-      for(int j = 0; j <= i; j++)
-      {
-        if(j == 0)
-        {
-          newString += s[i].ToString().ToUpper();
-          if(j == i)
-          {
-            newString += "-";
-          }
-        }
-        else
-        {
-          newString += s[i].ToString().ToLower();
-          if(j == i)
-          {
-            newString += "-";
-          }
-        }
-      }
-    }
+    double squareRoot = Math.Sqrt(n);
 
-    newString = newString.Remove(newString.Count() - 1, 1);
-    return newString;
+    return ((int)squareRoot)*((int)squareRoot) == n;
   }
 
-    public static void Main(string[] args)
+  public static void Main(string[] args)
   {
-    Console.WriteLine(Accum("RqaEzty"));
+    Console.WriteLine(IsSquare(0));
+    Console.WriteLine(IsSquare(3));
+    Console.WriteLine(IsSquare(4));
+    Console.WriteLine(IsSquare(25));
+    Console.WriteLine(IsSquare(26));
   }
 }
