@@ -1193,41 +1193,97 @@ replace("aeiou") === "!!!!!"
 replace("ABCDE") === "!BCD!"
 */
 
+// using System;
+// using System.Collections.Generic;
+// using System.Linq;
+// using System.Text;
+// public static class Kata
+// {
+//   public static string Replace(string s)
+//   {
+//     // make s lowercase
+//     string lowString = s.ToLower();
+
+//     // make vowel string
+//     char[] vowels = {'a', 'e', 'i', 'o', 'u'};
+
+//     // make new string to be returned after the loop
+//     StringBuilder newString = new StringBuilder();
+
+//     // loop through s and if s char is in vowel string, add ! to the string, otherwise add the char to the string
+//     for(int i = 0; i < s.Length; i++)
+//     {
+//       if(vowels.Contains(lowString[i]))
+//       {
+//         newString.Append('!');
+//       }
+//       else
+//       {
+//         newString.Append(s[i]);
+//       }
+//     }
+
+//     return newString.ToString();
+//   }
+
+//   public static void Main(string[] args)
+//   {
+//     Console.WriteLine(Replace("ABCDE"));
+//   }
+// }
+
+/*
+Mumbling
+
+This time no story, no theory. The examples below show you how to write function accum:
+
+Examples:
+accum("abcd") -> "A-Bb-Ccc-Dddd"
+accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+accum("cwAt") -> "C-Ww-Aaa-Tttt"
+The parameter of accum is a string which includes only letters from a..z and A..Z.
+*/
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-public static class Kata
+
+public class Accumul 
 {
-  public static string Replace(string s)
+	public static String Accum(string s) 
   {
-    // make s lowercase
-    string lowString = s.ToLower();
-
-    // make vowel string
-    char[] vowels = {'a', 'e', 'i', 'o', 'u'};
-
-    // make new string to be returned after the loop
-    StringBuilder newString = new StringBuilder();
-
-    // loop through s and if s char is in vowel string, add ! to the string, otherwise add the char to the string
+    // loop to add to a new string. Each letter is repeated as many times as its index. First letter is always capitol
+    string newString = "";
     for(int i = 0; i < s.Length; i++)
     {
-      if(vowels.Contains(lowString[i]))
+      for(int j = 0; j <= i; j++)
       {
-        newString.Append('!');
-      }
-      else
-      {
-        newString.Append(s[i]);
+        if(j == 0)
+        {
+          newString += s[i].ToString().ToUpper();
+          if(j == i)
+          {
+            newString += "-";
+          }
+        }
+        else
+        {
+          newString += s[i].ToString().ToLower();
+          if(j == i)
+          {
+            newString += "-";
+          }
+        }
       }
     }
 
-    return newString.ToString();
+    newString = newString.Remove(newString.Count() - 1, 1);
+    return newString;
   }
 
-  public static void Main(string[] args)
+    public static void Main(string[] args)
   {
-    Console.WriteLine(Replace("ABCDE"));
+    Console.WriteLine(Accum("RqaEzty"));
   }
 }
