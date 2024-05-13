@@ -1360,105 +1360,167 @@ Example scoring
 In some languages, it is possible to mutate the input to the function. This is something that you should never do. If you mutate the input, you will not be able to pass all the tests.
 */
 
+// using System;
+// using System.Collections.Generic;
+// using System.Linq;
+// public static class Kata
+// {
+//   public static int Score(int[] dice) {
+//     // count each number throw
+//     int count = 0;
+//     int points = 0;
+
+//     for(int i = 1; i <= 6; i++)
+//     {
+//       // count each number
+//       foreach(int d in dice)
+//       {
+//         if(d == i)
+//         {
+//           count++;
+//         }
+//       }
+
+//       // apply rules for that number
+//       if(i == 1)
+//       {
+//         // 1 is worth 100 as single, 1000 as triple
+//         if(count >= 3)
+//         {
+//           points += 1000;
+//           count -= 3;
+//         }
+//         for(int j=1; j <= count; j++)
+//         {
+//           points += 100;
+//         }
+//         count = 0;
+//       }
+
+//       if(i == 2)
+//       {
+//         // 2 is worth 200 as a triple
+//         if(count >= 3)
+//         {
+//           points += 200;
+//         }
+//         count = 0;
+//       }
+
+//       if(i == 3)
+//       {
+//         // 3 is worth 300 as a triple
+//         if(count >= 3)
+//         {
+//           points += 300;
+//         }
+//         count = 0;
+//       }
+
+//       if(i == 4)
+//       {
+//         // 4 is worth 400 as a triple
+//         if(count >= 3)
+//         {
+//           points += 400;
+//         }
+//         count = 0;
+//       }
+
+//       if(i == 5)
+//       {
+//         //5 is worth 50 as single, 500 as triple
+//         if(count >= 3)
+//         {
+//           points += 500;
+//           count -= 3;
+//         }
+//         for(int j=1; j <= count; j++)
+//         {
+//           points += 50;
+//         }
+//         count = 0;
+//       }
+
+//       if(i == 6)
+//       {
+//         // 6 is worth 600 as a triple
+//         if(count >= 3)
+//         {
+//           points += 600;
+//         }
+//         count = 0;
+//       }
+//     }
+//     return points;
+//   }
+
+//   public static void Main(string[] args)
+//   {
+//     Console.WriteLine(Score(new int[] {2, 3, 4, 6, 2}));
+//     Console.WriteLine(Score(new int[] {4, 4, 4, 3, 3}));
+//     Console.WriteLine(Score(new int[] {2, 4, 4, 5, 4}));
+//   }
+// }
+
+/*
+Strip Comments
+
+Complete the solution so that it strips all text that follows any of a set of comment markers passed in. Any whitespace at the end of the line should also be stripped out.
+
+Example:
+
+Given an input string of:
+
+apples, pears # and bananas
+grapes
+bananas !apples
+The output expected would be:
+
+apples, pears
+grapes
+bananas
+The code would be called like so:
+
+string stripped = StripCommentsSolution.StripComments("apples, pears # and bananas\ngrapes\nbananas !apples", new [] { "#", "!" })
+result should == "apples, pears\ngrapes\nbananas"
+*/
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
-public static class Kata
+using System.Text.RegularExpressions;
+public class StripCommentsSolution
 {
-  public static int Score(int[] dice) {
-    // count each number throw
-    int count = 0;
-    int points = 0;
+  public static string StripComments(string text, string[] commentSymbols)
+  {
+    // split the string into an array of lines
+    var lineArray = text.Split("\n");
 
-    for(int i = 1; i <= 6; i++)
+    // loop through each string. If the char is included in the string array, 
+    // use the index of the char to remove the portion between that index and the end of the line.
+    for(int j=0; j<lineArray.Length; j++)
     {
-      // count each number
-      foreach(int d in dice)
+      for(int i = 0; i < lineArray[j].Length; i++)
       {
-        if(d == i)
+        if(commentSymbols.Any(x => x == lineArray[j][i].ToString()))
         {
-          count++;
+          Console.WriteLine(lineArray[j][i]);
+          lineArray[j] = lineArray[j].Substring(0, i);
+          lineArray[j] = lineArray[j].TrimEnd();
+          break;
         }
-      }
-
-      // apply rules for that number
-      if(i == 1)
-      {
-        // 1 is worth 100 as single, 1000 as triple
-        if(count >= 3)
-        {
-          points += 1000;
-          count -= 3;
-        }
-        for(int j=1; j <= count; j++)
-        {
-          points += 100;
-        }
-        count = 0;
-      }
-
-      if(i == 2)
-      {
-        // 2 is worth 200 as a triple
-        if(count >= 3)
-        {
-          points += 200;
-        }
-        count = 0;
-      }
-
-      if(i == 3)
-      {
-        // 3 is worth 300 as a triple
-        if(count >= 3)
-        {
-          points += 300;
-        }
-        count = 0;
-      }
-
-      if(i == 4)
-      {
-        // 4 is worth 400 as a triple
-        if(count >= 3)
-        {
-          points += 400;
-        }
-        count = 0;
-      }
-
-      if(i == 5)
-      {
-        //5 is worth 50 as single, 500 as triple
-        if(count >= 3)
-        {
-          points += 500;
-          count -= 3;
-        }
-        for(int j=1; j <= count; j++)
-        {
-          points += 50;
-        }
-        count = 0;
-      }
-
-      if(i == 6)
-      {
-        // 6 is worth 600 as a triple
-        if(count >= 3)
-        {
-          points += 600;
-        }
-        count = 0;
+          lineArray[j] = lineArray[j].TrimEnd();
       }
     }
-    return points;
+
+    // Join the string array and return it
+    return String.Join("\n", lineArray);
   }
 
   public static void Main(string[] args)
   {
-    Console.WriteLine(Score(new int[] {2, 3, 4, 6, 2}));
-    Console.WriteLine(Score(new int[] {4, 4, 4, 3, 3}));
-    Console.WriteLine(Score(new int[] {2, 4, 4, 5, 4}));
+    string stripped = StripCommentsSolution.StripComments("apples, pears # and bananas\ngrapes\nbananas !apples", new [] { "#", "!" });
+    Console.WriteLine(stripped);
   }
 }
