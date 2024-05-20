@@ -1486,41 +1486,180 @@ string stripped = StripCommentsSolution.StripComments("apples, pears # and banan
 result should == "apples, pears\ngrapes\nbananas"
 */
 
+// using System;
+// using System.Collections.Generic;
+// using System.Linq;
+// using System.Text.RegularExpressions;
+// public class StripCommentsSolution
+// {
+//   public static string StripComments(string text, string[] commentSymbols)
+//   {
+//     // split the string into an array of lines
+//     var lineArray = text.Split("\n");
+
+//     // loop through each string. If the char is included in the string array, 
+//     // use the index of the char to remove the portion between that index and the end of the line.
+//     for(int j=0; j<lineArray.Length; j++)
+//     {
+//       for(int i = 0; i < lineArray[j].Length; i++)
+//       {
+//         if(commentSymbols.Any(x => x == lineArray[j][i].ToString()))
+//         {
+//           Console.WriteLine(lineArray[j][i]);
+//           lineArray[j] = lineArray[j].Substring(0, i);
+//           lineArray[j] = lineArray[j].TrimEnd();
+//           break;
+//         }
+//           lineArray[j] = lineArray[j].TrimEnd();
+//       }
+//     }
+
+//     // Join the string array and return it
+//     return String.Join("\n", lineArray);
+//   }
+
+//   public static void Main(string[] args)
+//   {
+//     string stripped = StripCommentsSolution.StripComments("apples, pears # and bananas\ngrapes\nbananas !apples", new [] { "#", "!" });
+//     Console.WriteLine(stripped);
+//   }
+// }
+
+/*
+The Observed PIN
+
+Alright, detective, one of our colleagues successfully observed our target person, Robby the robber. We followed him to a secret warehouse, where we assume to find all the stolen stuff. The door to this warehouse is secured by an electronic combination lock. Unfortunately our spy isn't sure about the PIN he saw, when Robby entered it.
+
+The keypad has the following layout:
+
+┌───┬───┬───┐
+│ 1 │ 2 │ 3 │
+├───┼───┼───┤
+│ 4 │ 5 │ 6 │
+├───┼───┼───┤
+│ 7 │ 8 │ 9 │
+└───┼───┼───┘
+    │ 0 │
+    └───┘
+He noted the PIN 1357, but he also said, it is possible that each of the digits he saw could actually be another adjacent digit (horizontally or vertically, but not diagonally). E.g. instead of the 1 it could also be the 2 or 4. And instead of the 5 it could also be the 2, 4, 6 or 8.
+
+He also mentioned, he knows this kind of locks. You can enter an unlimited amount of wrong PINs, they never finally lock the system or sound the alarm. That's why we can try out all possible (*) variations.
+
+* possible in sense of: the observed PIN itself and all variations considering the adjacent digits
+
+Can you help us to find all those variations? It would be nice to have a function, that returns an array (or a list in Java/Kotlin and C#) of all variations for an observed PIN with a length of 1 to 8 digits. We could name the function getPINs (get_pins in python, GetPINs in C#). But please note that all PINs, the observed one and also the results, must be strings, because of potentially leading '0's. We already prepared some test cases for you.
+
+Detective, we are counting on you!
+
+For C# user: Do not use Mono. Mono is too slower when run your code.
+*/
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
-public class StripCommentsSolution
+public class Kata
 {
-  public static string StripComments(string text, string[] commentSymbols)
-  {
-    // split the string into an array of lines
-    var lineArray = text.Split("\n");
-
-    // loop through each string. If the char is included in the string array, 
-    // use the index of the char to remove the portion between that index and the end of the line.
-    for(int j=0; j<lineArray.Length; j++)
+    public static List<string> GetPINs(string observed)
     {
-      for(int i = 0; i < lineArray[j].Length; i++)
+      // List of strings to be returned
+      List<string> possiblePins = new List<string>();
+
+      // Need a rule for each number, there is some multiplication happening depending on the number
+      List<char> one = new List<char> {'1', '2', '4'};
+      List<char> two = new List<char> {'2', '1', '3', '5'};
+      List<char> three = new List<char> {'3', '2', '6'};
+      List<char> four = new List<char> {'4', '1', '5', '7'};
+      List<char> five = new List<char> {'5', '2', '4', '6', '8'};
+      List<char> six = new List<char> {'6', '3', '5', '9'};
+      List<char> seven = new List<char> {'7', '4', '8'};
+      List<char> eight = new List<char> {'8', '5', '7', '9', '0'};
+      List<char> nine = new List<char> {'9', '6', '8'};
+      List<char> zero = new List<char> {'0', '8'};
+
+      // split observed into a char array
+      char[] observedArray = observed.ToCharArray();
+
+      // assign each number in the string to a char list
+      List<List<char>> observedList = new List<List<char>>();
+      foreach(char num in observedArray)
       {
-        if(commentSymbols.Any(x => x == lineArray[j][i].ToString()))
+        if(num == '1')
         {
-          Console.WriteLine(lineArray[j][i]);
-          lineArray[j] = lineArray[j].Substring(0, i);
-          lineArray[j] = lineArray[j].TrimEnd();
-          break;
+          observedList.Add(one);
         }
-          lineArray[j] = lineArray[j].TrimEnd();
+        if(num == '2')
+        {
+          observedList.Add(two);
+        }
+        if(num == '3')
+        {
+          observedList.Add(three);
+        }
+        if(num == '4')
+        {
+          observedList.Add(four);
+        }
+        if(num == '5')
+        {
+          observedList.Add(five);
+        }
+        if(num == '6')
+        {
+          observedList.Add(six);
+        }
+        if(num == '7')
+        {
+          observedList.Add(seven);
+        }
+        if(num == '8')
+        {
+          observedList.Add(eight);
+        }
+        if(num == '9')
+        {
+          observedList.Add(nine);
+        }
+        if(num == '0')
+        {
+          observedList.Add(zero);
+        }
+      }
+
+      // loop through each list in the observedList and add each possible pin to the possiblePins list
+      for(int i = 0; i < observedList.Count; i++)
+      {
+        // create the first chars in each possible pin
+        if(i == 0)
+        {
+          foreach(char num in observedList[i])
+          {
+            possiblePins.Add(num.ToString());
+          }
+        }
+        else
+        // add the rest of the chars to each possible pin
+        {
+          List<string> newPossiblePins = new List<string>();
+          foreach(char num in observedList[i])
+          {
+            foreach(string pin in possiblePins)
+            {
+              newPossiblePins.Add(pin + num.ToString());
+            }
+          }
+          possiblePins = newPossiblePins;
+        }
+      }
+
+      return possiblePins;
+    }
+    public static void Main(string[] args)
+    {
+      string observed = "369";
+      Console.WriteLine(GetPINs(observed).Count);
+
+      foreach(string pin in GetPINs(observed))
+      {
+        Console.WriteLine(pin);
       }
     }
-
-    // Join the string array and return it
-    return String.Join("\n", lineArray);
-  }
-
-  public static void Main(string[] args)
-  {
-    string stripped = StripCommentsSolution.StripComments("apples, pears # and bananas\ngrapes\nbananas !apples", new [] { "#", "!" });
-    Console.WriteLine(stripped);
-  }
 }
