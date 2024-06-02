@@ -1553,113 +1553,154 @@ Detective, we are counting on you!
 
 For C# user: Do not use Mono. Mono is too slower when run your code.
 */
+// using System;
+// using System.Collections.Generic;
+// using System.Linq;
+// public class Kata
+// {
+//     public static List<string> GetPINs(string observed)
+//     {
+//       // List of strings to be returned
+//       List<string> possiblePins = new List<string>();
+
+//       // Need a rule for each number, there is some multiplication happening depending on the number
+//       List<char> one = new List<char> {'1', '2', '4'};
+//       List<char> two = new List<char> {'2', '1', '3', '5'};
+//       List<char> three = new List<char> {'3', '2', '6'};
+//       List<char> four = new List<char> {'4', '1', '5', '7'};
+//       List<char> five = new List<char> {'5', '2', '4', '6', '8'};
+//       List<char> six = new List<char> {'6', '3', '5', '9'};
+//       List<char> seven = new List<char> {'7', '4', '8'};
+//       List<char> eight = new List<char> {'8', '5', '7', '9', '0'};
+//       List<char> nine = new List<char> {'9', '6', '8'};
+//       List<char> zero = new List<char> {'0', '8'};
+
+//       // split observed into a char array
+//       char[] observedArray = observed.ToCharArray();
+
+//       // assign each number in the string to a char list
+//       List<List<char>> observedList = new List<List<char>>();
+//       foreach(char num in observedArray)
+//       {
+//         if(num == '1')
+//         {
+//           observedList.Add(one);
+//         }
+//         if(num == '2')
+//         {
+//           observedList.Add(two);
+//         }
+//         if(num == '3')
+//         {
+//           observedList.Add(three);
+//         }
+//         if(num == '4')
+//         {
+//           observedList.Add(four);
+//         }
+//         if(num == '5')
+//         {
+//           observedList.Add(five);
+//         }
+//         if(num == '6')
+//         {
+//           observedList.Add(six);
+//         }
+//         if(num == '7')
+//         {
+//           observedList.Add(seven);
+//         }
+//         if(num == '8')
+//         {
+//           observedList.Add(eight);
+//         }
+//         if(num == '9')
+//         {
+//           observedList.Add(nine);
+//         }
+//         if(num == '0')
+//         {
+//           observedList.Add(zero);
+//         }
+//       }
+
+//       // loop through each list in the observedList and add each possible pin to the possiblePins list
+//       for(int i = 0; i < observedList.Count; i++)
+//       {
+//         // create the first chars in each possible pin
+//         if(i == 0)
+//         {
+//           foreach(char num in observedList[i])
+//           {
+//             possiblePins.Add(num.ToString());
+//           }
+//         }
+//         else
+//         // add the rest of the chars to each possible pin
+//         {
+//           List<string> newPossiblePins = new List<string>();
+//           foreach(char num in observedList[i])
+//           {
+//             foreach(string pin in possiblePins)
+//             {
+//               newPossiblePins.Add(pin + num.ToString());
+//             }
+//           }
+//           possiblePins = newPossiblePins;
+//         }
+//       }
+
+//       return possiblePins;
+//     }
+//     public static void Main(string[] args)
+//     {
+//       string observed = "369";
+//       Console.WriteLine(GetPINs(observed).Count);
+
+//       foreach(string pin in GetPINs(observed))
+//       {
+//         Console.WriteLine(pin);
+//       }
+//     }
+// }
+
+/*
+Multiples of 3 or 5
+
+If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
+
+Finish the solution so that it returns the sum of all the multiples of 3 or 5 below the number passed in.
+
+Additionally, if the number is negative, return 0.
+
+Note: If the number is a multiple of both 3 and 5, only count it once.
+*/
 using System;
 using System.Collections.Generic;
 using System.Linq;
-public class Kata
+
+public static class Kata
 {
-    public static List<string> GetPINs(string observed)
+  public static int Solution(int value)
+  {
+    if (value < 0) return 0;
+
+    // return sum of array or list of all nums divisible by 3 or 5 below value
+    List<int> list = new List<int>();
+
+    for(int i = 1; i < value; i++)
     {
-      // List of strings to be returned
-      List<string> possiblePins = new List<string>();
-
-      // Need a rule for each number, there is some multiplication happening depending on the number
-      List<char> one = new List<char> {'1', '2', '4'};
-      List<char> two = new List<char> {'2', '1', '3', '5'};
-      List<char> three = new List<char> {'3', '2', '6'};
-      List<char> four = new List<char> {'4', '1', '5', '7'};
-      List<char> five = new List<char> {'5', '2', '4', '6', '8'};
-      List<char> six = new List<char> {'6', '3', '5', '9'};
-      List<char> seven = new List<char> {'7', '4', '8'};
-      List<char> eight = new List<char> {'8', '5', '7', '9', '0'};
-      List<char> nine = new List<char> {'9', '6', '8'};
-      List<char> zero = new List<char> {'0', '8'};
-
-      // split observed into a char array
-      char[] observedArray = observed.ToCharArray();
-
-      // assign each number in the string to a char list
-      List<List<char>> observedList = new List<List<char>>();
-      foreach(char num in observedArray)
+      if(i % 3 == 0 || i % 5 == 0)
       {
-        if(num == '1')
-        {
-          observedList.Add(one);
-        }
-        if(num == '2')
-        {
-          observedList.Add(two);
-        }
-        if(num == '3')
-        {
-          observedList.Add(three);
-        }
-        if(num == '4')
-        {
-          observedList.Add(four);
-        }
-        if(num == '5')
-        {
-          observedList.Add(five);
-        }
-        if(num == '6')
-        {
-          observedList.Add(six);
-        }
-        if(num == '7')
-        {
-          observedList.Add(seven);
-        }
-        if(num == '8')
-        {
-          observedList.Add(eight);
-        }
-        if(num == '9')
-        {
-          observedList.Add(nine);
-        }
-        if(num == '0')
-        {
-          observedList.Add(zero);
-        }
-      }
-
-      // loop through each list in the observedList and add each possible pin to the possiblePins list
-      for(int i = 0; i < observedList.Count; i++)
-      {
-        // create the first chars in each possible pin
-        if(i == 0)
-        {
-          foreach(char num in observedList[i])
-          {
-            possiblePins.Add(num.ToString());
-          }
-        }
-        else
-        // add the rest of the chars to each possible pin
-        {
-          List<string> newPossiblePins = new List<string>();
-          foreach(char num in observedList[i])
-          {
-            foreach(string pin in possiblePins)
-            {
-              newPossiblePins.Add(pin + num.ToString());
-            }
-          }
-          possiblePins = newPossiblePins;
-        }
-      }
-
-      return possiblePins;
-    }
-    public static void Main(string[] args)
-    {
-      string observed = "369";
-      Console.WriteLine(GetPINs(observed).Count);
-
-      foreach(string pin in GetPINs(observed))
-      {
-        Console.WriteLine(pin);
+        list.Add(i);
       }
     }
+
+    return list.Sum();
+  }
+
+  public static void Main(string[] args)
+  {
+    Console.WriteLine(Solution(10));
+  }
 }
