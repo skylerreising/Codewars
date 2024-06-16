@@ -1728,6 +1728,43 @@ A word (string) of length 0 < str < 1000 (In javascript you may get slightly mor
 The middle character(s) of the word represented as a string.
 */
 
+// using System;
+// using System.Collections.Generic;
+// using System.Linq;
+// using System.Text;
+
+// public class Kata
+// {
+//   public static string GetMiddle(string s)
+//   {
+//     double halfSLength = s.Length / 2;
+//     return ((s.Length) % 2 == 1) ? 
+//       s.ToCharArray()[(int)Math.Round(halfSLength, MidpointRounding.ToEven)].ToString():
+//       s.ToCharArray()[(int)Math.Round(halfSLength, MidpointRounding.ToZero) - 1].ToString() +
+//       s.ToCharArray()[(int)Math.Round(halfSLength, MidpointRounding.ToEven)].ToString();
+//   }
+
+//   public static void Main(string[] args)
+//   {
+//     Console.WriteLine(GetMiddle("test"));
+//     Console.WriteLine(GetMiddle("testing"));
+//     Console.WriteLine(GetMiddle("middle"));
+
+//   }
+// }
+
+/*
+Isograms
+
+An isogram is a word that has no repeating letters, consecutive or non-consecutive. Implement a function that determines whether a string that contains only letters is an isogram. Assume the empty string is an isogram. Ignore letter case.
+
+Example: (Input --> Output)
+
+"Dermatoglyphics" --> true
+"aba" --> false
+"moOse" --> false (ignore letter case)
+*/
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -1735,20 +1772,24 @@ using System.Text;
 
 public class Kata
 {
-  public static string GetMiddle(string s)
+  public static bool IsIsogram(string str) 
   {
-    double halfSLength = s.Length / 2;
-    return ((s.Length) % 2 == 1) ? 
-      s.ToCharArray()[(int)Math.Round(halfSLength, MidpointRounding.ToEven)].ToString():
-      s.ToCharArray()[(int)Math.Round(halfSLength, MidpointRounding.ToZero) - 1].ToString() +
-      s.ToCharArray()[(int)Math.Round(halfSLength, MidpointRounding.ToEven)].ToString();
+    str = str.ToLower();
+    foreach (char c in str)
+    {
+      if (str.IndexOf(c) != str.LastIndexOf(c))
+      {
+        return false;
+      }
+    }
+
+    return true;
   }
 
   public static void Main(string[] args)
   {
-    Console.WriteLine(GetMiddle("test"));
-    Console.WriteLine(GetMiddle("testing"));
-    Console.WriteLine(GetMiddle("middle"));
-
+    Console.WriteLine(IsIsogram("Dermatoglyphics"));
+    Console.WriteLine(IsIsogram("aba"));
+    Console.WriteLine(IsIsogram("moOse"));
   }
 }
