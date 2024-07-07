@@ -1805,36 +1805,93 @@ Examples
 [160, 3, 1719, 19, 11, 13, -21] --> 160 (the only even number)
 */
 
+// using System;
+// using System.Collections.Generic;
+// using System.ComponentModel.DataAnnotations;
+// using System.Linq;
+
+// public class Kata
+// {
+//     public static int Find(int[] integers)
+//     {
+//       // loop through first 3 ints too find if the array is mostly odds or mostly evens
+//       int odd = 0;
+//       int even = 0;
+//       for(int i=0; i<3; i++)
+//       {
+//         _ = ((Math.Abs(integers[i] % 2)) == 0) ? even++ : odd++;
+//       }
+
+//       // loop through the entire array and return the number that satisfies the outlier requirement
+//       var common = odd > even ? 1 : 0;
+
+//       var result = integers.First(x => 
+//         !(Math.Abs(x) % 2 == common)
+//       );
+
+//       return result;
+//     }
+
+//     public static void Main(string[] args)
+//     {
+//       Console.WriteLine(Find(new int[]{2, 4, 0, 100, 4, 11, 2602, 36}));// 11
+//       Console.WriteLine(Find(new int[]{160, 3, 1719, 19, 11, 13, -21}));// 160
+//     }
+// }
+
+/*
+Counting Duplicates
+
+Count the number of Duplicates
+Write a function that will return the count of distinct case-insensitive alphabetic characters and numeric digits that occur more than once in the input string. The input string can be assumed to contain only alphabets (both uppercase and lowercase) and numeric digits.
+
+Example
+"abcde" -> 0 # no characters repeats more than once
+"aabbcde" -> 2 # 'a' and 'b'
+"aabBcde" -> 2 # 'a' occurs twice and 'b' twice (`b` and `B`)
+"indivisibility" -> 1 # 'i' occurs six times
+"Indivisibilities" -> 2 # 'i' occurs seven times and 's' occurs twice
+"aA11" -> 2 # 'a' and '1'
+"ABBA" -> 2 # 'A' and 'B' each occur twice
+*/
+
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Collections.Generic;
 
 public class Kata
 {
-    public static int Find(int[] integers)
+  public static int DuplicateCount(string str)
+  {
+    var charArray = str.ToLower().ToCharArray();
+
+    // Make an object with the char as the key and count of that char in the dictionary as the value
+    Dictionary<char, int> charCount = new Dictionary<char, int>();
+
+    foreach(char c in charArray)
     {
-      // loop through first 3 ints too find if the array is mostly odds or mostly evens
-      int odd = 0;
-      int even = 0;
-      for(int i=0; i<3; i++)
+      if(charCount.ContainsKey(c))
       {
-        _ = ((Math.Abs(integers[i] % 2)) == 0) ? even++ : odd++;
+        charCount[c]++;
       }
-
-      // loop through the entire array and return the number that satisfies the outlier requirement
-      var common = odd > even ? 1 : 0;
-
-      var result = integers.First(x => 
-        !(Math.Abs(x) % 2 == common)
-      );
-
-      return result;
+      else
+      {
+        charCount.Add(c, 1);
+      }
     }
 
-    public static void Main(string[] args)
-    {
-      Console.WriteLine(Find(new int[]{2, 4, 0, 100, 4, 11, 2602, 36}));// 11
-      Console.WriteLine(Find(new int[]{160, 3, 1719, 19, 11, 13, -21}));// 160
-    }
+    // Return the count of chars in the dictionary that have a value greater than 1
+    var multiChars = charCount.Where(x => x.Value > 1);
+
+    return multiChars.Count();
+  }
+
+  public static void Main(string[] args)
+  {
+    Console.WriteLine(DuplicateCount("abcde"));// 0
+    Console.WriteLine(DuplicateCount("aabbcde"));// 2
+    Console.WriteLine(DuplicateCount("aabBcde"));// 2
+    Console.WriteLine(DuplicateCount("indivisibility"));// 1
+    Console.WriteLine(DuplicateCount("Indivisibilities"));// 2
+  }
 }
