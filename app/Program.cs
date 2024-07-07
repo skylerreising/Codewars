@@ -1886,6 +1886,13 @@ public class Kata
     return multiChars.Count();
   }
 
+  // Functional example below, not mine. Added for learning purposes.
+
+  // public static int DuplicateCount(string str)
+  // {
+  //   return str.ToLower().GroupBy(c => c).Where(g => g.Count() > 1).Count();
+  // }
+
   public static void Main(string[] args)
   {
     Console.WriteLine(DuplicateCount("abcde"));// 0
