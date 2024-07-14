@@ -1855,50 +1855,82 @@ Example
 "ABBA" -> 2 # 'A' and 'B' each occur twice
 */
 
-using System;
+// using System;
+// using System.Linq;
+// using System.Collections.Generic;
+
+// public class Kata
+// {
+//   public static int DuplicateCount(string str)
+//   {
+//     var charArray = str.ToLower().ToCharArray();
+
+//     // Make an object with the char as the key and count of that char in the dictionary as the value
+//     Dictionary<char, int> charCount = new Dictionary<char, int>();
+
+//     foreach(char c in charArray)
+//     {
+//       if(charCount.ContainsKey(c))
+//       {
+//         charCount[c]++;
+//       }
+//       else
+//       {
+//         charCount.Add(c, 1);
+//       }
+//     }
+
+//     // Return the count of chars in the dictionary that have a value greater than 1
+//     var multiChars = charCount.Where(x => x.Value > 1);
+
+//     return multiChars.Count();
+//   }
+
+//   // Functional example below, not mine. Added for learning purposes.
+
+//   // public static int DuplicateCount(string str)
+//   // {
+//   //   return str.ToLower().GroupBy(c => c).Where(g => g.Count() > 1).Count();
+//   // }
+
+//   public static void Main(string[] args)
+//   {
+//     Console.WriteLine(DuplicateCount("abcde"));// 0
+//     Console.WriteLine(DuplicateCount("aabbcde"));// 2
+//     Console.WriteLine(DuplicateCount("aabBcde"));// 2
+//     Console.WriteLine(DuplicateCount("indivisibility"));// 1
+//     Console.WriteLine(DuplicateCount("Indivisibilities"));// 2
+//   }
+// }
+
+/*
+Exes and Ohs
+
+Check to see if a string has the same amount of 'x's and 'o's. The method must return a boolean and be case insensitive. The string can contain any char.
+
+Examples input/output:
+
+XO("ooxx") => true
+XO("xooxx") => false
+XO("ooxXm") => true
+XO("zpzpzpp") => true // when no 'x' and 'o' is present should return true
+XO("zzoo") => false
+*/
+
 using System.Linq;
-using System.Collections.Generic;
-
-public class Kata
+using System;
+public static class Kata 
 {
-  public static int DuplicateCount(string str)
+  public static bool XO (string input)
   {
-    var charArray = str.ToLower().ToCharArray();
-
-    // Make an object with the char as the key and count of that char in the dictionary as the value
-    Dictionary<char, int> charCount = new Dictionary<char, int>();
-
-    foreach(char c in charArray)
-    {
-      if(charCount.ContainsKey(c))
-      {
-        charCount[c]++;
-      }
-      else
-      {
-        charCount.Add(c, 1);
-      }
-    }
-
-    // Return the count of chars in the dictionary that have a value greater than 1
-    var multiChars = charCount.Where(x => x.Value > 1);
-
-    return multiChars.Count();
+    var lowerString = input.ToLower();
+    
+    return lowerString.Count(x => x == 'x') == lowerString.Count(o => o == 'o');
   }
-
-  // Functional example below, not mine. Added for learning purposes.
-
-  // public static int DuplicateCount(string str)
-  // {
-  //   return str.ToLower().GroupBy(c => c).Where(g => g.Count() > 1).Count();
-  // }
 
   public static void Main(string[] args)
   {
-    Console.WriteLine(DuplicateCount("abcde"));// 0
-    Console.WriteLine(DuplicateCount("aabbcde"));// 2
-    Console.WriteLine(DuplicateCount("aabBcde"));// 2
-    Console.WriteLine(DuplicateCount("indivisibility"));// 1
-    Console.WriteLine(DuplicateCount("Indivisibilities"));// 2
+    Console.WriteLine(XO("ooxx"));
+    Console.WriteLine(XO("xooxx"));
   }
 }
