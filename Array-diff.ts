@@ -13,7 +13,7 @@ export function arrayDiff(a: number[], b: number[]): number[] {
     // for each number in b, remove all of those numbers from a
     b.forEach(x => 
         a = a.filter(y => y != x)
-    )
+    );
     return a;
   }
 
