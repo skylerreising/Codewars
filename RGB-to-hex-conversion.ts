@@ -15,14 +15,12 @@ Examples (input --> output):
 export function rgb(r: number, g: number, b: number): string {
     let redGreenBlue: number[] = [r,g,b];
 
-    redGreenBlue = redGreenBlue.map(x => x < 0 ? x = 0 : x);
-    redGreenBlue = redGreenBlue.map(x => x > 255 ? x = 255 : x);
-
-    let valueStrings = redGreenBlue.map(x => x.toString(16));
-
-    valueStrings = valueStrings.map(x => x.length === 1 ? x = `0${x}` : x);
-
-    return valueStrings.join("").toUpperCase();
+    return redGreenBlue.map(x => {
+        x < 0 ? x = 0 : x;
+        x > 255 ? x = 255 : x;
+        let hex = x.toString(16);
+        return hex.length === 1 ? hex = `0${hex}` : hex;
+    }).join("").toUpperCase();
   }
 
 console.log(rgb(0,0,0));
