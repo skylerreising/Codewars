@@ -1917,20 +1917,64 @@ XO("zpzpzpp") => true // when no 'x' and 'o' is present should return true
 XO("zzoo") => false
 */
 
-using System.Linq;
-using System;
-public static class Kata 
-{
-  public static bool XO (string input)
-  {
-    var lowerString = input.ToLower();
+// using System.Linq;
+// using System;
+// public static class Kata 
+// {
+//   public static bool XO (string input)
+//   {
+//     var lowerString = input.ToLower();
     
-    return lowerString.Count(x => x == 'x') == lowerString.Count(o => o == 'o');
+//     return lowerString.Count(x => x == 'x') == lowerString.Count(o => o == 'o');
+//   }
+
+//   public static void Main(string[] args)
+//   {
+//     Console.WriteLine(XO("ooxx"));
+//     Console.WriteLine(XO("xooxx"));
+//   }
+// }
+
+/*
+Moving Zeros To The End
+
+Write an algorithm that takes an array and moves all of the zeros to the end, preserving the order of the other elements.
+
+Kata.MoveZeroes(new int[] {1, 2, 0, 1, 0, 1, 0, 3, 0, 1}) => new int[] {1, 2, 1, 1, 3, 1, 0, 0, 0, 0}
+*/
+
+using System;
+using System.Linq;
+
+public class Kata
+{
+  public static int[] MoveZeroes(int[] arr)
+  {
+    // loop through the array and count 0's.
+    int count = 0;
+    foreach(int num in arr)
+    {
+      if(num == 0)
+      {
+        count++;
+      }
+    }
+
+    // filter out the 0's.
+    var result = arr.Where(x => x != 0).ToList();
+
+    // add count of 0's to end of new array/list
+    List<int> zeros = new();
+
+    zeros = Enumerable.Repeat(0, count).ToList();
+
+    result.AddRange(zeros);
+
+    return result.ToArray();
   }
 
   public static void Main(string[] args)
   {
-    Console.WriteLine(XO("ooxx"));
-    Console.WriteLine(XO("xooxx"));
+    Console.WriteLine(MoveZeroes(new int[] {1, 2, 0, 1, 0, 1, 0, 3, 0, 1})); //{1, 2, 1, 1, 3, 1, 0, 0, 0, 0}
   }
 }
