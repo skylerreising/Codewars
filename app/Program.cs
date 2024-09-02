@@ -1943,38 +1943,118 @@ Write an algorithm that takes an array and moves all of the zeros to the end, pr
 Kata.MoveZeroes(new int[] {1, 2, 0, 1, 0, 1, 0, 3, 0, 1}) => new int[] {1, 2, 1, 1, 3, 1, 0, 0, 0, 0}
 */
 
+// using System;
+// using System.Linq;
+
+// public class Kata
+// {
+//   public static int[] MoveZeroes(int[] arr)
+//   {
+//     // loop through the array and count 0's.
+//     int count = 0;
+//     foreach(int num in arr)
+//     {
+//       if(num == 0)
+//       {
+//         count++;
+//       }
+//     }
+
+//     // filter out the 0's.
+//     var result = arr.Where(x => x != 0).ToList();
+
+//     // add count of 0's to end of new array/list
+//     List<int> zeros = new();
+
+//     zeros = Enumerable.Repeat(0, count).ToList();
+
+//     result.AddRange(zeros);
+
+//     return result.ToArray();
+//   }
+
+//   public static void Main(string[] args)
+//   {
+//     Console.WriteLine(MoveZeroes(new int[] {1, 2, 0, 1, 0, 1, 0, 3, 0, 1})); //{1, 2, 1, 1, 3, 1, 0, 0, 0, 0}
+//   }
+// }
+
+/*
+Snail Sort
+
+Snail Sort
+Given an n x n array, return the array elements arranged from outermost elements to the middle element, traveling clockwise.
+
+array = [[1,2,3],
+         [4,5,6],
+         [7,8,9]]
+snail(array) #=> [1,2,3,6,9,8,7,4,5]
+For better understanding, please follow the numbers of the next array consecutively:
+
+array = [[1,2,3],
+         [8,9,4],
+         [7,6,5]]
+snail(array) #=> [1,2,3,4,5,6,7,8,9]
+This image will illustrate things more clearly:
+
+
+NOTE: The idea is not sort the elements from the lowest value to the highest; the idea is to traverse the 2-d array in a clockwise snailshell pattern.
+
+NOTE 2: The 0x0 (empty matrix) is represented as en empty array inside an array [[]].
+*/
+
 using System;
 using System.Linq;
 
-public class Kata
+public class SnailSolution
 {
-  public static int[] MoveZeroes(int[] arr)
-  {
-    // loop through the array and count 0's.
-    int count = 0;
-    foreach(int num in arr)
-    {
-      if(num == 0)
+   public static int[] Snail(int[][] array)
+   {
+      // NOTE - odd numbered arrays will add the center number at the end
+      //Properties
+      // int array to hold the result
+      List<int> result = new();
+
+      // int to keep track of horizontal left to right
+      int horizontalLtoR = 0;
+
+      // int to keep track of vertical top to bottom
+      int verticalTtoB = array.Length;
+      verticalTtoB--;
+
+      //1. Add the first line of the array to the result
+      result.AddRange(array[horizontalLtoR]);
+      horizontalLtoR++;
+
+      //2. Add the end of every array after the first.
+      for(int i=horizontalLtoR; i<=verticalTtoB; i++)
       {
-        count++;
+        result.Add(array[i][verticalTtoB]);
       }
-    }
 
-    // filter out the 0's.
-    var result = arr.Where(x => x != 0).ToList();
+      //3. Add the last array starting at the 2nd to last number and going backwards
+      for(int i=verticalTtoB-1; i>=0; i--)
+      {
+        result.Add(array[verticalTtoB][i]);
+      }
 
-    // add count of 0's to end of new array/list
-    List<int> zeros = new();
+      return result.ToArray();
+   }
 
-    zeros = Enumerable.Repeat(0, count).ToList();
+   public static void Main(string[] args)
+   {
+      int[][] array =
+       {
+           new []{1, 2, 3},
+           new []{4, 5, 6},
+           new []{7, 8, 9}
+       };
 
-    result.AddRange(zeros);
+      var result = Snail(array); //[1,2,3,6,9,8,7,4,5]
 
-    return result.ToArray();
-  }
-
-  public static void Main(string[] args)
-  {
-    Console.WriteLine(MoveZeroes(new int[] {1, 2, 0, 1, 0, 1, 0, 3, 0, 1})); //{1, 2, 1, 1, 3, 1, 0, 0, 0, 0}
-  }
+      foreach(var num in result)
+      {
+        Console.WriteLine(num);
+      }
+   }
 }
