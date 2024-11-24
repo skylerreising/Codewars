@@ -10,3 +10,5 @@ tsconfig.json
 app/obj/app.csproj.nuget.dgspec.json
 app/obj/app.csproj.nuget.g.props
 app/obj/project.assets.json
+
+.fake
